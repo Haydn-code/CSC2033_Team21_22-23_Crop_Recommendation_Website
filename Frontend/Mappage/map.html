@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Precision Agriculture - Interactive Map </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+	<style>
+		html {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			background-color: #8fa689;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			font-family: Avenir, sans-serif;
+		}
+		header {
+			background-color: #f2e5d8;
+			color: #000;
+			height: 80px;
+			padding: 20px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		nav ul {
+			list-style: none;
+			display: flex;
+			margin: 0;
+			padding: 0;
+		}
+		nav li {
+			margin: 0 10px;
+			color: #fff;
+			font-size: 1.65em;
+		}
+		nav a {
+			color: #3d8374;
+			text-decoration: none;
+			font-weight: regular;
+		}
+		main {
+			display: flex;
+			flex: 1 0 auto;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding: 20px;
+			align-items: flex-start;
+			margin-top: auto;
+		}
+		section {
+			flex-basis: 70%;
+			margin-right: 20px;
+		}
+		aside {
+			flex-basis: 25%;
+		}
+		footer {
+			background-color: #f2e5d8;
+			color: #3d8374; 
+			padding: 20px;
+			text-align: center;
+		}
+        #map-container {
+            position: relative;
+            float: right;
+            padding-top: 21.44px;
+            width: 750px;
+            height: 600px;
+        }
+        #map {
+            height: 100%;
+        }
+        #information-container {
+            float: left;
+            width: 560px;
+            height: 530px;
+            border: 2px solid black;
+        }
+        #attribute-textbox {
+            float: left;
+            height: 480px;
+            padding: 10px;
+        }
+        #information-textbox {
+            float: left;
+            height: 480px;
+            padding: 10px;
+        }
+	</style>
+</head>
+<body>
+	<header>
+		<img src="logo5.png" style="width: 600px; height: 45px"/>
+		<nav>
+			<ul>
+				<li><a href="Home.html">Home</a></li>
+				<li><a href="map.html">Interactive Map</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<div>
+			<h1>Precision Agriculture Interactive Map</h1>
+			<div id="information-container">
+				<div id="attribute-textbox">
+					<h3>Name of Country:</h3>
+					<h3>Name of Continent:</h3>
+					<h3>Soil PH:</h3>
+					<h3>Average Rainfall:</h3>
+					<h3>Crops to be Grown:</h3>
+				</div>
+				<div id="information-textbox">
+					<h3 id="country_name">France</h3>
+					<h3 id="continent_name">Europe</h3>
+					<h3>7.6</h3>
+					<h3><5 mm per Annum</h3>
+					<h3>- Grapes</h3>
+					<h3>- Corn</h3>
+					<h3>- Lavender</h3>
+				</div>
+			</div>
+		</div>
+		<div id="map-container">
+			<div id="map"></div>
+		</div>
+	</main>
+
+	<footer>
+		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
+	</footer>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiYWxyb2JlcnRzb25leCIsImEiOiJjbGgyNjk0dWwxYW9kM2pqdXJwcDVyd25hIn0.C0kwA2ZQUzo1BJ0YzAbjIg';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/alrobertsonex/clh4zxq2f00oq01qugv3d02jz',
+        center: [0, 30],
+        zoom: 1.75
+    });
+    let hoveredCountryId = null;
+
+    map.on('load', () => {
+        map.addSource('countries', {
+            'type': 'vector',
+            'url': 'mapbox://mapbox.country-boundaries-v1'
+        });
+
+        map.addLayer(
+        	{
+            'id': 'country_fills',
+            'type': 'fill',
+            'source': 'countries',
+            'source-layer': 'country_boundaries',
+            'layout': {},
+            'paint': {
+                'fill-color': '#f2e5d8',
+                'fill-opacity': [
+                    'case',
+                    ['boolean', ['feature-state', 'hover'], false],
+                    0.5,
+                    0
+                ]
+            }
+        });
+
+        map.addLayer(
+        	{
+            'id': 'country_borders',
+            'type': 'line',
+            'source': 'countries',
+            'source-layer': 'country_boundaries',
+            'layout': {},
+            'paint': {
+                'line-color': '#a3bb9d',
+                'line-width': 0.25
+            }
+        });
+
+        map.on('mousemove', 'country_fills', (e) => {
+            if (e.features.length > 0) {
+                if (hoveredCountryId !== null) {
+                    map.setFeatureState(
+                        { source: 'countries',sourceLayer: 'country_boundaries', id: hoveredCountryId },
+                        { hover: false }
+                    );
+                }
+                hoveredCountryId = e.features[0].id;
+                map.setFeatureState(
+                    { source: 'countries',sourceLayer: 'country_boundaries', id: hoveredCountryId },
+                    { hover: true }
+                );
+            }
+        });
+
+        map.on('mouseleave', 'country_fills', () => {
+            if (hoveredCountryId !== null) {
+                map.setFeatureState(
+                    { source: 'countries',sourceLayer: 'country_boundaries', id: hoveredCountryId },
+                    { hover: false }
+                );
+            }
+            hoveredCountryId = null;
+        });
+        
+        map.on('click', 'country_fills', (e) => {
+            console.log(e.lngLat.wrap())
+        	document.getElementById("country_name").innerHTML = e.features[0].properties["name_en"];
+            document.getElementById("continent_name").innerHTML = e.features[0].properties["region"];
+        });
+    });
+</script>
+</body>
+</html>
