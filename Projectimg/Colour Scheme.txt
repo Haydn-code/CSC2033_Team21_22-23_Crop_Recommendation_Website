@@ -1,0 +1,19 @@
+<--- Homepage --->
+Background: #EADEB8
+Text colour: #995546
+Button colours: #A09F57
+Alternative background colours (form and about section): #A09F57 #CFB784
+
+<--- Agriculture Map --->
+Background: #EADEB8
+Map-country-colour: #D9D9D9
+Map-country-stroke: #111111
+Text Colour: #995546
+Alternative background colours: #A09F57 #CFB784
+
+<--- Forms --->
+Section-Background-Colour: #EADEB8
+Background: #A09F57
+Text-Colour: 000000 (white)
+Button: #EADEB8
+
