@@ -1,0 +1,4 @@
+Project Colour Scheme:
+Background - #8FA689
+Footer/Header - #F2E5D8
+Footer/Header Text - #3D8374
