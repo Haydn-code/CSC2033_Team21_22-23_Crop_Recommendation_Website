@@ -79,7 +79,6 @@
     height: 100%;
     color: white;
     font-size: 3rem;
-    border: 3px solid purple;
 }
 
 
@@ -92,7 +91,6 @@
     height: fit-content;
     color: white;
     font-size: 3rem;
-    border: 3px solid purple;
 }
 
 
@@ -136,7 +134,7 @@
 
 .about-section .about-container{
     width: 100%;
-    height: 100%;
+    height: fit-content;
 }
 
 .about-section .about-container .about-container-text {
@@ -160,48 +158,61 @@
 
 .about-section .about-container .about-container-image {
     float: left;
+    position: relative;
     width: 33.33%;
-    height: 100%;
-    background-color: black;
+    height: 70vh;
+    background-image: url("../../Projectimg/homepage_image_about2.jpeg");
+    background-size: cover;
 }
+
 .about-section .about-container .about-container-form {
     float: left;
     width: 33.33%;
     height: 100%;
     background-color: white;
-    border: 1px solid black;
 }
 
 .about-container .about-container-form form {
     width: 100%;
     height: 100%;
-    border: solid 1px red;
     justify-content: center;
     align-items: center;
     padding: 30px;
 }
 
+.about-container .about-container-form form h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.about-container .about-container-form form h4 {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+
 .about-container .about-container-form form  input{
     display: block;
     width: 85%;
-    height: 8%;
-    margin-left: 7%;
-    margin-bottom: 10%;
+    height: 50px;
+    margin: auto;
 
 }
 .about-container .about-container-form form label {
     display: block;
-    text-align: center;
     width: 85%;
-    margin-left: 7%;
-    margin-bottom: 2%;
+    margin: auto;
+    margin-top: 10px;
 }
 
 .about-container .about-container-form form textarea {
     display: block;
+    margin: auto;
     width: 85%;
-    height: 40%;
-    margin-left: 7%;
+    margin-top: 10px;
+    height: 150px;
     resize: none;
 }
 
@@ -209,6 +220,20 @@
     display: block;
     height: 50px;
     width: 85%;
-    margin-left: 7%;
-    margin-top: 4%;
+    margin: auto;
+    margin-top: 20px;
+
 }
+
+.footer {
+    background-color: black;
+    width: 100%;
+    height: 5vh;
+    text-align: center;
+    color: white;
+}
+
+.footer p {
+    margin: auto;
+}
+
