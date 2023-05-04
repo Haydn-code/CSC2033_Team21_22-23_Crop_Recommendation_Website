@@ -21,14 +21,15 @@ def getSoilData(long, lat):
     raster = gdal.Open("WISE30sec/Interchangeable_format/wise_30sec_v1.tif")
     rows = raster.RasterXSize
     cols = raster.RasterYSize
+    # prints dimensions of raster file
     print(rows)
     print(cols)
     band = raster.GetRasterBand(1)
     data = band.ReadAsArray(0, 0, rows, cols)
-    print(band)
+    # prints the values of pixels near the start and end of raster file
     print(data)
 
-    # opens a .tsv file that can be used to
+    # opens a .tsv file that can be used to gather some metadata about the raster file
     df = pd.read_csv('WISE30sec/Interchangeable_format/wise_30sec_v1.tsv', sep='\t')
     print(df)
 
