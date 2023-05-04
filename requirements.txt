@@ -1,1 +1,3 @@
 Pylint
+numpy
+pandas
