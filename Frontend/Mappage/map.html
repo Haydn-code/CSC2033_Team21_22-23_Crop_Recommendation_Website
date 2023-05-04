@@ -4,25 +4,24 @@
 	<title>Precision Agriculture - Interactive Map </title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style-map.css">
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
 </head>
 <body>
-	<header>
-		<img src="logo5.png" style="width: 600px; height: 45px"/>
-		<nav>
-			<ul>
-				<li><a href="Home.html">Home</a></li>
-				<li><a href="map.html">Interactive Map</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-		</nav>
-	</header>
+    <header class="nav-bar">
+		<ul>
+			<img src="../../Projectimg/logo5.png"/>
+			<li><a href="contact.html">Login</a></li>
+			<li><a href="crop-management.html">Crop Management</a></li>
+			<li><a href="map.html">Interactive Map</a></li>
+			<li><a href="Home.html">Home</a></li>
 
-	<main>
-		<div>
-			<h1>Precision Agriculture Interactive Map</h1>
-			<div id="information-container">
+		</ul>
+	</header>
+	<section>
+		<div class="display-block" style="margin-bottom: 30px">
+			<div class="info-container" style="background-color: #EADEB8">
 				<div id="attribute-textbox">
 					<h3>Name of Country:</h3>
 					<h3>Name of Continent:</h3>
@@ -30,7 +29,7 @@
 					<h3>Average Rainfall:</h3>
 					<h3>Crops to be Grown:</h3>
 				</div>
-				<div id="information-textbox">
+				<div id="info-textbox">
 					<h3 id="country_name">France</h3>
 					<h3 id="continent_name">Europe</h3>
 					<h3>7.6</h3>
@@ -40,20 +39,55 @@
 					<h3>- Lavender</h3>
 				</div>
 			</div>
+			<div class="map-container">
+				<div id="map" style="height: 100%"></div>
+			</div>
 		</div>
-		<div id="map-container">
-			<div id="map"></div>
+	</section>
+	<section>
+		<div class="display-block">
+			<div class="info-container" style="width: 100%">
+			</div>
 		</div>
-	</main>
-
-	<footer>
-		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
-	</footer>
+	</section>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-row">
+                <div class="footer-column">
+                    <h2>Company Location</h2>
+                    <ul>
+                        <li>Newcastle University</li>
+                        <li>Newcastle Upon Tyne</li>
+                        <li>NE1 5SA</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h2>Relevant Links</h2>
+                    <ul>
+                        <li>Agriculture Map</li>
+                        <li>Contact Us</li>
+                        <li>Sign Up</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h2>Social media</h2>
+                    <ul>
+                        <li>Twitter</li>
+                        <li>Facebook</li>
+                        <li>Instagram</li>
+                    </ul>
+                </div>
+                <div class="copyright">
+            		<a href="">copyright @ precisionagriculture.com</a>
+        		</div>
+			</div>
+        </div>
+    </footer>
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYWxyb2JlcnRzb25leCIsImEiOiJjbGgyNjk0dWwxYW9kM2pqdXJwcDVyd25hIn0.C0kwA2ZQUzo1BJ0YzAbjIg';
     const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/alrobertsonex/clh4zxq2f00oq01qugv3d02jz',
+        style: 'mapbox://styles/alrobertsonex/clh8y3kx600y601que40vfwe3',
         center: [0, 30],
         zoom: 1.75
     });
@@ -73,7 +107,7 @@
             'source-layer': 'country_boundaries',
             'layout': {},
             'paint': {
-                'fill-color': '#f2e5d8',
+                'fill-color': '#447597',
                 'fill-opacity': [
                     'case',
                     ['boolean', ['feature-state', 'hover'], false],
@@ -91,7 +125,7 @@
             'source-layer': 'country_boundaries',
             'layout': {},
             'paint': {
-                'line-color': '#a3bb9d',
+                'line-color': '#2d648a',
                 'line-width': 0.25
             }
         });
