@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap');
-
+/* <--- Base.html css styling code --> */
 * {
     padding: 0;
     margin: 0;
@@ -58,7 +58,7 @@
 }
 
 
-
+/* <--- homepage.html css styling code --> */
 .homepage {
     width: 100%;
     height: 90vh;
