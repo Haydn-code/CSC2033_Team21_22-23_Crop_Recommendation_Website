@@ -12,7 +12,9 @@ rows (int): the number of rows of pixels in the raster file
 
 Returns:
 long_idx (int) the idx of the column of the pixel
-lat_idx (int) the idx of the row of the pixel"""
+lat_idx (int) the idx of the row of the pixel
+
+Errors: displays an assertion error if the lat isn't between 90 and -90 or if long isn't between 180 and -180"""
 
 
 def coordsToPixels(long, lat, rows, cols):
@@ -39,9 +41,13 @@ detailed (int): if 1 returns all the soil profiles, if not 1 returns only the do
 
 Returns:
 Dictionary of (str) keys of a dictionary (str) keys of (pandas dataframes) values or if there is no data returns None
+
 Note: The first set of string keys are composed of a profile ID code 4-5 length e.g. PLe/B a space and then the 
 proportion of soil it covers in a map unit e.g. 70. The second set of keys contains the layer of the soil e.g. D1 also 
-available in the Layer column of the pandas dataframe."""
+available in the Layer column of the pandas dataframe.
+
+Errors: Calls coordsToPixels so displays an assertion error of long is not between 180 and -180 or if lat is not between 
+90 and -90"""
 
 
 def getSoilData(long, lat, detailed):
@@ -94,7 +100,7 @@ def getSoilData(long, lat, detailed):
 
 
 """Takes a soil profile and returns a dictionary of key value pairs where the key is the soil layer and the pandas 
- dataframe for that layer is the data for that soil layer 
+ dataframe for that layer is the data for that soil layer. Function should only be called from within getSoilData.
  
  Parameters:
  profile (str): the soil profile for which we are trying to access data from
