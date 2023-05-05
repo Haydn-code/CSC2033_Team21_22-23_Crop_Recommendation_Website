@@ -38,7 +38,10 @@ lat (float): the latitudinal coordinate
 detailed (int): if 1 returns all the soil profiles, if not 1 returns only the dominant soil profile
 
 Returns:
-Dictionary of (str) keys of a dictionary (str) keys of (pandas dataframes) values or if there is no data returns None"""
+Dictionary of (str) keys of a dictionary (str) keys of (pandas dataframes) values or if there is no data returns None
+Note: The first set of string keys are composed of a profile ID code 4-5 length e.g. PLe/B a space and then the 
+proportion of soil it covers in a map unit e.g. 70. The second set of keys contains the layer of the soil e.g. D1 also 
+available in the Layer column of the pandas dataframe."""
 
 
 def getSoilData(long, lat, detailed):
