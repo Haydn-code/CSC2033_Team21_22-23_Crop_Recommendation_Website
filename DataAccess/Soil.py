@@ -44,7 +44,8 @@ Dictionary of (str) keys of a dictionary (str) keys of (pandas dataframes) value
 
 Note: The first set of string keys are composed of a profile ID code 4-5 length e.g. PLe/B a space and then the 
 proportion of soil it covers in a map unit e.g. 70. The second set of keys contains the layer of the soil e.g. D1 also 
-available in the Layer column of the pandas dataframe.
+available in the Layer column of the pandas dataframe. More details on the contents of the pandas dataframe can be found
+in Appendix 7 of the ISRIC_Report_2015_01.pdf found in the WISE30sec folder.
 
 Errors: Calls coordsToPixels so displays an assertion error of long is not between 180 and -180 or if lat is not between 
 90 and -90"""
@@ -95,7 +96,7 @@ def getSoilData(long, lat, detailed):
                 dom_profile = profile
     if detailed != 1:
         soil_profiles[dom_profile + " " + str(largest)] = readProfile(dom_profile, profiles_file)
-    print(soil_profiles)
+    # print(soil_profiles) # uncomment if you want to see an example of the functionality and what is returned.
     return soil_profiles
 
 
@@ -126,4 +127,4 @@ def readProfile(profile, profiles_file):
     return result
 
 
-getSoilData(0, 0, 1)
+# getSoilData(0, 0, 1) # uncomment if you want to see an example of the functionality
