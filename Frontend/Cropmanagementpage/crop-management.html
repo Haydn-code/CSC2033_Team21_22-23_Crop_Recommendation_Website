@@ -1,53 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Precision Agriculture - Home</title>
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Precision Agriculture - Crop Management</title>
 </head>
 <body>
-    <header class="nav-bar">
-		<ul>
-			<img src="logo5.png"/>
-			<li><a href="contact.html">Login</a></li>
-			<li><a href="contact.html">Crop Management</a></li>
-			<li><a href="map.html">Interactive Map</a></li>
-			<li><a href="Home.html">Home</a></li>
-		</ul>
-	</header>
-	<section>
-	</section>
-    <footer>
-        <div class="footer-content">
-            <div class="footer-row">
-                <div class="footer-column">
-                    <h2>Company Location</h2>
-                    <ul>
-                        <li>Newcastle University</li>
-                        <li>Newcastle Upon Tyne</li>
-                        <li>NE1 5SA</li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h2>Relevant Links</h2>
-                    <ul>
-                        <li>Agriculture Map</li>
-                        <li>Contact Us</li>
-                        <li>Sign Up</li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h2>Social media</h2>
-                    <ul>
-                        <li>Twitter</li>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                    </ul>
-                </div>
-                <div class="copyright">
-            		<a href="">copyright @ precisionagriculture.com</a>
-        		</div>
-			</div>
+    <section class="header">
+        <div class="logo-container">
+            <img src="../../Projectimg/logo5.png" alt="" class="logo">
         </div>
-    </footer>
+        <div class="navbar">
+            <ul>
+                <li>Home</li>
+                <li>Agriculture Map</li>
+                <li>Crop Map</li>
+                <li>Sign up</li>
+                <li>Login</li>
+            </ul>
+        </div>
+    </section>
+	<section class="search">
+		<div class="display-block">
+			<div class="search-block">
+				<div class="search-bar">
+					<input id="search-input" type="text" placeholder="Search...">
+				</div>
+				<button onclick="displayInput()">Search</button>
+			</div>
+			<div class="search-display">
+				<h3 id="search-test">...</h3>
+			</div>
+		</div>
+	</section>
+	<section class="footer">
+		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
+	</section>
+<script>
+	function displayInput() {
+  		const input = document.getElementById("search-input").value;
+  		const output = document.getElementById("search-test");
+  		output.textContent = input;
+	}
+</script>
 </body>
 </html>
