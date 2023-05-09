@@ -13,7 +13,7 @@
 
 .header {
     width: 100%;
-    height: 12.5vh;
+    height: 10vh;
     display: inline-block;
     background-color: #fff;
     align-items: center;
@@ -23,7 +23,7 @@
 .header .logo-container {
     position: relative;
     float: left;
-    width: 40%;
+    width: 30%;
     height: 100%;
     padding: 10px;
     display: flex;
@@ -46,7 +46,6 @@
 
 .header .navbar ul {
   	list-style-type: none;
-  	margin: 0;
   	margin-left: auto;
 }
 
@@ -282,7 +281,7 @@
 
 .form-container form  input{
     width: 80%;
-    height: 12%;
+    height: 40px;
     margin: auto;
     display: block;
     border: solid #689b6c 2px;
@@ -478,4 +477,62 @@
 	border: 2px solid black;
 	color: #995546;
 	float: left;
+}
+
+/* <--- Profile Page CSS Styling Code --> */
+
+.profile-container {
+    width: 100%;
+    height: 90vh;
+    background-color: #689b6c;
+}
+
+.profile-element-container{
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    margin: auto;
+}
+
+.profile-element-item {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border: solid 3px #689b6c;
+    text-align: center;
+}
+
+.profile-element-item img {
+    width: 25%;
+    height: 25%;
+}
+
+.profile-element-item h1 {
+    margin-top: 20px;
+}
+
+.profile-element-item .user-farms {
+    width: 40%;
+    height: 25%;
+    overflow-y: scroll;
+    margin: auto;
+    margin-top: 20px;
+    border: solid 1px #689b6c;
+}
+.profile-element-item button {
+    margin-top: 20px;
+    background-color: #8fa689;
+    border: none;
+    width: 20%;
+    height: 40px;
+    color: white;
+    font-size: 15px;
+    transition: 0.5s;
+}
+
+.profile-element-item button:hover {
+    background-color: #85c489;
+    width: 20%;
+    height: 40px;
 }
