@@ -262,11 +262,8 @@
 }
 
 .form-container form {
-    position: absolute;
-    top: 20%;
-    left: 37%;
-    margin: auto;
-    height: 40vh;
+    margin: inherit;
+    height: fit-content;
     width: 25%;
     display: block;
     background-color: white;
@@ -307,7 +304,7 @@
     margin: auto;
     margin-top: 20px;
     width: 60%;
-    height: 12%;
+    height: 50px;
     color: white;
     font-size: 15px;
     transition: 0.5s;
@@ -319,7 +316,7 @@
     margin: auto;
     margin-top: 20px;
     width: 60%;
-    height: 12%;
+    height: 50px;
 }
 
 .form-container form .bottom-form-container {
