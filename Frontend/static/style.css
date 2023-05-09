@@ -418,21 +418,67 @@
 
 
 /* <--- Crop Management Page CSS Styling Code --> */
-section .display-block #search-bar {
-	width: 50%;
-	height: 40px;
-	background-color: #EADEB8;
-	color: #995546;
-	margin-bottom: 30px;
-	border: 2px solid black;
+.search .display-block {
+    width: 100%;
+    height: 750px;
+    display: block;
+    align-self: center;
+    padding: 30px;
+    justify-content: space-between;
+    background-color: #689b6c;
 }
 
-section .display-block .search-display {
+.search .display-block .search-block {
 	width: 100%;
-	height: 400px;
-	background-color: #EADEB8;
+	height: 40px;
+	margin-bottom: 30px;
+	display: flex;
+}
+
+.search .display-block .search-block .search-bar {
+	width: 33%;
+	height: 40px;
+	color: #995546;
+	border: 2px solid black;
+	background-color: #fff;
+	margin-right: 30px;
+	display: flex;
+	align-self: center;
+}
+
+.search .display-block .search-block .search-bar #search-input {
+	padding-left: 10px;
+	padding-right: 10px;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 24px;
+    width: 100%;
+}
+
+.search .display-block .search-block button {
+    display: block;
+    background-color: #8fa689;
+    border: none;
+    width: 20%;
+    height: 40px;
+    color: white;
+    font-size: 15px;
+    transition: 0.5s;
+}
+
+.search .display-block .search-block button:hover {
+    background-color: #85c489;
+    display: block;
+    width: 20%;
+    height: 40px;
+}
+
+.search .display-block .search-display {
+	width: 100%;
+	height: 620px;
+	background-color: #fff;
 	border: 2px solid black;
 	color: #995546;
 	float: left;
-	top: 70px;
 }
