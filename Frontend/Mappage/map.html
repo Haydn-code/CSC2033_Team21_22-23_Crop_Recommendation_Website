@@ -4,24 +4,28 @@
 	<title>Precision Agriculture - Interactive Map </title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-	<link rel="stylesheet" href="style-map.css">
+	<link rel="stylesheet" href="../static/style.css">
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
 </head>
 <body>
-    <header class="nav-bar">
-		<ul>
-			<img src="../../Projectimg/logo5.png"/>
-			<li><a href="contact.html">Login</a></li>
-			<li><a href="crop-management.html">Crop Management</a></li>
-			<li><a href="map.html">Interactive Map</a></li>
-			<li><a href="Home.html">Home</a></li>
-
-		</ul>
-	</header>
-	<section>
-		<div class="display-block" style="margin-bottom: 30px">
-			<div class="info-container" style="background-color: #EADEB8">
+    <section class="header">
+        <div class="logo-container">
+            <img src="../../Projectimg/logo5.png" alt="" class="logo">
+        </div>
+        <div class="navbar">
+            <ul>
+                <li>Home</li>
+                <li>Agriculture Map</li>
+                <li>Crop Map</li>
+                <li>Sign up</li>
+                <li>Login</li>
+            </ul>
+        </div>
+    </section>
+	<section class="map">
+		<div class="display-block">
+			<div class="info-container">
 				<div id="attribute-textbox">
 					<h3>Name of Country:</h3>
 					<h3>Name of Continent:</h3>
@@ -44,45 +48,33 @@
 			</div>
 		</div>
 	</section>
-	<section>
+	<section class="donation">
 		<div class="display-block">
-			<div class="info-container" style="width: 100%">
+			<div class="donation-container">
+				<div id="img-container">
+					<img src="../../Projectimg/zerohunger.jpg" style="height: 396px">
+				</div>
+				<div id="donate-textbox">
+					<h1>Donate to Stop Hunger</h1>
+					<p>Donating to the United Nations Zero Hunger sustainability goals 
+					is a crucial step towards ending world hunger. Around 690 million 
+					people in the world suffer from hunger, and achieving the goal of zero 
+					hunger by 2030 requires collective action from individuals, 
+					organisations, and governments. Donations to these goals are used to 
+					provide essential resources such as food, clean water, and agricultural 
+					training to those in need. The Zero Hunger sustainability goals also 
+					address issues such as food waste, sustainable agriculture, and social 
+					protection measures for vulnerable communities. By supporting these 
+					goals, we can help create a world where everyone has access to the 
+					food and resources they need to live a healthy and fulfilling life</p>
+					<button>Donate and Save Lives</button>
+				</div>
 			</div>
 		</div>
 	</section>
-    <footer>
-        <div class="footer-content">
-            <div class="footer-row">
-                <div class="footer-column">
-                    <h2>Company Location</h2>
-                    <ul>
-                        <li>Newcastle University</li>
-                        <li>Newcastle Upon Tyne</li>
-                        <li>NE1 5SA</li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h2>Relevant Links</h2>
-                    <ul>
-                        <li>Agriculture Map</li>
-                        <li>Contact Us</li>
-                        <li>Sign Up</li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h2>Social media</h2>
-                    <ul>
-                        <li>Twitter</li>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                    </ul>
-                </div>
-                <div class="copyright">
-            		<a href="">copyright @ precisionagriculture.com</a>
-        		</div>
-			</div>
-        </div>
-    </footer>
+    <section class="footer">
+        <p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
+    </section>
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYWxyb2JlcnRzb25leCIsImEiOiJjbGgyNjk0dWwxYW9kM2pqdXJwcDVyd25hIn0.C0kwA2ZQUzo1BJ0YzAbjIg';
     const map = new mapboxgl.Map({
