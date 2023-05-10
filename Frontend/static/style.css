@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap');
 /* <--- Base.html css styling code --> */
-/**/
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap');
-/* <--- Base.html css styling code --> */
 * {
     padding: 0;
     margin: 0;
@@ -37,7 +34,6 @@
 }
 
 .header .navbar {
-    width: 60%;
     height: 100%;
     max-height: 100%;
     display: flex;
@@ -63,6 +59,60 @@
     text-decoration: underline;
 }
 
+.footer {
+    background-color: #333;
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+    align-items: center;
+    color: white;
+}
+
+.footer p {
+    margin: auto;
+}
+
+.page-title-section {
+	width: 100%;
+    height: 738px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.page-title-section .img-container {
+	height: 40%;
+	width: 75%;
+}
+
+.page-title-section .img-container h1 {
+	margin-top: 55px;
+	font-size: 1.75em;
+	color: white;
+}
+
+.page-title-section .img-container button {
+    background-color: #5A8073;
+    border: none;
+    margin-top: 55px;
+    width: 50%;
+    height: 20%;
+    color: white;
+    font-size: 15px;
+    transition: 0.5s;
+}
+
+.page-title-section .img-container button:hover {
+    background-color: #689b6c;
+    margin-top: 55px;
+    width: 50%;
+    height: 20%;
+}
+
 /* <--- homepage.html css styling code --> */
 .homepage {
     width: 100%;
@@ -84,6 +134,46 @@
     height: 100%;
     color: white;
     font-size: 3rem;
+}
+
+.page-title {
+	width: 100%;
+    height: 720px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.page-title .img-container {
+	height: 40%;
+	width: 75%;
+}
+
+.page-title .img-container h1 {
+	margin-top: 55px;
+	font-size: 1.75em;
+	color: white;
+}
+
+.page-title .img-container button {
+    background-color: #5A8073;
+    border: none;
+    margin-top: 55px;
+    width: 50%;
+    height: 20%;
+    color: white;
+    font-size: 15px;
+    transition: 0.5s;
+}
+
+.page-title .img-container button:hover {
+    background-color: #689b6c;
+    margin-top: 55px;
+    width: 50%;
+    height: 20%;
 }
 
 
@@ -248,20 +338,6 @@
     background-color: #85c489;
 }
 
-.footer {
-    background-color: black;
-    display: flex;
-    width: 100%;
-    height: 10vh;
-    text-align: center;
-    align-items: center;
-    color: white;
-}
-
-.footer p {
-    margin: auto;
-}
-
 /* <--- users css styling code --> */
 
 .form-container {
@@ -424,11 +500,10 @@
     height: 12%;
 }
 
-
 /* <--- Crop Management Page CSS Styling Code --> */
 .search .display-block {
     width: 100%;
-    height: 750px;
+    height: 825px;
     display: block;
     align-self: center;
     padding: 30px;

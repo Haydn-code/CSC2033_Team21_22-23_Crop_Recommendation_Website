@@ -15,12 +15,19 @@
         <div class="navbar">
             <ul>
                 <li>Home</li>
-                <li>Agriculture Map</li>
-                <li class="active">Crop Map</li>
+                <li>Interactive Map</li>
+                <li class="active">Crop Management</li>
                 <li>Sign up</li>
                 <li>Login</li>
             </ul>
         </div>
+    </section>
+    <section class="page-title-section">
+    	<div class=img-container>
+    		<img src="../../Projectimg/crop-manage-page.png" style="width: 100%">
+    		<h1>Together we can cultivate a hunger-free world</h1>
+    		<button onclick="scrollToSection()">Search for Your Crops Optimum Conditions</button>
+    	</div>
     </section>
 	<section class="search">
 		<div class="display-block">
@@ -43,6 +50,11 @@
   		const input = document.getElementById("search-input").value;
   		const output = document.getElementById("search-test");
   		output.textContent = input;
+	}
+
+	function scrollToSection(){
+		var element = document.querySelector('.search');
+   		element.scrollIntoView({behavior: "smooth"});
 	}
 </script>
 </body>
