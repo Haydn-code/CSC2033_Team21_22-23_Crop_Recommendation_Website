@@ -55,6 +55,13 @@
     text-decoration: none;
 }
 
+.header .navbar ul .active {
+    text-decoration: underline;
+}
+
+.header .navbar ul #active {
+    text-decoration: underline;
+}
 
 /* <--- homepage.html css styling code --> */
 .homepage {
