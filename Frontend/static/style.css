@@ -12,65 +12,49 @@
     width: 100%;
     height: 10vh;
     display: inline-block;
-    background-color: #fff;
-    align-items: center;
-    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .header .logo-container {
     position: relative;
     float: left;
-    width: 30%;
+    width: 20%;
     height: 100%;
     padding: 10px;
-    display: flex;
-    align-items: center;
 }
 
 .header .logo-container img {
     position: absolute;
+    top: 35%;
     max-width: 100%;
     max-height: 100%;
 }
 
 .header .navbar {
+    position: relative;
+    float: right;
+    width: 80%;
     height: 100%;
     max-height: 100%;
-    display: flex;
-    align-items: center;
 }
 
 .header .navbar ul {
-  	list-style-type: none;
-  	margin-left: auto;
+    position: absolute;
+    top: 25%;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    list-style-type: none;
 }
 
 .header .navbar ul li {
     display: inline-block;
-    padding: 20px;
-    text-decoration: none;
-}
-
-.header .navbar ul .active {
     text-decoration: underline;
+    margin-left: 150px;
 }
 
-.header .navbar ul #active {
-    text-decoration: underline;
-}
-
-.footer {
-    background-color: #333;
-    display: flex;
-    width: 100%;
-    height: 10vh;
-    text-align: center;
-    align-items: center;
-    color: white;
-}
-
-.footer p {
-    margin: auto;
+.header .navbar ul li .right {
+    float: right;
 }
 
 .page-title-section {
@@ -113,10 +97,13 @@
     height: 20%;
 }
 
+
+
 /* <--- homepage.html css styling code --> */
 .homepage {
     width: 100%;
     height: 90vh;
+    background-color: #333333;
     position: relative;
 }
 
@@ -136,47 +123,6 @@
     font-size: 3rem;
 }
 
-.page-title {
-	width: 100%;
-    height: 720px;
-    background-color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border: 2px solid black;
-}
-
-.page-title .img-container {
-	height: 40%;
-	width: 75%;
-}
-
-.page-title .img-container h1 {
-	margin-top: 55px;
-	font-size: 1.75em;
-	color: white;
-}
-
-.page-title .img-container button {
-    background-color: #5A8073;
-    border: none;
-    margin-top: 55px;
-    width: 50%;
-    height: 20%;
-    color: white;
-    font-size: 15px;
-    transition: 0.5s;
-}
-
-.page-title .img-container button:hover {
-    background-color: #689b6c;
-    margin-top: 55px;
-    width: 50%;
-    height: 20%;
-}
-
-
 
 .homepage .homepage-container .homepage-container-text {
     position: absolute;
@@ -188,6 +134,10 @@
     font-size: 3rem;
 }
 
+.homepage .homepage-container .title-image {
+    width: 80%;
+    height: auto;
+}
 
 .homepage .homepage-container h1 {
     font-size: 3rem;
@@ -203,20 +153,15 @@
 
 .homepage .homepage-container button {
     display: inline-block;
-    color: white;
     background-color: #689b6c;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
     border: solid 1px white;
+    color: white;
     cursor: pointer;
 }
-.homepage .homepage-container button:hover {
-    backgolor: #85c489
-}
-
-
 
 
 .homepage .homepage-container .socialmedia-container {
@@ -243,7 +188,7 @@
     height: 100%;
     background-color: white;
     font-size: 18px;
-    padding: 40px;
+    padding: 20px;
 }
 
 .about-section .about-container .about-container-text h3 {
@@ -264,6 +209,19 @@
     background-image: url("../../Projectimg/homepage_image_about2.jpeg");
     background-size: cover;
 }
+
+.about-section .about-container .about-container-image .img1{
+    float: right;
+    border: 3px solid black;
+    border-radius: 60%;
+    width: 90%;
+    height: 60%;
+    top: 20%;
+    left: 5%;
+    position: absolute;
+}
+
+
 
 .about-section .about-container .about-container-form {
     float: left;
@@ -298,9 +256,6 @@
     width: 85%;
     height: 50px;
     margin: auto;
-    border: solid #689b6c 2px;
-    border-radius: 20px;
-    padding: 5px;
 
 }
 .about-container .about-container-form form label {
@@ -317,16 +272,10 @@
     margin-top: 10px;
     height: 150px;
     resize: none;
-    border: solid #689b6c 2px;
-    border-radius: 20px;
-    padding: 15px;
 }
 
 .about-container .about-container-form form button {
     display: block;
-    background-color: #689b6c;
-    border: none;
-    transition: 0.5s;
     height: 50px;
     width: 85%;
     margin: auto;
@@ -334,292 +283,15 @@
 
 }
 
-.about-container .about-container-form form button:hover {
-    background-color: #85c489;
-}
-
-/* <--- users css styling code --> */
-
-.form-container {
+.footer {
+    background-color: black;
     width: 100%;
-    height: 90vh;
-    background-color: #689b6c;
-    margin: auto;
-    position: relative;
-    padding: 30px;
-}
-
-.form-container form {
-    height: fit-content;
-    margin: auto;
-    width: 25%;
-    background-color: white;
-    border: #66795e 1px solid;
-    border-radius: 20px;
-    padding: 20px;
-}
-
-.form-container form  .form-logo{
-    width: 80%;
-    margin: auto;
-    height: fit-content;
-    display: block;
-    margin-bottom: 30px;
-}
-
-.form-container form  input{
-    width: 80%;
-    height: 40px;
-    margin: auto;
-    display: block;
-    border: solid #689b6c 2px;
-    border-radius: 20px;
-    padding: 5px;
-}
-
-.form-container form .form-labels{
+    height: 5vh;
     text-align: center;
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-.form-container form button {
-    display: block;
-    background-color: #8fa689;
-    border: none;
-    margin: auto;
-    margin-top: 20px;
-    width: 60%;
-    height: 50px;
     color: white;
-    font-size: 15px;
-    transition: 0.5s;
 }
 
-.form-container form button:hover {
-    background-color: #85c489;
-    display: block;
-    margin: auto;
-    margin-top: 20px;
-    width: 60%;
-    height: 50px;
-}
-
-.form-container form .bottom-form-container {
-    display: block;
-}
-
-/* <--- Map Page CSS Styling Code --> */
-.map .display-block {
-    width: 100%;
-    display: flex;
-    align-self: center;
-    padding: 30px;
-    padding-bottom: 0;
-    justify-content: space-between;
-    background-color: #689b6c;
-}
-
-.map .display-block .info-container {
-	height: 760px;
-	width: 37.5%;
-	background-color: #fff;
-    border: 2px solid black;
-    float: left;
-}
-
-.map .display-block .info-container #attribute-textbox {
-	float: left;
-    color: black;
-    padding: 20px
-}
-
-.map .display-block .info-container #info-textbox {
-    color: #995546;
-    padding: 20px;
-}
-
-.map .display-block .map-container {
-    float: right;
-    width: 60%;
-    height: 760px;
-    border: 2px solid black;
-}
-
-.donation .display-block {
-    width: 100%;
-    display: flex;
-    align-self: center;
-    padding: 30px;
-    justify-content: space-between;
-    background-color: #689b6c;
-}
-
-.donation .display-block .donation-container {
-	height: 400px;
-	width: 100%;
-	background-color: #fff;
-    border: 2px solid black;
-}
-
-.donation .display-block .donation-container #img-container {
-	height: 396px;
-	background-color: #000;
-	float: left;
-}
-
-.donation .display-block .donation-container #donate-textbox {
-	height: 396px;
-	float: left;
-	width: 50%;
-	padding: 30px;
-}
-
-.donation .display-block .donation-container #donate-textbox h1{
-	font-size: 2rem;
-}
-
-.donation .display-block .donation-container #donate-textbox button {
-    display: block;
-    background-color: #8fa689;
-    border: none;
-    margin-top: 20px;
-    width: 60%;
-    height: 12%;
-    color: white;
-    font-size: 15px;
-    transition: 0.5s;
-}
-
-.donation .display-block .donation-container #donate-textbox button:hover {
-    background-color: #85c489;
-    display: block;
-    margin-top: 20px;
-    width: 60%;
-    height: 12%;
-}
-
-/* <--- Crop Management Page CSS Styling Code --> */
-.search .display-block {
-    width: 100%;
-    height: 825px;
-    display: block;
-    align-self: center;
-    padding: 30px;
-    justify-content: space-between;
-    background-color: #689b6c;
-}
-
-.search .display-block .search-block {
-	width: 100%;
-	height: 40px;
-	margin-bottom: 30px;
-	display: flex;
-}
-
-.search .display-block .search-block .search-bar {
-	width: 33%;
-	height: 40px;
-	color: #995546;
-	border: 2px solid black;
-	background-color: #fff;
-	margin-right: 30px;
-	display: flex;
-	align-self: center;
-}
-
-.search .display-block .search-block .search-bar #search-input {
-	padding-left: 10px;
-	padding-right: 10px;
-    border: none;
-    background: none;
-    outline: none;
-    font-size: 24px;
-    width: 100%;
-}
-
-.search .display-block .search-block button {
-    display: block;
-    background-color: #8fa689;
-    border: none;
-    width: 20%;
-    height: 40px;
-    color: white;
-    font-size: 15px;
-    transition: 0.5s;
-}
-
-.search .display-block .search-block button:hover {
-    background-color: #85c489;
-    display: block;
-    width: 20%;
-    height: 40px;
-}
-
-.search .display-block .search-display {
-	width: 100%;
-	height: 620px;
-	background-color: #fff;
-	border: 2px solid black;
-	color: #995546;
-	float: left;
-}
-
-/* <--- Profile Page CSS Styling Code --> */
-
-.profile-container {
-    width: 100%;
-    height: 90vh;
-    background-color: #689b6c;
-}
-
-.profile-element-container{
-    width: 50%;
-    height: 100%;
-    background-color: white;
+.footer p {
     margin: auto;
 }
 
-.profile-element-item {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 30px;
-    border: solid 3px #689b6c;
-    text-align: center;
-}
-
-.profile-element-item img {
-    width: 25%;
-    height: 25%;
-}
-
-.profile-element-item h1 {
-    margin-top: 20px;
-}
-
-.profile-element-item .user-farms {
-    width: 40%;
-    height: 25%;
-    overflow-y: scroll;
-    margin: auto;
-    margin-top: 20px;
-    border: solid 1px #689b6c;
-}
-.profile-element-item button {
-    margin-top: 20px;
-    background-color: #8fa689;
-    border: none;
-    width: 20%;
-    height: 40px;
-    color: white;
-    font-size: 15px;
-    transition: 0.5s;
-}
-
-.profile-element-item button:hover {
-    background-color: #85c489;
-    width: 20%;
-    height: 40px;
-}
