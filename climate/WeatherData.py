@@ -24,8 +24,8 @@ def getWeatherData(long, lat, folder):
     }
 
     # gets the size of the raster file
-    filename = f"{folder}/prec/prec_01.tif"
-    ds = gdal.Open(filename)
+    temp_file = f"{folder}/prec/prec_01.tif"
+    ds = gdal.Open(temp_file)
     rows = ds.RasterYSize
     cols = ds.RasterXSize
 
