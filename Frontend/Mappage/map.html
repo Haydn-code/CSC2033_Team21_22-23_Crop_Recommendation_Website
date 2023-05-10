@@ -23,6 +23,13 @@
             </ul>
         </div>
     </section>
+    <section class="page-title-section">
+    	<div class=img-container>
+    		<img src="../../Projectimg/map-page.png" style="width: 100%">
+    		<h1>Don't just plant, plant with purpose using our interactive map</h1>
+    		<button onclick="scrollToSection()">Search the World to Find Your Optimum Conditions</button>
+    	</div>
+    </section>
 	<section class="map">
 		<div class="display-block">
 			<div class="info-container">
@@ -76,6 +83,11 @@
         <p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
     </section>
 <script>
+	function scrollToSection(){
+		var element = document.querySelector('.map');
+   		element.scrollIntoView({behavior: "smooth"});
+	}
+
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYWxyb2JlcnRzb25leCIsImEiOiJjbGgyNjk0dWwxYW9kM2pqdXJwcDVyd25hIn0.C0kwA2ZQUzo1BJ0YzAbjIg';
     const map = new mapboxgl.Map({
         container: 'map',
