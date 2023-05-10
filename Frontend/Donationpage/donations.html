@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/style.css">
-    <title>Precision Agriculture - Home</title>
+    <title>Precision Agriculture - Crop Management</title>
 </head>
 <body>
     <section class="header">
@@ -21,10 +21,23 @@
             </ul>
         </div>
     </section>
-		{{}}
+    <section class="page-title-section">
+    	<div class=img-container>
+    		<img src="../../Projectimg/donation-page-title.png" style="width: 100%">
+    		<h1>Together we can cultivate a hunger-free world</h1>
+    		<button onclick="scrollToSection()">Search for Your Crops Optimum Conditions</button>
+    	</div>
+    </section>
+	<section class="search">
 	</section>
 	<section class="footer">
 		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
 	</section>
+<script>
+	function scrollToSection(){
+		var element = document.querySelector('.search');
+   		element.scrollIntoView({behavior: "smooth"});
+	}
+</script>
 </body>
 </html>
