@@ -1,4 +1,5 @@
 from osgeo import gdal
+import numpy as np
 
 
 # this is hayden's code, I just copied it over until merge
@@ -41,9 +42,12 @@ def getWeatherData(long, lat, folder):
 
             # Get the pixel value at the given coordinates
             band = ds.GetRasterBand(1)
-            value = band.ReadAsArray(x, y, 1, 1)[0][0]
+            value = band.ReadAsArray(x, y, 1, 1)
 
             # Add the value to the data dictionary
             weather_dict[category].append(value)
 
     return weather_dict
+
+
+getWeatherData(6.852846021175841, -0.8454001119123822, 'tif_files')
