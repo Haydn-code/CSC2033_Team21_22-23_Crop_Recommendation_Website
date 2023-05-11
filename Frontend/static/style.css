@@ -478,16 +478,78 @@
 }
 
 .donation-section .donate-container {
-	height: 760px;
-	width: 37.5%;
-	background-color: #fff;
-    border: 2px solid black;
+	height: 100%;
+	width: 47.5%;
+	display: block;
     float: right;
 }
 
+.donation-section .donate-container .charity {
+	height: 140px;
+	width: 100%;
+	display: flex;
+	margin-bottom: 16px;
+}
+
+.donation-section .donate-container .charity #charity-logo-img{
+	height: 140px;
+	width: 140px;
+	margin-right: 11.5px;
+	border: 2px solid black;
+	
+}
+	
+.donation-section .donate-container .charity #charity-logo-img img{
+    height: 136px;
+    width: 136px;
+}
+
+.donation-section .donate-container .charity .info-container{
+	height: 140px;
+	width: 500px;
+	background-color: white;
+	border: 2px solid black;
+	display: flex;
+}
+
+.donation-section .donate-container .charity .info-container #text-box{
+	height: 136px;
+	width: 350px;
+	background-color: white;
+	padding: 5px;
+	display: block;
+}
+
+.donation-section .donate-container .charity .info-container #text-box h1 {
+	width: 340px;
+	margin-bottom: 5px;
+}
+
+.donation-section .donate-container .charity .info-container #text-box h4 {
+	width: 340px;
+	font-size: 15px;
+	color: #333;
+}
+
+.donation-section .donate-container .charity .info-container button {
+    background-color: #8fa689;
+    border: none;
+    width: 250px;
+    height: 100%;
+    color: white;
+    font-size: 18px;
+    transition: 0.5s;
+    float: right;
+}
+
+.donation-section .donate-container .charity .info-container button:hover {
+    background-color: #85c489;
+    color: #333;
+}
+
 .donation-section .img-container {
-    height: 760px;
-    width: 60%;
+    height: 100%;
+    width: 50%;
     border: 2px solid black;
     float: left;
 }
