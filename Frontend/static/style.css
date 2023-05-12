@@ -537,10 +537,10 @@
 	color: #333;
 }
 
-.donation-section .donate-container .charity .info-container button {
+.donation-section .donate-container .charity .info-container a button {
     background-color: #8fa689;
     border: none;
-    width: 250px;
+    width: 146px;
     height: 100%;
     color: white;
     font-size: 18px;
@@ -548,7 +548,7 @@
     float: right;
 }
 
-.donation-section .donate-container .charity .info-container button:hover {
+.donation-section .donate-container .charity .info-container a button:hover {
     background-color: #85c489;
     color: #333;
 }
