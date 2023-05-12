@@ -272,6 +272,7 @@
     width: 85%;
     height: 50px;
     margin: auto;
+    padding: 5px;
 
 }
 .about-container .about-container-form form label {
@@ -288,10 +289,15 @@
     margin-top: 10px;
     height: 150px;
     resize: none;
+    padding: 10px;
 }
 
 .about-container .about-container-form form button {
     display: block;
+    background-color: #689b6c;
+    border: solid 1px white;
+    color: white;
+    cursor: pointer;
     height: 50px;
     width: 85%;
     margin: auto;
