@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Precision Agriculture - Crop Management</title>
+</head>
+<body>
+    <section class="header">
+        <div class="logo-container">
+            <img src="../../Projectimg/logo5.png" alt="" class="logo">
+        </div>
+        <div class="navbar">
+            <ul>
+                <li><a href="../Homepage/index.html"">Home</a></li>
+                <li><a href="../Mappage/map.html">Agriculture Map</a></li>
+                <li class="active"><a href="../Cropinformationpage/crop-information.html">Crop Information</a></li>
+                <li><a href="../users/login.html">Login</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="page-title-section">
+    	<div class=img-container>
+    		<img src="../../Projectimg/crop-info-page-title.png" style="width: 100%">
+    		<h1>Together we can cultivate a hunger-free world</h1>
+    		<button onclick="scrollToSection()">Search for Your Crops Optimum Conditions</button>
+    	</div>
+    </section>
+	<section class="search">
+		<div class="display-block">
+			<div class="search-block">
+				<div class="search-bar">
+					<input id="search-input" type="text" placeholder="Search...">
+				</div>
+				<button onclick="displayInput()">Search</button>
+			</div>
+			<div class="search-display">
+				<h3 id="search-test">...</h3>
+			</div>
+		</div>
+	</section>
+	<section class="footer">
+		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
+	</section>
+<script>
+	function displayInput() {
+  		const input = document.getElementById("search-input").value;
+  		const output = document.getElementById("search-test");
+  		output.textContent = input;
+	}
+
+	function scrollToSection(){
+		var element = document.querySelector('.search');
+   		element.scrollIntoView({behavior: "smooth"});
+	}
+</script>
+</body>
+</html>
