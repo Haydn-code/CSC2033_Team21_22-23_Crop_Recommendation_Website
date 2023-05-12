@@ -602,7 +602,7 @@
 .search .display-block .search-block button {
     display: block;
     background-color: #8fa689;
-    border: none;
+	border: 2px solid black;
     width: 20%;
     height: 40px;
     color: white;
@@ -612,18 +612,18 @@
 
 .search .display-block .search-block button:hover {
     background-color: #85c489;
-    display: block;
     width: 20%;
     height: 40px;
 }
 
 .search .display-block .search-display {
 	width: 100%;
-	height: 620px;
+	height: 690px;
 	background-color: #fff;
 	border: 2px solid black;
 	color: #995546;
 	float: left;
+	padding: 20px;
 }
 
 /* <--- Profile Page CSS Styling Code --> */
