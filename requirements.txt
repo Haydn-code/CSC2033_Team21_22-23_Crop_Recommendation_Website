@@ -1,4 +1,2 @@
 Pylint
-flask
-flask_sqlalchemy
-python-dotenv
+gdal
