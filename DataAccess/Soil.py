@@ -22,12 +22,11 @@ def coordsToPixels(long, lat, rows, cols):
     long_min = -180
     lat_max = 90
     lat_min = -90
-    assert long_min <= long <= long_max and lat_min <= lat <= lat_max
+    assert long_min <= long < long_max and lat_min <= lat < lat_max
     # converts the coords to their grid reference in the raster file
-    lat_idx = int((lat - lat_min) / (lat_max - lat_min) * rows)
+    lat_idx = rows - int((lat - lat_min) / (lat_max - lat_min) * rows) - 1
     long_idx = int((long - long_min) / (long_max - long_min) * cols)
     return long_idx, lat_idx
-
 
 """If detailed is equal to 1 this function returns information on all the soil profiles located at a 30 by 30 arc second 
 grid coordinate in the globe provided longitudinal coords between -180 and 180 and latitudinal coords between -90 and 90 
