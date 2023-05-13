@@ -2,6 +2,22 @@ from osgeo import gdal
 import numpy as np
 from DataAccess.Soil import coordsToPixels
 
+
+"""Extracts weather data from geotiff files for a given longitude and latitude.
+
+Parameters:
+long (float): The longitude coordinate for which to extract weather data.
+lat (float): The latitude coordinate for which to extract weather data.
+folder (str): The path to the folder containing the geotiff files.
+
+Returns:
+weather_dict (dict): A dictionary containing the extracted weather data. The keys of the
+                     dictionary are the weather categories ('prec', 'srad', 'temp_avg',
+                     'temp_max', 'temp_min', 'wind'), and the values are lists of
+                     values representing the monthly weather data for the given location.
+"""
+
+
 def getWeatherData(long, lat, folder):
     weather_dict = {
         'prec': [],

@@ -2,6 +2,18 @@ import csv
 import math
 
 
+"""Finds the closest city to a given longitude and latitude using the Haversine formula.
+
+Parameters:
+    long (float): The longitude coordinate for which to find the closest city.
+    lat (float): The latitude coordinate for which to find the closest city.
+
+Returns:
+    str: The name of the closest city to the given coordinates, as
+         found in the 'worldcities.csv' file.
+"""
+
+
 def findClosestCity(long, lat):
     with open('worldcities.csv', newline='', encoding='utf-8') as cities_file:
         cities_reader = csv.DictReader(cities_file)
