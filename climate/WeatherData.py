@@ -1,6 +1,6 @@
 from osgeo import gdal
 import numpy as np
-
+from DataAccess.Soil import coordsToPixels
 
 def getWeatherData(long, lat, folder):
     weather_dict = {
@@ -20,7 +20,6 @@ def getWeatherData(long, lat, folder):
 
     # gets the pixel coordinates
     x, y = coordsToPixels(long, lat, rows, cols)
-    print(x, y)
 
     # loops through the folders and files, and extracts data
     for category in weather_dict.keys():
