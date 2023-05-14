@@ -394,17 +394,44 @@
 	background-color: #fff;
     border: 2px solid black;
     float: left;
-}
-
-.map .display-block .info-container #attribute-textbox {
-	float: left;
-    color: black;
-    padding: 20px
-}
-
-.map .display-block .info-container #info-textbox {
-    color: #995546;
+    display: block;
     padding: 20px;
+}
+
+.map .display-block .info-container .attribute-container{
+	height: 50px;
+	width: 100%;
+	display: flex;
+}
+
+.map .display-block .info-container .attribute-container #attribute-textbox {
+	float: left;
+	width: 60%;
+    color: black;
+    padding-right: 20px;
+}
+
+.map .display-block .info-container .attribute-container #info-textbox {
+    width: 40%;
+    color: #995546;
+}
+
+.map .display-block .info-container .recommend-container{
+	height: 206px;
+	width: 100%;
+}
+
+.map .display-block .info-container .recommend-container #attribute-textbox {
+	float: left;
+	width: 60%;
+    color: black;
+    padding-right: 20px;
+}
+
+.map .display-block .info-container .recommend-container #info-textbox {
+    width: 40%;
+    float: right;
+    color: #995546;
 }
 
 .map .display-block .map-container {
