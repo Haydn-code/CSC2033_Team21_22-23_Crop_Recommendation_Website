@@ -33,8 +33,27 @@ def getCrops():
                         common_names.loc[common_names["Ecocrop_code"] == row["crop_code"]]["Common_names"].values[0]}
 
             crops[row["crop_code"]] = info
-    # print(crops) # uncomment to see the return value
     return crops
 
 
-getCrops()
+"""Function searches the crop dataset and returns relevant information to the researched crop
+
+Parameters:
+crop_name (string): the common name of a crop the user is searching for
+
+Returns:
+A dictionary of information associated with the searched crop_name or None if the crop_name is not found
+"""
+
+
+def searchCrop(crop_name):
+    if crop_name == "nan":
+        return None
+    crops = getCrops()
+    for each in crops:
+        crop = crops.get(each)
+        names = str(crop.get("common_names")).split(", ")
+        if crop_name in names:
+            return crop
+    return None
+
