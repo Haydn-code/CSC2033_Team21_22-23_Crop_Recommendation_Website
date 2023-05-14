@@ -94,7 +94,6 @@ def getSoilData(long, lat, detailed):
                 dom_profile = profile
     if detailed != 1:
         soil_profiles[dom_profile + " " + str(largest)] = readProfile(dom_profile, profiles_file)
-    # print(soil_profiles) # uncomment if you want to see an example of the functionality and what is returned.
     return soil_profiles
 
 
@@ -132,5 +131,3 @@ def readProfile(profile, profiles_file):
             info["soil_texture"].append("O")
         result["D" + str(i)] = info
     return result
-
-# getSoilData(0, 0, 1)  # uncomment if you want to see an example of the functionality
