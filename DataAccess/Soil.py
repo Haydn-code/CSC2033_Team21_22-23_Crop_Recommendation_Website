@@ -28,6 +28,7 @@ def coordsToPixels(long, lat, rows, cols):
     long_idx = int((long - long_min) / (long_max - long_min) * cols)
     return long_idx, lat_idx
 
+
 """If detailed is equal to 1 this function returns information on all the soil profiles located at a 30 by 30 arc second 
 grid coordinate in the globe provided longitudinal coords between -180 and 180 and latitudinal coords between -90 and 90 
 otherwise if detailed is not equal to 1 this function returns information on the the dominant soil profile at the grid 
@@ -131,6 +132,5 @@ def readProfile(profile, profiles_file):
             info["soil_texture"].append("O")
         result["D" + str(i)] = info
     return result
-
 
 # getSoilData(0, 0, 1)  # uncomment if you want to see an example of the functionality
