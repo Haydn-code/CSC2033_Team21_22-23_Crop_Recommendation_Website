@@ -53,8 +53,8 @@ folder (str): The path to the folder containing the geotiff files.
 
 Returns:
 weather_dict (dict): A dictionary containing the extracted weather data. The keys of the
-                     dictionary are the weather categories ('prec', 'srad', 'temp_avg',
-                     'temp_max', 'temp_min', 'wind'), and the values are lists of
+                     dictionary are the weather categories ('prec (mm)', 'srad (kJ m-2 day-1)', 'temp_avg (°C)',
+                     'temp_max (°C)', 'temp_min (°C)', 'wind (m s-1)'), and the values are lists of
                      values representing the monthly weather data for the given location.
 """
 
