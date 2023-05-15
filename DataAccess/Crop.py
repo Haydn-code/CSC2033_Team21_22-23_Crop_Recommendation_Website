@@ -65,10 +65,11 @@ Returns:
 An array of all of the scientific names of each used crop
 """
 
-def scientific_names():
+
+def scientificNames():
     crops = getCrops()
-    scientific_names = []
+    names = []
     for each in crops:
         crop = crops.get(each)
-        scientific_names.append(crop.get("scientific_name"))
-    return scientific_names
+        names.append(crop.get("scientific_name"))
+    return names
