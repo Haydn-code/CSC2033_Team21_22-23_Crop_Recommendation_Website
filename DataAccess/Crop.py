@@ -30,7 +30,8 @@ def getCrops():
                     "optimal_texture": row["Texture_Ops"], "absolute_texture": row["Texture_Abs"],
                     "optimal_salinity": row["Salinity_Ops"], "absolute_salinity": row["Salinity_Abs"],
                     "photoperiod": row["photoperiod"], "common_names":
-                        common_names.loc[common_names["Ecocrop_code"] == row["crop_code"]]["Common_names"].values[0]}
+                        common_names.loc[common_names["Ecocrop_code"] == row["crop_code"]]["Common_names"].values[0],
+                    "scientific_name": row["species"]}
 
             crops[row["crop_code"]] = info
     return crops
@@ -57,3 +58,17 @@ def searchCrop(crop_name):
             return crop
     return None
 
+
+"""Function that returns a list of all the scientific names of plants to be used to find pictures for each used crop
+
+Returns:
+An array of all of the scientific names of each used crop
+"""
+
+def scientific_names():
+    crops = getCrops()
+    scientific_names = []
+    for each in crops:
+        crop = crops.get(each)
+        scientific_names.append(crop.get("scientific_name"))
+    return scientific_names
