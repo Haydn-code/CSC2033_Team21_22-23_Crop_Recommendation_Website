@@ -2,7 +2,7 @@ import csv
 import math
 import numpy as np
 from osgeo import gdal
-from DataAccess.Soil import coordsToPixels
+from DataAccess.Soil.Soil import coordsToPixels
 
 
 """Finds the closest city to a given longitude and latitude using the Haversine formula.
