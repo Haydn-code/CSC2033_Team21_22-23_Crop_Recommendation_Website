@@ -1,15 +1,15 @@
 import pandas as pd
 
-"""This function returns the necessary info from the crop dataset for the recommendation algorithm
+"""This function returns the necessary info from the Crop dataset for the recommendation algorithm
 
 Returns:
-A dictionary of crop_id(str) as keys, with a dictionary of relevant crop information as values.
+A dictionary of crop_id(str) as keys, with a dictionary of relevant Crop information as values.
 """
 
 
 def getCrops():
     crops = {}
-    # defines crop uses that address world hunger
+    # defines Crop uses that address world hunger
     valid_uses = ["vitamins", "protein", "fibres", "lipids/oils & fats", "condiment/seasoning", "minerals", "starch",
                   "essential oils", "lipids", "honey", "sugar", "sweetener", "nutritional applications"]
     plants = pd.read_csv('cropbasics_scrape.csv', sep=',', dtype=str)
@@ -18,9 +18,9 @@ def getCrops():
         # prevents error from attempting to iterate over float values which can be found.
         if type(row["Plant.attributes"]) == float:
             pass
-        # checks that the crop can be grown on large scale and that its use addresses world hunger
+        # checks that the Crop can be grown on large scale and that its use addresses world hunger
         elif row["use.detailed"] in valid_uses and "grown on large scale" in row["Plant.attributes"]:
-            # collects the relevant info for the crop and assigns to dict
+            # collects the relevant info for the Crop and assigns to dict
             info = {"optimal_max_temp": row["Temp_Opt_Max"], "absolute_max_temp": row["Temp_Abs_Max"],
                     "optimal_min_temp": row["temp_opt_min"], "absolute_min_temp": row["Temp_Abs_Min"],
                     "optimal_max_ph": row["pH_Opt_Max"], "absolute_max_ph": row["pH_Abs_Max"],
@@ -37,10 +37,10 @@ def getCrops():
     return crops
 
 
-"""Function searches the crop dataset and returns relevant information to the researched crop
+"""Function searches the Crop dataset and returns relevant information to the researched Crop
 
 Parameters:
-crop_name (string): the common name of a crop the user is searching for
+crop_name (string): the common name of a Crop the user is searching for
 
 Returns:
 A dictionary of information associated with the searched crop_name or None if the crop_name is not found
@@ -59,10 +59,10 @@ def searchCrop(crop_name):
     return None
 
 
-"""Function that returns a list of all the scientific names of plants to be used to find pictures for each used crop
+"""Function that returns a list of all the scientific names of plants to be used to find pictures for each used Crop
 
 Returns:
-An array of all of the scientific names of each used crop
+An array of all of the scientific names of each used Crop
 """
 
 
