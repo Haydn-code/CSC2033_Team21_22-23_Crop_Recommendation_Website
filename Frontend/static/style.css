@@ -8,6 +8,10 @@
     font-family: 'Lora', serif;
 }
 
+body {
+    background-color: #689b6c;
+}
+
 .header {
     width: 100%;
     height: 10vh;
@@ -335,7 +339,7 @@
 .homepage-donations-section .homepage-donations-container .homepage-donations-column p {
     color: white;
     font-size: 19px;
-    padding: 60px;
+    padding: 30px;
 }
 
 .homepage-donations-section .homepage-donations-container .homepage-donations-column1 {
@@ -344,7 +348,7 @@
     float: left;
     display: block;
     text-align: center;
-    background-image: url("../../Projectimg/homepage-donation.jpg");
+    background-image: url("../../Projectimg/homepage-donation.jpeg");
     background-size: cover;
     position: relative;
 
@@ -390,7 +394,7 @@
 
 .form-container {
     width: 100%;
-    height: 90vh;
+    height: fit-content;
     background-color: #689b6c;
     margin: auto;
     position: relative;
