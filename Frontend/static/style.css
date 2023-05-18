@@ -72,7 +72,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    border: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 .page-title-section .img-container {
@@ -116,7 +116,32 @@
 
 .footer p {
     margin: auto;
+    padding-left: 150px;
 }
+
+.footer #colour-blind-toggle{
+	float: right;
+	height: 5vh;
+	width: 150px;
+	display: flex;
+	justify-content: center;
+	margin-right: 10px;
+
+}
+
+.footer #colour-blind-toggle button{
+	color: white;
+	background-color: #333;
+	border: none;
+	text-decoration: underline;
+	font-size: 12px;
+	
+}
+
+.footer #colour-blind-toggle button:hover{
+	color: #AAA;
+}
+
 
 /* <--- homepage.html css styling code --> */
 .homepage {

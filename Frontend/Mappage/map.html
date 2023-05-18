@@ -163,8 +163,35 @@
 	</section>
     <section class="footer">
         <p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
+		<div id="colour-blind-toggle">
+			<button onclick="toggleColours()">Toggle Colour Blind Mode</button>
+		</div>
     </section>
 <script>
+	var toggle = false;
+
+	function toggleColours() {		
+		console.log(document.getElementsByClassName("display-block"));
+		if (toggle == true) { //green-grey colour scheme
+			document.getElementsByClassName("header")[0].style.backgroundColor = "white";
+			document.getElementsByClassName("page-title-section")[0].style.backgroundColor = "#333";
+			document.getElementsByClassName("display-block")[0].style.backgroundColor = "#689b6c";
+			document.getElementsByClassName("display-block")[1].style.backgroundColor = "#689b6c";
+			document.getElementsByClassName("footer")[0].style.backgroundColor = "#333";
+
+			toggle = false;
+		}
+		else { //blue-brown colour scheme
+			document.getElementsByClassName("header")[0].style.backgroundColor = "#6e4426";
+			document.getElementsByClassName("page-title-section")[0].style.backgroundColor = "#88CCEE";
+			document.getElementsByClassName("display-block")[0].style.backgroundColor = "#88CCEE";
+			document.getElementsByClassName("display-block")[1].style.backgroundColor = "#88CCEE";
+			document.getElementsByClassName("footer")[0].style.backgroundColor = "#6e4426";			
+			
+			toggle = true;
+		}
+	}
+	
 	function scrollToSection(){
 		var element = document.querySelector('.map');
    		element.scrollIntoView({behavior: "smooth"});
@@ -178,6 +205,11 @@
         zoom: 1.75
     });
     let hoveredCountryId = null;
+    
+	const marker = new mapboxgl.Marker()
+    	.setLngLat([0, 0])
+		.setPopup(new mapboxgl.Popup().setHTML("<p>Field: Jeff's Field 15</p>"))
+    	.addTo(map);
 
     map.on('load', () => {
         map.addSource('countries', {
