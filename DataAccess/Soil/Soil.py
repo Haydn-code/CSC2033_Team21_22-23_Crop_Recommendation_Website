@@ -28,23 +28,24 @@ def coordsToPixels(long, lat, rows, cols):
     long_idx = int((long - long_min) / (long_max - long_min) * cols)
     return long_idx, lat_idx
 
-"""If detailed is equal to 1 this function returns information on all the soil profiles located at a 30 by 30 arc second 
+
+"""If detailed is equal to 1 this function returns information on all the Soil profiles located at a 30 by 30 arc second 
 grid coordinate in the globe provided longitudinal coords between -180 and 180 and latitudinal coords between -90 and 90 
-otherwise if detailed is not equal to 1 this function returns information on the the dominant soil profile at the grid 
+otherwise if detailed is not equal to 1 this function returns information on the the dominant Soil profile at the grid 
 coordinate.
 
 Parameters:
 long (float): the longitudinal coordinate
 lat (float): the latitudinal coordinate
-detailed (int): if 1 returns all the soil profiles, if not 1 returns only the dominant soil profile
+detailed (int): if 1 returns all the Soil profiles, if not 1 returns only the dominant Soil profile
 
 Returns:
-Dictionary of (str) keys of a dictionary (str) keys of a (dict) of soil information values or if there is no data 
+Dictionary of (str) keys of a dictionary (str) keys of a (dict) of Soil information values or if there is no data 
 returns None
 
 Note: The first set of string keys are composed of a profile ID code 4-5 length e.g. PLe/B a space and then the 
-proportion of soil it covers in a map unit e.g. 70. The second set of keys contains the layer of the soil e.g. D1. The
-dictionary return for each layer contains information on soil ph, soil_texture, and soil salinity.
+proportion of Soil it covers in a map unit e.g. 70. The second set of keys contains the layer of the Soil e.g. D1. The
+dictionary return for each layer contains information on Soil ph, soil_texture, and Soil salinity.
 
 Errors: Calls coordsToPixels so displays an assertion error of long is not between 180 and -180 or if lat is not between 
 90 and -90"""
@@ -72,12 +73,12 @@ def getSoilData(long, lat, detailed):
     # finds the map code associated with the pixel
     map_code = pixel.get("description").values[0]
 
-    # finds the number of soil profiles associated with the map code
+    # finds the number of Soil profiles associated with the map code
     map_units = pd.read_csv('WISE30sec/Interchangeable_format/HW30s_MapUnit.txt', sep=',', dtype=str)
     soil_record = map_units.loc[map_units["NEWSUID"] == map_code]
     no_profiles = int(soil_record.get("NoSoilComp").values[0])
 
-    # accesses the data from either all of the soil profiles or just the dominant one depending on the value of detailed
+    # accesses the data from either all of the Soil profiles or just the dominant one depending on the value of detailed
     soil_profiles = {}
     profiles_file = pd.read_csv('WISE30sec/Interchangeable_format/HW30s_ParEst.txt', sep=',', dtype=str)
     largest = 0
@@ -93,19 +94,18 @@ def getSoilData(long, lat, detailed):
                 dom_profile = profile
     if detailed != 1:
         soil_profiles[dom_profile + " " + str(largest)] = readProfile(dom_profile, profiles_file)
-    # print(soil_profiles) # uncomment if you want to see an example of the functionality and what is returned.
     return soil_profiles
 
 
-"""Takes a soil profile and returns a dictionary of key value pairs where the key is the soil layer and the pandas 
- dataframe for that layer is the data for that soil layer. Function should only be called from within getSoilData.
+"""Takes a Soil profile and returns a dictionary of key value pairs where the key is the Soil layer and the pandas 
+ dataframe for that layer is the data for that Soil layer. Function should only be called from within getSoilData.
  
  Parameters:
- profile (str): the soil profile for which we are trying to access data from
+ profile (str): the Soil profile for which we are trying to access data from
  profiles_file (pandas dataframe): the data we are accessing from
  
  Returns:
- A dictionary of (str)layers and a (dict)dictionary of soil information as values"""
+ A dictionary of (str)layers and a (dict)dictionary of Soil information as values"""
 
 
 def readProfile(profile, profiles_file):
@@ -123,14 +123,11 @@ def readProfile(profile, profiles_file):
         info["ph"] = layer.loc[:, ["PHAQ"]].values[0][0]
         info["soil_texture"] = []
         info["soil_texture"].append(layer.loc[:, ["PSCL"]].values[0][0])
-        # calculates the soil salinity
+        # calculates the Soil salinity
         info["soil_salinity"] = float(layer.loc[:, ["ESP"]].values[0][0]) / float(layer.loc[:, ["ECEC"]].values[0][0])
-        # determines if the soil is classed as organic
+        # determines if the Soil is classed as organic
         if float(layer.loc[:, ["ORGC"]].values[0][0]) / (float(layer.loc[:, ["TOTN"]].values[0][0]) *
                                                          float(layer.loc[:, ["CNrt"]].values[0][0])) > 0.12:
             info["soil_texture"].append("O")
         result["D" + str(i)] = info
     return result
-
-
-# getSoilData(0, 0, 1)  # uncomment if you want to see an example of the functionality

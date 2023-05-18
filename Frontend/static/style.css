@@ -8,6 +8,10 @@
     font-family: 'Lora', serif;
 }
 
+body {
+    background-color: #689b6c;
+}
+
 .header {
     width: 100%;
     height: 10vh;
@@ -105,7 +109,7 @@
 }
 
 .footer {
-    background-color: #333;
+    background-color: black;
     display: flex;
     width: 100%;
     height: 5vh;
@@ -330,11 +334,92 @@
 
 }
 
+.about-container .about-container-form form button:hover {
+
+}
+
+.homepage-donations-section {
+    width: 100%;
+    height: 40vh;
+    background-color: white;
+}
+
+.homepage-donations-section .homepage-donations-container {
+    width: 100%;
+    height: 100%;
+
+}
+
+.homepage-donations-section .homepage-donations-container .homepage-donations-column{
+    width: 25%;
+    height: 100%;
+    background-color: #333333;
+    float: left;
+    display: block;
+    background-size: cover;
+    text-align: justify;
+
+}
+
+.homepage-donations-section .homepage-donations-container .homepage-donations-column p {
+    color: white;
+    font-size: 19px;
+    padding: 30px;
+}
+
+.homepage-donations-section .homepage-donations-container .homepage-donations-column1 {
+    width: 75%;
+    height: 100%;
+    float: left;
+    display: block;
+    text-align: center;
+    background-image: url("../../Projectimg/homepage-donation.jpeg");
+    background-size: cover;
+    position: relative;
+
+}
+
+
+.homepage-donations-section .homepage-donations-container .homepage-donations-column1 h1{
+    margin-top: 5.5%;
+    font-size: 3rem;
+    font-weight: bolder;
+    color: #ffffff;
+    position: absolute;
+    top: 8%;
+    bottom: 20%;
+    left: 10%;
+    right: 10%;
+
+
+
+}
+
+.homepage-donations-section .homepage-donations-container .homepage-donations-column1 button {
+    width: 50%;
+    height: 50px;
+    background-color: #689b6c;
+    color: white;
+    font-size: 17px;
+    position: absolute;
+    top: 45%;
+    bottom: 0%;
+    left: 25%;
+    right: 0%;
+
+}
+
+.homepage-donations-section .homepage-donations-container .homepage-donations-column1 button:hover {
+    background-color: #85c489;
+    color: #333333;
+    transition: 0.5s;
+}
+
 /* <--- Users CSS Styling Code --> */
 
 .form-container {
     width: 100%;
-    height: 90vh;
+    height: fit-content;
     background-color: #689b6c;
     margin: auto;
     position: relative;
