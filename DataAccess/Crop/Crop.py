@@ -50,6 +50,7 @@ def getCrops():
 Parameters:
 crop_name (string): the common name of a Crop the user is searching for
 crops (dict): the information on all crops extracted from the database
+scientific (bool): True if searching by scientific name and False if searching by common name
 
 Returns:
 A dictionary of information associated with the searched crop_name or None if the crop_name is not found
@@ -58,19 +59,30 @@ Note: crops should be a variable containing the return value from getCrops()
 """
 
 
-def searchCrop(crop_name, crops):
+def searchCrop(crop_name, crops, scientific):
     if crop_name == "nan":
         return None
-    for each in crops:
-        crop = crops.get(each)
-        names = str(crop.get("common_names")).split(", ")
-        if crop_name in names:
-            img = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".jpg")
-            if img.status_code == 200:
-                crop["image"] = img
-            else:
-                crop["image"] = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".gif")
-            return crop
+    if not scientific:
+        for each in crops:
+            crop = crops.get(each)
+            names = str(crop.get("common_names")).split(", ")
+            if crop_name in names:
+                img = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".jpg")
+                if img.status_code == 200:
+                    crop["image"] = img
+                else:
+                    crop["image"] = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".gif")
+                return crop
+    else:
+        for each in crops:
+            crop = crops.get(each)
+            if crop_name == crop.get("species"):
+                img = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".jpg")
+                if img.status_code == 200:
+                    crop["image"] = img
+                else:
+                    crop["image"] = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".gif")
+                return crop
     return None
 
 
