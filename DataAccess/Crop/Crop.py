@@ -1,4 +1,6 @@
 import pandas as pd
+import requests
+from bs4 import BeautifulSoup
 
 """This function returns the necessary info from the Crop dataset for the recommendation algorithm
 
@@ -63,8 +65,12 @@ def searchCrop(crop_name, crops):
         crop = crops.get(each)
         names = str(crop.get("common_names")).split(", ")
         if crop_name in names:
+            img = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".jpg")
+            if img.status_code == 200:
+                crop["image"] = img
+            else:
+                crop["image"] = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".gif")
             return crop
     return None
 
-print(getCrops())
 
