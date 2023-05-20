@@ -41,16 +41,18 @@ def getCrops():
 
 Parameters:
 crop_name (string): the common name of a Crop the user is searching for
+crops (dict): the information on all crops extracted from the database
 
 Returns:
 A dictionary of information associated with the searched crop_name or None if the crop_name is not found
+
+Note: crops should be a variable containing the return value from getCrops()
 """
 
 
-def searchCrop(crop_name):
+def searchCrop(crop_name, crops):
     if crop_name == "nan":
         return None
-    crops = getCrops()
     for each in crops:
         crop = crops.get(each)
         names = str(crop.get("common_names")).split(", ")
