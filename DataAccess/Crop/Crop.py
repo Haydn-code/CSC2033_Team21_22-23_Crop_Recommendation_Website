@@ -59,17 +59,4 @@ def searchCrop(crop_name):
     return None
 
 
-"""Function that returns a list of all the scientific names of plants to be used to find pictures for each used Crop
 
-Returns:
-An array of all of the scientific names of each used Crop
-"""
-
-
-def scientificNames():
-    crops = getCrops()
-    names = []
-    for each in crops:
-        crop = crops.get(each)
-        names.append(crop.get("scientific_name"))
-    return names
