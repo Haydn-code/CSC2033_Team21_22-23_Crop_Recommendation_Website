@@ -31,7 +31,13 @@ def getCrops():
                     "optimal_salinity": row["Salinity_Ops"], "absolute_salinity": row["Salinity_Abs"],
                     "photoperiod": row["photoperiod"], "common_names":
                         common_names.loc[common_names["Ecocrop_code"] == row["crop_code"]]["Common_names"].values[0],
-                    "scientific_name": row["species"]}
+                    "species": row["species"], "life_form": row["Life.form"], "life_span": row["Life.span"],
+                    "physciology": row["Physiology"], "plant_attributes": row["Plant.attributes"],
+                    "absolute_min_altitude": row["Alt_Abs_Min"], "absolute_max_altitude": row["Alt_Abs_Max"],
+                    "optimal_min_light": row["Light_Opt_Min"], "optimal_max_light": row["Light_Opt_Max"],
+                    "optimal_depth": row["Depth_Opt"], "optimal_fertility": row["Fertility_Ops"],
+                    "optimal_drainage": row["drainage_opt"], "absolute_drainage": row["drainage_abs"],
+                    "climate_zone": row["Climate.Zone"], "main_use": row["use.main"]}
 
             crops[row["crop_code"]] = info
     return crops
@@ -60,5 +66,5 @@ def searchCrop(crop_name, crops):
             return crop
     return None
 
-
+print(getCrops())
 
