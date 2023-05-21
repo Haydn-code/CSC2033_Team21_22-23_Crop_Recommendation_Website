@@ -30,13 +30,26 @@ def summariseProfiles(profiles):
     return combined
 
 
+"""A function which returns crop information on the most suitable crop to grow at a coordinate
+
+Parameters:
+long (float): the longitudinal coordinate
+lat (float): the latitudinal coordinate
+crops (dict): the dictionary returned from getCrops(folder) in crop.py
+soilPath (str): the path to the Soil directory
+climatePath (str): the path to the Climate/tif_files directory
+
+Returns:
+A (dict) containing information on the recommended crop"""
+
+
 def cropRecommendation(long, lat, crops, soilPath, climatePath):
-    profiles = getSoilData(long, lat, 1, "Soil")
+    profiles = getSoilData(long, lat, 1, soilPath)
     print(profiles)
     combined = summariseProfiles(profiles)
     print(combined)
-    #weather = getWeatherData(long, lat, "Climate/tif_files")
-    #print(weather)
+    weather = getWeatherData(long, lat, climatePath)
+    print(weather)
 
 
-cropRecommendation(0, 0, "crops", "Soil", "Climate/tif_files")
+cropRecommendation(-1.604004, 8.341953, "placeholder", "Soil", "Climate/tif_files")
