@@ -87,6 +87,7 @@ def getSoilData(long, lat, detailed, folder):
     for i in range(1, no_profiles + 1):
         profile = soil_record.get("PRID" + str(i)).values[0]
         prop = int(soil_record.get("PROP" + str(i)).values[0])
+        print(prop)
         if detailed == 1:
             soil_profiles[profile + " " + str(prop)] = readProfile(profile, profiles_file)
         else:
@@ -110,9 +111,6 @@ def getSoilData(long, lat, detailed, folder):
 
 
 def readProfile(profile, profiles_file):
-    # if profile has only 4 characters makes the string length 4 for the search
-    if profile[4] == " ":
-        profile = profile[0:4]
 
     # finds the associated layers with the profile
     layers = profiles_file.loc[profiles_file["PRID"] == profile]
