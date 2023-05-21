@@ -3,7 +3,9 @@ numpy
 pandas
 gdal
 flask
+flask_wtf
 flask_sqlalchemy
 python-dotenv
+wtforms
 requests
 bs4
