@@ -51,9 +51,9 @@ Errors: Calls coordsToPixels so displays an assertion error of long is not betwe
 90 and -90"""
 
 
-def getSoilData(long, lat, detailed):
+def getSoilData(long, lat, detailed, folder):
     # finds the dimensions of the raster file and accesses the data.
-    raster = gdal.Open("WISE30sec/Interchangeable_format/wise_30sec_v1.tif")
+    raster = gdal.Open(f"{folder}/WISE30sec/Interchangeable_format/wise_30sec_v1.tif")
     rows = raster.RasterYSize
     cols = raster.RasterXSize
     band = raster.GetRasterBand(1)
@@ -63,7 +63,7 @@ def getSoilData(long, lat, detailed):
     x, y = coordsToPixels(long, lat, rows, cols)
 
     # finds the value of the pixel
-    pixels = pd.read_csv('WISE30sec/Interchangeable_format/wise_30sec_v1.tsv', sep='\t')
+    pixels = pd.read_csv(f"{folder}/WISE30sec/Interchangeable_format/wise_30sec_v1.tsv", sep='\t')
     pixel = pixels.loc[pixels["pixel_vaue"] == data[y][x]]
 
     # if there is no data at the pixel returns None
@@ -74,13 +74,13 @@ def getSoilData(long, lat, detailed):
     map_code = pixel.get("description").values[0]
 
     # finds the number of Soil profiles associated with the map code
-    map_units = pd.read_csv('WISE30sec/Interchangeable_format/HW30s_MapUnit.txt', sep=',', dtype=str)
+    map_units = pd.read_csv(f"{folder}/WISE30sec/Interchangeable_format/HW30s_MapUnit.txt", sep=',', dtype=str)
     soil_record = map_units.loc[map_units["NEWSUID"] == map_code]
     no_profiles = int(soil_record.get("NoSoilComp").values[0])
 
     # accesses the data from either all of the Soil profiles or just the dominant one depending on the value of detailed
     soil_profiles = {}
-    profiles_file = pd.read_csv('WISE30sec/Interchangeable_format/HW30s_ParEst.txt', sep=',', dtype=str)
+    profiles_file = pd.read_csv(f"{folder}/WISE30sec/Interchangeable_format/HW30s_ParEst.txt", sep=',', dtype=str)
     largest = 0
     dom_profile = ""
     for i in range(1, no_profiles + 1):
