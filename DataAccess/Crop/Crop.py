@@ -4,18 +4,21 @@ from bs4 import BeautifulSoup
 
 """This function returns the necessary info from the Crop dataset for the recommendation algorithm
 
+Parameters:
+folder (str): the path to this directory for when this function is called from outside this directory
+
 Returns:
 A dictionary of crop_id(str) as keys, with a dictionary of relevant Crop information as values.
 """
 
 
-def getCrops():
+def getCrops(folder):
     crops = {}
     # defines Crop uses that address world hunger
     valid_uses = ["vitamins", "protein", "fibres", "lipids/oils & fats", "condiment/seasoning", "minerals", "starch",
                   "essential oils", "lipids", "honey", "sugar", "sweetener", "nutritional applications"]
-    plants = pd.read_csv('cropbasics_scrape.csv', sep=',', dtype=str)
-    common_names = pd.read_csv('crop_view_data.csv', sep=',', dtype=str)
+    plants = pd.read_csv(f"{folder}/cropbasics_scrape.csv", sep=',', dtype=str)
+    common_names = pd.read_csv(f"{folder}/crop_view_data.csv", sep=',', dtype=str)
     for idx, row in plants.iterrows():
         # prevents error from attempting to iterate over float values which can be found.
         if type(row["Plant.attributes"]) == float:

@@ -38,6 +38,7 @@ Parameters:
 long (float): the longitudinal coordinate
 lat (float): the latitudinal coordinate
 detailed (int): if 1 returns all the Soil profiles, if not 1 returns only the dominant Soil profile
+folder (str): the path to this directory for when this function is called from outside this directory
 
 Returns:
 Dictionary of (str) keys of a dictionary (str) keys of a (dict) of Soil information values or if there is no data 
