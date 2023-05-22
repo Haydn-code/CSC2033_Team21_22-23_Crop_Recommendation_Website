@@ -253,7 +253,7 @@ body {
     position: relative;
     width: 33.33%;
     height: 70vh;
-    background-image: url("../../Projectimg/homepage_image_about2.jpeg");
+    background-image: url("static/Projectimg/homepage_image_about2.jpeg");
     background-size: cover;
 }
 
@@ -373,7 +373,7 @@ body {
     float: left;
     display: block;
     text-align: center;
-    background-image: url("../../Projectimg/homepage-donation.jpeg");
+    background-image: url("static/Projectimg/homepage-donation.jpeg");
     background-size: cover;
     position: relative;
 
