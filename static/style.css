@@ -461,7 +461,7 @@ body {
     margin-bottom: 10px;
 }
 
-.form-container form button {
+.form-container form .button {
     display: block;
     background-color: #8fa689;
     border: none;

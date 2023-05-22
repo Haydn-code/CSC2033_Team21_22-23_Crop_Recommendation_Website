@@ -20,17 +20,24 @@
         </div>
     </section>
     <section class="form-container">
-        <form action="" class="">
-            <img src="../../static/Projectimg/logo5.png" alt="" class="form-logo">
-            <label class="form-labels">Username (Usually your sign-up email)</label>
-            <input type="text" class="username" placeholder="e.g jimmybeatroot@hotmail.com">
-            <label class="form-labels">Password</label>
-            <input type="text" class="username" placeholder="">
-            <button>Submit</button>
-            <div class="bottom-form-container">
-                <label class="form-labels">Don't have an account? <a href="../users/signup.html">Sign up</a></label>
-            </div>
-        </form>
+        {% block content %}
+            <form method="POST" >
+                {{ form.csrf_token() }}
+                <img src="../../static/Projectimg/logo5.png" alt="" class="form-logo">
+                <label class="form-labels">Username (Usually your sign-up email)</label>
+                <div>
+                    {{ form.email(class="input", placeholder="e.g jimmybeatroot@hotmail.com") }}
+                </div>
+                <label class="form-labels">Password</label>
+                <div>
+                    {{ form.password(class="input", placeholder="") }}
+                </div>
+                {{ form.submit(class="button") }}
+                <div class="bottom-form-container">
+                    <label class="form-labels">Don't have an account? <a href="../users/signup.html">Sign up</a></label>
+                </div>
+            </form>
+        {% endblock %}
     </section>
     <section class="footer">
         <p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
