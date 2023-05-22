@@ -9,7 +9,7 @@ class Users(db.Model):
     lastname = db.Column(db.String(100), nullable=False)
     username = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
-    phone = db.Column(db.Integer(11), nullable=False)
+    phone = db.Column(db.Integer, nullable=False)
     fields = db.Relationship('Field', backref='user')
 
     def __init__(self,firstname, lastname, username, password, phone):
