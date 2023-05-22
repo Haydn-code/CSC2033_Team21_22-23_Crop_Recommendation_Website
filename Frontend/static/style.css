@@ -493,7 +493,6 @@ body {
     display: flex;
     align-self: center;
     padding: 30px;
-    padding-bottom: 0;
     justify-content: space-between;
     background-color: #689b6c;
 }
@@ -556,6 +555,7 @@ body {
     display: flex;
     align-self: center;
     padding: 30px;
+    padding-top: 0;
     justify-content: space-between;
     background-color: #689b6c;
 }
@@ -761,6 +761,27 @@ body {
 	color: #995546;
 	float: left;
 	padding: 20px;
+	display: flex;
+  	flex-direction: column;
+  	align-items: stretch;
+}
+
+.search .display-block .search-display #crop-img-container {
+  order: 1;
+  flex: 0 0 241px;
+  background-color: pink;
+}
+
+.search .display-block .search-display #small-text-container {
+  order: 2;
+  flex: 1;
+  background-color: green;
+}
+
+.search .display-block .search-display #big-text-container {
+  order: 3;
+  flex: 0 0 385px;
+  background-color: blue;
 }
 
 /* <--- Profile Page CSS Styling Code --> */
