@@ -1,5 +1,6 @@
 from Soil.Soil import getSoilData
 from Climate.ClimateData import getWeatherData
+from Crop.Crop import getCrops
 
 
 """Defined a function that takes all of the crops and provides a summary of the necessary data for crop recommendation 
@@ -45,11 +46,39 @@ A (dict) containing information on the recommended crop"""
 
 def cropRecommendation(long, lat, crops, soilPath, climatePath):
     profiles = getSoilData(long, lat, 1, soilPath)
-    print(profiles)
     combined = summariseProfiles(profiles)
-    print(combined)
     weather = getWeatherData(long, lat, climatePath)
-    print(weather)
+
+    recommended_crop = None
+    highest_score = -1
+
+    for crop_code in crops:
+        crop = crops[crop_code]
+
+        # Check temperature suitability
+        temp_min = crop['Temp_Abs_Min']
+        temp_max = crop['Temp_Opt_Max']
+        if temp_min <= weather['temp_avg'] <= temp_max:
+
+            # Check rainfall suitability
+            rain_min = crop['Rain_Opt_Min']
+            rain_max = crop['Rain_Opt_Max']
+            if rain_min <= weather['prec'] <= rain_max:
+
+                # Check soil suitability
+                ph_min = crop['pH_Opt_Min']
+                ph_max = crop['pH_Opt_Max']
+                if ph_min <= combined['D1']['ph'] <= ph_max:
+
+                    # Calculate the crop score
+                    score = (temp_max - weather['temp_avg']) + (rain_max - weather['prec']) + (
+                                ph_max - combined['D1']['ph'])
+
+                    if score > highest_score:
+                        highest_score = score
+                        recommended_crop = crop
+
+    return recommended_crop
 
 
-cropRecommendation(-1.604004, 8.341953, "placeholder", "Soil", "Climate/tif_files")
+cropRecommendation(-1.604004, 8.341953, getCrops("Crop"), "Soil", "Climate/tif_files")
