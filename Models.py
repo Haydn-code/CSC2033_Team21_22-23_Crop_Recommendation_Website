@@ -10,7 +10,7 @@ class Users(db.Model):
     username = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
     phone = db.Column(db.Integer, nullable=False)
-    fields = db.Relationship('Field', backref='user')
+    fields = db.Relationship('Fields', backref='user')
     role = db.Column(db.String(100), nullable=False)
 
     def __init__(self,firstname, lastname, username, password, phone, role):
