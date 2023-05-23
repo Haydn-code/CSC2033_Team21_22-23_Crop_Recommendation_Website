@@ -11,13 +11,15 @@ class Users(db.Model):
     password = db.Column(db.String(100), nullable=False)
     phone = db.Column(db.Integer, nullable=False)
     fields = db.Relationship('Field', backref='user')
+    role = db.Column(db.String(100), nullable=False)
 
-    def __init__(self,firstname, lastname, username, password, phone):
+    def __init__(self,firstname, lastname, username, password, phone, role):
         self.firstname = firstname
         self.lastname = lastname
         self.username = username
         self.password = password
         self.phone = phone
+        self.role = role
 
 
 class Fields(db.Model):
@@ -37,4 +39,12 @@ def initialiseDatabase():
     with app.app_context():
         db.drop_all()
         db.create_all()
+        admin_User = Users(firstname='admin',
+                           lastname='joe',
+                           username='admin@email.com',
+                           password='password123',
+                           phone='07444400444',
+                           role='admin')
+        db.session.add(admin_User)
+        db.session.commit()
 
