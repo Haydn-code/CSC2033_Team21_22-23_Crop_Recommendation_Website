@@ -7,5 +7,6 @@ flask_wtf
 flask_sqlalchemy
 python-dotenv
 wtforms
+email_validator
 requests
 bs4
