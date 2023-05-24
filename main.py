@@ -1,8 +1,8 @@
 import os
-
 from flask import Flask
 from dotenv import load_dotenv
-from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from database import db
 
 load_dotenv()
 
@@ -18,7 +18,16 @@ app.static_folder = 'static'
 from users.Views import users_blueprint
 app.register_blueprint(users_blueprint)
 
-db = SQLAlchemy(app)
+db.init_app(app)
+
+login_manager = LoginManager()
+login_manager.login_view = 'users.login'
+login_manager.init_app(app)
+
+from Models import Users
+@login_manager.user_loader
+def loadUser(id):
+    return db.session.get(Users, int(id))
 
 if __name__ == '__main__':
     app.run()
