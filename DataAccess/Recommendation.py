@@ -85,7 +85,6 @@ A (dict) containing information on the recommended crop"""
 def cropRecommendation(long, lat, crops, soilPath, climatePath):
     profiles = getSoilData(long, lat, 1, soilPath)
     combined = summariseProfiles(profiles)
-    print(combined)
     weather = getWeatherData(long, lat, climatePath)
 
     recommended_crop = None
@@ -108,21 +107,16 @@ def cropRecommendation(long, lat, crops, soilPath, climatePath):
                 if ph_min <= combined['D1']['ph'] <= ph_max:
 
                     # Calculate the crop score
-                    temp_total = 0
-                    rain_total = 0
-
-                    for temp in weather['temp_avg']:
-                        temp_total = temp_total + int(temp)
-
+                    temp_total = sum(int(temp) for temp in weather['temp_avg'])
                     temp_avg = temp_total / len(weather['temp_avg'])
 
-                    for rain in weather['prec']:
-                        rain_total = rain_total + int(rain)
-
+                    rain_total = sum(int(rain) for rain in weather['prec'])
                     rain_avg = rain_total / len(weather['prec'])
 
-                    score = (int(temp_max) - temp_avg) + (rain_max - rain_avg) + (
+                    score = (int(temp_max) - temp_avg) + (int(rain_max) - rain_avg) + (
                             ph_max - combined['D1']['ph'])
+
+                    print(score)
 
                     if score > highest_score:
                         highest_score = score
