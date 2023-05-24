@@ -120,7 +120,6 @@ body {
 
 .footer p {
     margin: auto;
-    padding-left: 150px;
 }
 
 .footer #colour-blind-toggle{
@@ -146,6 +145,32 @@ body {
 	color: #AAA;
 }
 
+.footer #admin-account{
+	float: left;
+	height: 5vh;
+	width: 150px;
+	display: flex;
+	justify-content: center;
+	margin-right: 10px;
+
+}
+
+.footer #admin-account button{
+	color: white;
+	background-color: #333;
+	border: none;
+	text-decoration: underline;
+	font-size: 12px;
+	
+}
+
+.footer #admin-account button:hover{
+	color: #AAA;
+}
+
+.footer #admin-account button a{
+	color: white;
+}
 
 /* <--- homepage.html css styling code --> */
 .homepage {
@@ -928,5 +953,106 @@ body {
 .profile-element-item button:hover {
     background-color: #85c489;
     width: 20%;
+    height: 40px;
+}
+
+/* <--- admin.html css styling code --> */
+
+.admin-container {
+    width: 100%;
+    height: 90vh;
+    background-color: #689b6c;
+}
+
+.admin-element-container{
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    margin: auto;
+}
+
+.admin-element-item {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border: solid 3px #689b6c;
+    text-align: center;
+}
+
+.admin-element-item img {
+    width: 25%;
+    height: 25%;
+}
+
+.admin-element-item h1 {
+    margin-top: 20px;
+}
+
+.admin-element-item .admin-username {
+    margin-bottom: 20px;
+}
+
+.admin-element-item .user-control {
+    width: 100%;
+    height: 55%;
+    margin-top: 20px;
+    display: flex;
+}
+
+.admin-element-item .user-control .search-display {
+    width: 80%;
+    height: 100%;
+}
+
+.admin-element-item .user-control .search-display .search-bar {
+	width: 50%;
+	height: 40px;
+	color: #995546;
+    border: solid 1px #689b6c;
+	background-color: #fff;
+	margin-right: 30px;
+	display: flex;
+	align-self: center;
+}
+
+.admin-element-item .user-control .search-display .search-bar #search-input {
+	padding-left: 10px;
+	padding-right: 10px;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 24px;
+    width: 100%;
+}
+
+.admin-element-item .user-control .search-display #search-output{
+    width: 100%;
+    height: 85%;
+    margin-top: 10px;
+    padding: 10px;
+    border: solid 1px #689b6c;
+}
+
+.admin-element-item .user-control .action-display {
+    width: 20%;
+    height: 100%;
+    padding-top: 45px;
+}
+
+.admin-element-item .user-control .action-display button {
+    margin: 5px;
+    background-color: #8fa689;
+    border: none;
+    width: 100%;
+    height: 40px;
+    color: white;
+    font-size: 15px;
+    transition: 0.5s;
+}
+
+.admin-element-item .user-control .action-display button:hover {
+    background-color: #85c489;
+    width: 100%;
     height: 40px;
 }
