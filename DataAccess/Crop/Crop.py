@@ -87,5 +87,3 @@ def searchCrop(crop_name, crops, scientific):
                     crop["image"] = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".gif")
                 return crop
     return None
-
-

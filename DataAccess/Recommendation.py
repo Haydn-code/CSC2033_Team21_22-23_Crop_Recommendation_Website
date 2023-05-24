@@ -31,6 +31,15 @@ def summariseProfiles(profiles):
     return combined
 
 
+def checkTemp(crop, weather):
+    temp_min = crop['absolute_min_temp']
+    temp_max = crop['optimal_max_temp']
+    for temp in weather['temp_avg']:
+        if not (temp_min <= temp <= temp_max):
+            return False
+    return True
+
+
 """A function which returns crop information on the most suitable crop to grow at a coordinate
 
 Parameters:
@@ -56,18 +65,18 @@ def cropRecommendation(long, lat, crops, soilPath, climatePath):
         crop = crops[crop_code]
 
         # Check temperature suitability
-        temp_min = crop['Temp_Abs_Min']
-        temp_max = crop['Temp_Opt_Max']
+        temp_min = crop['absolute_min_temp']
+        temp_max = crop['optimal_max_temp']
         if temp_min <= weather['temp_avg'] <= temp_max:
 
             # Check rainfall suitability
-            rain_min = crop['Rain_Opt_Min']
-            rain_max = crop['Rain_Opt_Max']
+            rain_min = crop['optimal_min_rain']
+            rain_max = crop['optimal_max_rain']
             if rain_min <= weather['prec'] <= rain_max:
 
                 # Check soil suitability
-                ph_min = crop['pH_Opt_Min']
-                ph_max = crop['pH_Opt_Max']
+                ph_min = crop['optimal_min_ph']
+                ph_max = crop['optimal_max_ph']
                 if ph_min <= combined['D1']['ph'] <= ph_max:
 
                     # Calculate the crop score
