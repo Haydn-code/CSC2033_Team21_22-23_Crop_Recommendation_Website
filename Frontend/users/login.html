@@ -34,7 +34,7 @@
                 </div>
                 {{ form.submit(class="button") }}
                 <div class="bottom-form-container">
-                    <label class="form-labels">Don't have an account? <a href="../users/signup.html">Sign up</a></label>
+                    <label class="form-labels">Don't have an account? <a href="{{ url_for('users.signUp') }}">Sign up</a></label>
                 </div>
             </form>
         {% endblock %}
