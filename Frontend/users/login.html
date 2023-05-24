@@ -27,10 +27,16 @@
                 <label class="form-labels">Username (Usually your sign-up email)</label>
                 <div>
                     {{ form.email(class="input", placeholder="e.g jimmybeatroot@hotmail.com") }}
+                    {% for error in form.email.errors %}
+                        {{ error }}
+                    {% endfor %}
                 </div>
                 <label class="form-labels">Password</label>
                 <div>
                     {{ form.password(class="input", placeholder="") }}
+                    {% for error in form.password.errors %}
+                        {{ error }}
+                    {% endfor %}
                 </div>
                 {{ form.submit(class="button") }}
                 <div class="bottom-form-container">
