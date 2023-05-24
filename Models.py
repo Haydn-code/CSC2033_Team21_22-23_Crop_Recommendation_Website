@@ -1,7 +1,9 @@
-from main import db, app
+from database import db
+from flask_login import UserMixin
+import bcrypt
 
 
-class Users(db.Model):
+class Users(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -17,7 +19,7 @@ class Users(db.Model):
         self.firstname = firstname
         self.lastname = lastname
         self.username = username
-        self.password = password
+        self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
         self.phone = phone
         self.role = role
 
@@ -36,6 +38,7 @@ class Fields(db.Model):
 
 
 def initialiseDatabase():
+    from main import app
     with app.app_context():
         db.drop_all()
         db.create_all()
