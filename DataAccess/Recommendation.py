@@ -103,7 +103,7 @@ def cropRecommendation(long, lat, crops, soilPath, climatePath):
                 # Check soil suitability
                 ph_min = crop['optimal_min_ph']
                 ph_max = crop['optimal_max_ph']
-                if ph_min <= combined['D1']['ph'] <= ph_max:
+                if float(ph_min) <= combined['D1']['ph'] <= float(ph_max):
 
                     # Calculate the crop score
                     temp_total = sum(int(temp) for temp in weather['temp_avg'])
@@ -113,9 +113,7 @@ def cropRecommendation(long, lat, crops, soilPath, climatePath):
                     rain_avg = rain_total / len(weather['prec'])
 
                     score = (int(temp_max) - temp_avg) + (int(rain_max) - rain_avg) + (
-                            ph_max - combined['D1']['ph'])
-
-                    print(score)
+                        float(ph_max) - combined['D1']['ph'])
 
                     if score > highest_score:
                         highest_score = score
@@ -123,5 +121,3 @@ def cropRecommendation(long, lat, crops, soilPath, climatePath):
 
     return recommended_crop
 
-
-crops = cropRecommendation(-1.604004, 8.341953, getCrops("Crop"), "Soil", "Climate/tif_files")
