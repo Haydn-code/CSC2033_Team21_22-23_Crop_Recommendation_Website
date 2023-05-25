@@ -398,7 +398,7 @@ body {
     float: left;
     display: block;
     text-align: center;
-    background-image: url("static/Projectimg/homepage-donation.jpeg");
+    background-image: url("../Projectimg/homepage-donation.jpg");
     background-size: cover;
     position: relative;
 
