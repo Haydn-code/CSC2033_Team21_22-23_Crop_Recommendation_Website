@@ -4,5 +4,5 @@ donation_blueprint = Blueprint('Donationpage', __name__, template_folder='Fronte
 
 
 @donation_blueprint.route('/donationspage')
-def homepage():
+def donations():
     return render_template('Donationpage/donations.html')
