@@ -278,7 +278,7 @@ body {
     position: relative;
     width: 33.33%;
     height: 70vh;
-    background-image: url("static/Projectimg/homepage_image_about2.jpeg");
+    background-image: url("../Projectimg/homepage-donation.jpg");
     background-size: cover;
 }
 

@@ -14,10 +14,10 @@
         </div>
         <div class="navbar">
             <ul>
-                <li><a href="../Homepage/index.html"">Home</a></li>
-                <li><a href="../Mappage/map.html">Agriculture Map</a></li>
-                <li><a href="../Cropinformationpage/crop-information.html">Crop Information</a></li>
-                <li><a href="../users/login.html">Login</a></li>
+ 				<li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
+                <li><a href="{{url_for('Mappage.homepage')}}">Agriculture Map</a></li>
+                <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
+                <li><a href="{{url_for('users.login')}}">Login</a></li>
             </ul>
         </div>
     </section>
@@ -32,7 +32,7 @@
 		<div class="donate-container">
 			<div class="charity">
 				<div id="charity-logo-img">
-					<img src="../../static/Projectimg/world_food_programme.jpeg">
+					<img src="../../static/Projectimg/world_food_programme.jpg">
 				</div>
 				<div class="info-container">
 					<div id="text-box">
@@ -68,7 +68,7 @@
 			</div>
 			<div class="charity">
 				<div id="charity-logo-img">
-					<img src="../../static/Projectimg/save_the_children.jpeg">
+					<img src="../../static/Projectimg/save_the_children.jpg">
 				</div>
 				<div class="info-container">
 					<div id="text-box">
@@ -80,7 +80,7 @@
 			</div>
 			<div class="charity">
 				<div id="charity-logo-img">
-					<img src="../../static/Projectimg/heifer_international.jpeg">
+					<img src="../../static/Projectimg/heifer_international.jpg">
 				</div>
 				<div class="info-container">
 					<div id="text-box">

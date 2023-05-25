@@ -12,10 +12,10 @@
         </div>
         <div class="navbar">
             <ul>
-                <li><a href="../Homepage/index.html">Home</a></li>
-                <li><a href="../Mappage/map.html">Agriculture Map</a></li>
-                <li><a href="../Cropinformationpage/crop-information.html">Crop Information</a></li>
-                <li class="active"><a href="../users/login.html">Login</a></li>
+                <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
+                <li><a href="{{url_for('Mappage.homepage')}}">Agriculture Map</a></li>
+                <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
+                <li><a href="{{url_for('users.login')}}">Login</a></li>
             </ul>
         </div>
     </section>

@@ -16,7 +16,16 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.static_folder = 'static'
 
 from users.Views import users_blueprint
+from cropinfromationpage.views import cropinformation_blueprint
+from homepage.views import homepage_blueprint
+from donationpage.views import donation_blueprint
+from mappage.views import mappage_blueprint
+
+app.register_blueprint(cropinformation_blueprint)
+app.register_blueprint(homepage_blueprint)
 app.register_blueprint(users_blueprint)
+app.register_blueprint(donation_blueprint)
+app.register_blueprint(mappage_blueprint)
 
 db.init_app(app)
 
@@ -25,6 +34,8 @@ login_manager.login_view = 'users.login'
 login_manager.init_app(app)
 
 from Models import Users
+
+
 @login_manager.user_loader
 def loadUser(id):
     return db.session.get(Users, int(id))

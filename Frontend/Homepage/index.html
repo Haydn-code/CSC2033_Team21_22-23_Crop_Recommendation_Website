@@ -14,10 +14,10 @@
         </div>
         <div class="navbar">
             <ul>
-                <li class="active"><a href="../Homepage/index.html"">Home</a></li>
-                <li><a href="../Mappage/map.html">Agriculture Map</a></li>
-                <li><a href="../Cropinformationpage/crop-information.html">Crop Information</a></li>
-                <li><a href="../users/login.html">Login</a></li>
+                <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
+                <li><a href="{{url_for('Mappage.homepage')}}">Agriculture Map</a></li>
+                <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
+                <li><a href="{{url_for('users.login')}}">Login</a></li>
             </ul>
         </div>
     </section>
@@ -26,7 +26,7 @@
             <div class="homepage-container-text">
                 <img src="../../static/Projectimg/Home-page-title.png" class="title-image">
                 <h3>New here? sign up for timeless adivce on Agriculture. </h3>
-                <button class="explore-button">Explore</button>
+                <button class="explore-button" onclick="javascript:location.href='#donation-section'">Explore</button>
                 <button class="map-button"><a href="../Mappage/map.html">Our Map</a></button>
             </div>
             <div class="socialmedia-container">
@@ -63,7 +63,7 @@
             </div>
         </div>
     </section>
-    <section class="homepage-donations-section">
+    <section class="homepage-donations-section" id="donation-section">
         <div class="homepage-donations-container">
             <div class="homepage-donations-column">
                 <p><b>DONATE NOW</b>, with an ever increasing population, world hunger becomes a more critical issue to tackle.
@@ -72,13 +72,13 @@
             </div>
             <div class="homepage-donations-column1">
                 <h1>Intrested in making a donation?</h1>
-                <button onclick="javascript:location.href='../Donationpage/donations.html'">Donate Now</button>
+                <button><a href="{{url_for('Donationpage.homepage')}}">Donate Now</a></button>
             </div>
         </div>
     </section>
 	<section class="footer">
 		<div id="admin-account">
-			<button><a href="../users/login.html">Admin Centre</a></button>
+			<button><a href="{{url_for('users.login')}}">Admin Centre</a></button>
 		</div>
 		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
 		<div id="colour-blind-toggle">
