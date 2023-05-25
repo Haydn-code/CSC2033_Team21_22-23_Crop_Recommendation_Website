@@ -41,9 +41,6 @@ def checkTemp(crop, weather):
     temp_max = int(temp_max)
 
     for temp in weather['temp_avg']:
-        if temp == '-' or temp == '' or temp == '---':
-            return False
-
         if not (temp_min <= int(temp) <= temp_max):
             return False
 
@@ -59,13 +56,15 @@ def checkPrec(crop, weather):
 
     rain_min = int(rain_min)
     rain_max = int(rain_max)
+    total_rain = 0
 
     for rain in weather['prec']:
-        if rain == '-' or rain == '' or rain == '---':
-            return False
+        rain_value = int(rain)
+        total_rain += rain_value
 
-        if not (rain_min <= int(rain) <= rain_max):
-            return False
+    if not (rain_min <= total_rain <= rain_max):
+        return False
+
     return True
 
 
