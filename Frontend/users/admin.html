@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Precision Agriculture</title>
+    <link rel="stylesheet" href="../static/style.css" class="css">
+</head>
+<body>
+    <section class="header">
+        <div class="logo-container">
+            <img src="../../Projectimg/logo5.png" alt="" class="logo">
+        </div>
+        <div class="navbar">
+            <ul>
+                <li><a href="../Homepage/index.html"">Home</a></li>
+                <li><a href="../Mappage/map.html">Agriculture Map</a></li>
+                <li><a href="../Cropinformationpage/crop-information.html">Crop Information</a></li>
+                <li><a href="../users/login.html">Login</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="admin-container">
+        <div class="admin-element-container">
+            <div class="admin-element-item">
+                <h1 class="admin-username">Administrator</h1>
+                <img src="../../Projectimg/admin-profile.png" class="admin-image">
+                <h1 class="admin-id">Admin ID:</h1>
+                <div class="user-control">
+                	<div class="search-display">
+                		<div class="search-bar">
+							<input id="search-input" type="text" placeholder="Enter User ID...">
+						</div>
+						<div id="search-output">
+						</div>
+                	</div>
+                	<div class="action-display">
+                	<button>Find User</button>
+                	<button>Edit User</button>
+                	<button>Delete User</button>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </section>
+	<section class="footer">
+		<div id="admin-account">
+			<button><a href="../users/login.html">Admin Centre</a></button>
+		</div>
+		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
+		<div id="colour-blind-toggle">
+			<button onclick="toggleColours()">Toggle Colour Blind Mode</button>
+		</div>
+	</section>
+<script>
+	var toggle = false;
+
+	function toggleColours() {		
+		console.log(document.getElementsByClassName("display-block"));
+		if (toggle == true) { //green-grey colour scheme
+			document.getElementsByClassName("header")[0].style.backgroundColor = "white";
+			document.getElementsByClassName("admin-container")[0].style.backgroundColor = "#689b6c";
+			document.getElementsByClassName("footer")[0].style.backgroundColor = "#333";
+
+			toggle = false;
+		}
+		else { //blue-brown colour scheme
+			document.getElementsByClassName("header")[0].style.backgroundColor = "#6e4426";
+			document.getElementsByClassName("admin-container")[0].style.backgroundColor = "#88CCEE";
+			document.getElementsByClassName("footer")[0].style.backgroundColor = "#6e4426";			
+			
+			toggle = true;
+		}
+	}
+</script>
+</body>
+</html>

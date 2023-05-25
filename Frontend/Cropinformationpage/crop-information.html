@@ -37,7 +37,149 @@
 				<button onclick="displayInput()">Search</button>
 			</div>
 			<div class="search-display">
-				<h3 id="search-test">...</h3>
+				<div class="top-container">
+					<div id="crop-img-container">
+						<a href="https://ecocrop.review.fao.org/ecocrop/ec_images/289.jpg">
+  							<img src="https://ecocrop.review.fao.org/ecocrop/ec_images/289.jpg">
+						</a>
+					</div>
+					<div class="small-text-container">
+						<div class="column-container">
+							<div class="attribute-container">
+								<div class="attribute">Name:</div>
+								<div class="value">Okra</div>
+							</div>
+							<div class="attribute-container">
+								<div class="attribute">Species:</div>
+								<div class="value">Abelmoschus esculentus</div>
+							</div>
+							<div class="attribute-container">
+								<div class="attribute">Life Form:</div>
+								<div class="value">Herb</div>
+							</div>
+							<div class="attribute-container">
+								<div class="attribute">Category:</div>
+								<div class="value">Vegetables</div>
+							</div>
+						</div>
+						<div class="column-container">
+							<div class="attribute-container">
+								<div class="attribute">Life Span:</div>
+								<div class="value">Annual</div>
+							</div>
+							<div class="attribute-container">
+								<div class="attribute">Physiology:</div>
+								<div class="value">Single stem</div>
+							</div>
+							<div class="attribute-container">
+								<div class="attribute">Plant Attributes:</div>
+								<div class="value">Grown on large scale</div>
+							</div>
+							<div class="attribute-container">
+								<div class="attribute">Main Use:</div>
+								<div class="value">Food & beverage</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="big-text-container">
+					<div class="column-container">
+						<div class="attribute-container">
+							<div class="attribute">Optimum Min Temp (°C):</div>
+							<div class="value">20</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Max Temp (°C):</div>
+							<div class="value">30</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Absolute Min Temp (°C):</div>
+							<div class="value">12</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Absolute Max Temp (°C):</div>
+							<div class="value">35</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Min Rain (mm):</div>
+							<div class="value">600</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Max Rain (mm):</div>
+							<div class="value">1200</div>
+						</div>
+					</div>
+					<div class="column-container">
+						<div class="attribute-container">
+							<div class="attribute">Absolute Min Rain (mm):</div>
+							<div class="value">300</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Absolute Max Rain (mm):</div>
+							<div class="value">2500</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Min PH:</div>
+							<div class="value">5.5</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Max PH:</div>
+							<div class="value">7</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Absolute Min PH</div>
+							<div class="value">4.5</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Absolute Max PH</div>
+							<div class="value">8.7</div>
+						</div>
+					</div>
+					<div class="column-container">
+						<div class="attribute-container">
+							<div class="attribute">Absolute Min Altitude:</div>
+							<div class="value">-</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Absolute Max Altitude:</div>
+							<div class="value">1000</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Min Light:</div>
+							<div class="value">Clear skies</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Max Light:</div>
+							<div class="value">Clear skies</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Salinity:</div>
+							<div class="value">low (<4 dS/m)</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Drainage:</div>
+							<div class="value">Well (dry spells)</div>
+						</div>
+					</div>
+					<div class="column-container">
+						<div class="attribute-container">
+							<div class="attribute">Optimum Depth:</div>
+							<div class="value">Shallow (20-50 cm)</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Texture:</div>
+							<div class="value">Heavy, medium, light, organic</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Fertility:</div>
+							<div class="value">High</div>
+						</div>
+						<div class="big-attribute-container">
+							<div class="attribute">Climate Zone:</div>
+							<div class="value">Tropical wet & dry (Aw), tropical wet (Ar), steppe or semiarid (Bs), subtropical humid (Cf), subtropical dry summer (Cs), subtropical dry winter (Cw)",</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -66,12 +208,16 @@
 		</div>
 	</section>
 	<section class="footer">
+		<div id="admin-account">
+			<button><a href="../users/login.html">Admin Centre</a></button>
+		</div>
 		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
 		<div id="colour-blind-toggle">
 			<button onclick="toggleColours()">Toggle Colour Blind Mode</button>
 		</div>
 	</section>
 <script>
+
 	var toggle = false;
 
 	function toggleColours() {		
@@ -98,7 +244,7 @@
 	
 	function displayInput() {
   		const input = document.getElementById("search-input").value;
-  		const output = document.getElementById("search-test");
+  		const output = document.getElementsByClassName("value")[0];
   		output.textContent = input;
 	}
 
