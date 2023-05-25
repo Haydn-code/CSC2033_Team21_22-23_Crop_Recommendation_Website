@@ -30,6 +30,18 @@ def summariseProfiles(profiles):
     return combined
 
 
+"""
+Checks if the temperature conditions are suitable for a given crop based on the optimal temperature range.
+
+Parameters:
+crop (dict): A dictionary containing crop information.
+weather (dict): A dictionary containing weather data.
+
+Returns:
+bool: True if the temperature conditions are suitable, False otherwise.
+"""
+
+
 def checkTemp(crop, weather):
     temp_min = crop['absolute_min_temp']
     temp_max = crop['optimal_max_temp']
@@ -45,6 +57,18 @@ def checkTemp(crop, weather):
             return False
 
     return True
+
+
+"""
+Checks if the rainfall conditions are suitable for a given crop based on the optimal rainfall range.
+
+Parameters:
+crop (dict): A dictionary containing crop information.
+weather (dict): A dictionary containing weather data.
+
+Returns:
+bool: True if the rainfall conditions are suitable, False otherwise.
+"""
 
 
 def checkPrec(crop, weather):
@@ -68,17 +92,19 @@ def checkPrec(crop, weather):
     return True
 
 
-"""A function which returns crop information on the most suitable crop to grow at a coordinate
+"""
+Recommends the most suitable crop to grow at a specific coordinate.
 
 Parameters:
-long (float): the longitudinal coordinate
-lat (float): the latitudinal coordinate
-crops (dict): the dictionary returned from getCrops(folder) in crop.py
-soilPath (str): the path to the Soil directory
-climatePath (str): the path to the Climate/tif_files directory
+long (float): The longitudinal coordinate.
+lat (float): The latitudinal coordinate.
+crops (dict): The dictionary returned from getCrops(folder) in crop.py.
+soilPath (str): The path to the Soil directory.
+climatePath (str): The path to the Climate/tif_files directory.
 
 Returns:
-A (dict) containing information on the recommended crop"""
+dict: A dictionary containing information on the recommended crop.
+"""
 
 
 def cropRecommendation(long, lat, crops, soilPath, climatePath):
