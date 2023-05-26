@@ -17,7 +17,13 @@
                 <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
                 <li><a href="{{url_for('Mappage.map')}}">Agriculture Map</a></li>
                 <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
-                <li><a href="{{url_for('users.login')}}">Login</a></li>
+                {% if not current_user.is_authenticated %}
+                    <li><a href="{{url_for('users.login')}}">Login</a></li>
+                {% endif %}
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{url_for('users.profile')}}">Profile</a></li>
+                    <li><a href="{{url_for('users.logout')}}">Logout</a></li>
+                {% endif %}
             </ul>
         </div>
     </section>
