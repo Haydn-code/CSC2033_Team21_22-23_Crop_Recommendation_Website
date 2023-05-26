@@ -289,7 +289,9 @@
         });
         
         map.on('click', 'country_fills', (e) => {
-            console.log(e.lngLat.wrap())
+        // Coordinates to send back to the python functions
+            var coordinates = e.lngLat.wrap()
+        // -------------------------------------
         	document.getElementById("country_name").innerHTML = e.features[0].properties["name_en"];
             document.getElementById("continent_name").innerHTML = e.features[0].properties["region"];
         });
