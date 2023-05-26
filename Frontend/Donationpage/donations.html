@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../../static/style.css">
     <title>Precision Agriculture - Crop Management</title>
 </head>
 <body>
     <section class="header">
         <div class="logo-container">
-            <img src="../../Projectimg/logo5.png" alt="" class="logo">
+            <img src="../../static/Projectimg/logo5.png" alt="" class="logo">
         </div>
         <div class="navbar">
             <ul>
-                <li><a href="../Homepage/index.html"">Home</a></li>
-                <li><a href="../Mappage/map.html">Agriculture Map</a></li>
-                <li><a href="../Cropinformationpage/crop-information.html">Crop Information</a></li>
-                <li><a href="../users/login.html">Login</a></li>
+                <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
+                <li><a href="{{url_for('Mappage.map')}}">Agriculture Map</a></li>
+                <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
+                <li><a href="{{url_for('users.login')}}">Login</a></li>
             </ul>
         </div>
     </section>
     <section class="page-title-section">
     	<div class=img-container>
-    		<img src="../../Projectimg/donation-page-title.png" style="width: 100%">
+    		<img src="../../static/Projectimg/donation-page-title.png" style="width: 100%">
     		<h1>Give the gift of food to those in need, donate to end hunger</h1>
     		<button onclick="scrollToSection()">Click to Donate</button>
     	</div>
@@ -32,7 +32,7 @@
 		<div class="donate-container">
 			<div class="charity">
 				<div id="charity-logo-img">
-					<img src="../../Projectimg/world_food_programme.jpeg">
+					<img src="../../static/Projectimg/world_food_programme.jpg">
 				</div>
 				<div class="info-container">
 					<div id="text-box">
@@ -44,7 +44,7 @@
 			</div>
 			<div class="charity">
 				<div id="charity-logo-img">
-					<img src="../../Projectimg/action_against_hunger.png">
+					<img src="../../static/Projectimg/action_against_hunger.png">
 				</div>
 				<div class="info-container">
 					<div id="text-box">
@@ -56,7 +56,7 @@
 			</div>
 			<div class="charity">
 				<div id="charity-logo-img">
-					<img src="../../Projectimg/the_hunger_project.jpg">
+					<img src="../../static/Projectimg/the_hunger_project.jpg">
 				</div>
 				<div class="info-container">
 					<div id="text-box">
@@ -68,7 +68,7 @@
 			</div>
 			<div class="charity">
 				<div id="charity-logo-img">
-					<img src="../../Projectimg/save_the_children.jpeg">
+					<img src="../../static/Projectimg/save_the_children.jpg">
 				</div>
 				<div class="info-container">
 					<div id="text-box">
@@ -80,7 +80,7 @@
 			</div>
 			<div class="charity">
 				<div id="charity-logo-img">
-					<img src="../../Projectimg/heifer_international.jpeg">
+					<img src="../../static/Projectimg/heifer_international.jpg">
 				</div>
 				<div class="info-container">
 					<div id="text-box">
@@ -93,15 +93,18 @@
 
 		</div>
 		<div class="img-container">
-			<img src="../../Projectimg/donate.jpg" style="height: 761px; width:686px">
+			<img src="../../static/Projectimg/donate.jpg" style="height: 761px; width:686px">
 		</div>
 	</section>
-    <section class="footer">
-        <p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
+	<section class="footer">
+		<div id="admin-account">
+			<button><a href="../users/login.html">Admin Centre</a></button>
+		</div>
+		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
 		<div id="colour-blind-toggle">
 			<button onclick="toggleColours()">Toggle Colour Blind Mode</button>
 		</div>
-    </section>
+	</section>
 <script>
 	var toggle = false;
 

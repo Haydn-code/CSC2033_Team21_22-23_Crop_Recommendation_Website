@@ -3,42 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <title>Precision Agriculture</title>
-    <link rel="stylesheet" href="../../Frontend/static/style.css" class="css">
+    <link rel="stylesheet" href="../../static/style.css" class="css">
 </head>
 <body>
     <section class="header">
         <div class="logo-container">
-            <img src="../../Projectimg/logo5.png" alt="" class="logo">
+            <img src="../../static/Projectimg/logo5.png" alt="" class="logo">
         </div>
         <div class="navbar">
             <ul>
-                <li><a href="../Homepage/index.html"">Home</a></li>
-                <li><a href="../Mappage/map.html">Agriculture Map</a></li>
-                <li><a href="../Cropinformationpage/crop-information.html">Crop Information</a></li>
-                <li><a href="../users/login.html">Login</a></li>
+                <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
+                <li><a href="{{url_for('Mappage.map')}}">Agriculture Map</a></li>
+                <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
+                <li><a href="{{url_for('users.login')}}">Login</a></li>
             </ul>
         </div>
     </section>
     <section class="form-container">
-        <form action="" class="">
-            <img src="../../Projectimg/logo5.png" alt="" class="form-logo">
-            <label class="form-labels">Firstname</label>
-            <input type="text" class="lastname" placeholder="e.g Jimmy">
-            <label class="form-labels">Lastname</label>
-            <input type="text" class="lastname" placeholder="e.g beatroot">
-            <label class="form-labels">Email</label>
-            <input type="text" class="email" placeholder="e.g jimmybeatroot@hotmail.com">
-            <label class="form-labels">Phone</label>
-            <input type="text" class="phone" placeholder="e.g 0000 000 0000">
-            <label class="form-labels">Password</label>
-            <input type="text" class="password" placeholder="">
-            <label class="form-labels">Confirm Password</label>
-            <input type="text" class="password" placeholder="">
-            <button>Submit</button>
-            <div class="bottom-form-container">
-                <label class="form-labels">Already have an account? <a href="../users/login.html">login in</a></label>
-            </div>
-        </form>
+        {% block content %}
+            <form method="POST">
+                {{ form.csrf_token() }}
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="notification is-danger">
+                            {{ messages[0] }}. Go to <a href="{{url_for('users.login')}}">login page</a>.
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <img src="../../static/Projectimg/logo5.png" alt="" class="form-logo">
+                <label class="form-labels">Firstname</label>
+                <div>
+                    {{ form.first_name(class="input", placeholder="e.g Jimmy") }}
+                    {% for error in form.first_name.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                <label class="form-labels">Lastname</label>
+                <div>
+                    {{ form.last_name(class="input", placeholder="e.g beetroot") }}
+                    {% for error in form.last_name.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                <label class="form-labels">Email</label>
+                <div>
+                    {{ form.email(class="input", placeholder="e.g jimmybeetroot@hotmail.com") }}
+                    {% for error in form.email.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                <label class="form-labels">Phone</label>
+                <div>
+                    {{ form.phone(class="input", placeholder="e.g 0000 000 0000") }}
+                    {% for error in form.phone.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                <label class="form-labels">Password</label>
+                <div>
+                    {{ form.password(class="password", placeholder="") }}
+                    {% for error in form.password.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                <label class="form-labels">Confirm Password</label>
+                <div>
+                    {{ form.confirm_password(class="password", placeholder="") }}
+                    {% for error in form.confirm_password.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.submit(class="button") }}
+                </div>
+                <div class="bottom-form-container">
+                    <label class="form-labels">Already have an account? <a href="{{ url_for('users.login') }}">login in</a></label>
+                </div>
+            </form>
+        {% endblock %}
     <section class="footer">
         <p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
 		<div id="colour-blind-toggle">

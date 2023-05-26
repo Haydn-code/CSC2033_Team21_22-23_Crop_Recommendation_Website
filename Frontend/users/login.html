@@ -3,41 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Precision Agriculture</title>
-    <link rel="stylesheet" href="../static/style.css" class="css">
+    <link rel="stylesheet" href="../../static/style.css" class="css">
 </head>
 <body>
     <section class="header">
         <div class="logo-container">
-            <img src="../../Projectimg/logo5.png" alt="" class="logo">
+            <img src="../../static/Projectimg/logo5.png" alt="" class="logo">
         </div>
         <div class="navbar">
             <ul>
-                <li><a href="../Homepage/index.html">Home</a></li>
-                <li><a href="../Mappage/map.html">Agriculture Map</a></li>
-                <li><a href="../Cropinformationpage/crop-information.html">Crop Information</a></li>
-                <li class="active"><a href="../users/login.html">Login</a></li>
+                <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
+                <li><a href="{{url_for('Mappage.map')}}">Agriculture Map</a></li>
+                <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
+                <li><a href="{{url_for('users.login')}}">Login</a></li>
             </ul>
         </div>
     </section>
     <section class="form-container">
-        <form action="" class="">
-            <img src="../../Projectimg/logo5.png" alt="" class="form-logo">
-            <label class="form-labels">Username (Usually your sign-up email)</label>
-            <input type="text" class="username" placeholder="e.g jimmybeatroot@hotmail.com">
-            <label class="form-labels">Password</label>
-            <input type="text" class="username" placeholder="">
-            <button>Submit</button>
-            <div class="bottom-form-container">
-                <label class="form-labels">Don't have an account? <a href="../users/signup.html">Sign up</a></label>
-            </div>
-        </form>
+        {% block content %}
+            <form method="POST" >
+                {{ form.csrf_token() }}
+                <img src="../../static/Projectimg/logo5.png" alt="" class="form-logo">
+                <label class="form-labels">Username (Usually your sign-up email)</label>
+                <div>
+                    {{ form.email(class="input", placeholder="e.g jimmybeatroot@hotmail.com") }}
+                    {% for error in form.email.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                <label class="form-labels">Password</label>
+                <div>
+                    {{ form.password(class="input", placeholder="") }}
+                    {% for error in form.password.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                {{ form.submit(class="button") }}
+                <div class="bottom-form-container">
+                    <label class="form-labels">Don't have an account? <a href="{{ url_for('users.signUp') }}">Sign up</a></label>
+                </div>
+            </form>
+        {% endblock %}
     </section>
-    <section class="footer">
-        <p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
+	<section class="footer">
+		<div id="admin-account">
+			<button><a href="../users/login.html">Admin Centre</a></button>
+		</div>
+		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
 		<div id="colour-blind-toggle">
 			<button onclick="toggleColours()">Toggle Colour Blind Mode</button>
 		</div>
-    </section>
+	</section>
 <script>
 	var toggle = false;
 

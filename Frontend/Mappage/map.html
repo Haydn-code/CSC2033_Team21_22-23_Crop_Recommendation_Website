@@ -4,27 +4,27 @@
 	<title>Precision Agriculture - Interactive Map </title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-	<link rel="stylesheet" href="../static/style.css">
+	<link rel="stylesheet" href="../../static/style.css">
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
 </head>
 <body>
     <section class="header">
         <div class="logo-container">
-            <img src="../../Projectimg/logo5.png" alt="" class="logo">
+            <img src="../../static/Projectimg/logo5.png" alt="" class="logo">
         </div>
         <div class="navbar">
             <ul>
-                <li><a href="../Homepage/index.html"">Home</a></li>
-                <li class="active"><a href="../Mappage/map.html">Agriculture Map</a></li>
-                <li><a href="../Cropinformationpage/crop-information.html">Crop Information</a></li>
-                <li><a href="../users/login.html">Login</a></li>
+                <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
+                <li><a href="{{url_for('Mappage.map')}}">Agriculture Map</a></li>
+                <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
+                <li><a href="{{url_for('users.login')}}">Login</a></li>
             </ul>
         </div>
     </section>
     <section class="page-title-section">
     	<div class=img-container>
-    		<img src="../../Projectimg/map-page.png" style="width: 100%">
+    		<img src="../../static/Projectimg/map-page.png" style="width: 100%">
     		<h1>Don't just plant, plant with purpose using our interactive map</h1>
     		<button onclick="scrollToSection()">Search the World to Find Your Optimum Conditions</button>
     	</div>
@@ -141,7 +141,7 @@
 		<div class="display-block">
 			<div class="donation-container">
 				<div id="img-container">
-					<img src="../../Projectimg/zerohunger.jpg" style="height: 396px">
+					<img src="../../static/Projectimg/zerohunger.jpg" style="height: 396px">
 				</div>
 				<div id="donate-textbox">
 					<h1>Donate to Stop Hunger</h1>
@@ -161,12 +161,15 @@
 			</div>
 		</div>
 	</section>
-    <section class="footer">
-        <p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
+	<section class="footer">
+		<div id="admin-account">
+			<button><a href="../users/login.html">Admin Centre</a></button>
+		</div>
+		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
 		<div id="colour-blind-toggle">
 			<button onclick="toggleColours()">Toggle Colour Blind Mode</button>
 		</div>
-    </section>
+	</section>
 <script>
 	var toggle = false;
 
@@ -207,7 +210,7 @@
     let hoveredCountryId = null;
     
 	const marker = new mapboxgl.Marker()
-    	.setLngLat([0, 0])
+    	.setLngLat([1, 52.5])
 		.setPopup(new mapboxgl.Popup().setHTML("<p>Field: Jeff's Field 15</p>"))
     	.addTo(map);
 

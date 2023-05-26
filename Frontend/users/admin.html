@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Precision Agriculture</title>
-    <link rel="stylesheet" href="../../static/style.css" class="css">
+    <link rel="stylesheet" href="../static/style.css" class="css">
 </head>
 <body>
     <section class="header">
         <div class="logo-container">
-            <img src="../../static/Projectimg/logo5.png" alt="" class="logo">
+            <img src="../../Projectimg/logo5.png" alt="" class="logo">
         </div>
         <div class="navbar">
             <ul>
@@ -19,17 +19,26 @@
             </ul>
         </div>
     </section>
-    <section class="profile-container">
-        <div class="profile-element-container">
-            <div class="profile-element-item">
-                <h1 class="profile-username">User Name</h1>
-                <img src="../../Projectimg/farmer-profile.png" alt="" class="profile-image">
-                <h1 class="profile-email">User Email address</h1>
-                <h1 class="profile-phone">User Phone Number</h1>
-                <h1>Your farms</h1>
-                <div class="user-farms">
+    <section class="admin-container">
+        <div class="admin-element-container">
+            <div class="admin-element-item">
+                <h1 class="admin-username">Administrator</h1>
+                <img src="../../Projectimg/admin-profile.png" class="admin-image">
+                <h1 class="admin-id">Admin ID:</h1>
+                <div class="user-control">
+                	<div class="search-display">
+                		<div class="search-bar">
+							<input id="search-input" type="text" placeholder="Enter User ID...">
+						</div>
+						<div id="search-output">
+						</div>
+                	</div>
+                	<div class="action-display">
+                	<button>Find User</button>
+                	<button>Edit User</button>
+                	<button>Delete User</button>
+                	</div>
                 </div>
-                <button>Return to Map</button>
             </div>
         </div>
     </section>
@@ -49,14 +58,14 @@
 		console.log(document.getElementsByClassName("display-block"));
 		if (toggle == true) { //green-grey colour scheme
 			document.getElementsByClassName("header")[0].style.backgroundColor = "white";
-			document.getElementsByClassName("profile-container")[0].style.backgroundColor = "#689b6c";
+			document.getElementsByClassName("admin-container")[0].style.backgroundColor = "#689b6c";
 			document.getElementsByClassName("footer")[0].style.backgroundColor = "#333";
 
 			toggle = false;
 		}
 		else { //blue-brown colour scheme
 			document.getElementsByClassName("header")[0].style.backgroundColor = "#6e4426";
-			document.getElementsByClassName("profile-container")[0].style.backgroundColor = "#88CCEE";
+			document.getElementsByClassName("admin-container")[0].style.backgroundColor = "#88CCEE";
 			document.getElementsByClassName("footer")[0].style.backgroundColor = "#6e4426";			
 			
 			toggle = true;

@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../../static/style.css">
     <title>Precision Agriculture - Crop Management</title>
 </head>
 <body>
     <section class="header">
         <div class="logo-container">
-            <img src="../../Projectimg/logo5.png" alt="" class="logo">
+            <img src="../../static/Projectimg/logo5.png" alt="" class="logo">
         </div>
         <div class="navbar">
             <ul>
-                <li><a href="../Homepage/index.html"">Home</a></li>
-                <li><a href="../Mappage/map.html">Agriculture Map</a></li>
-                <li class="active"><a href="../Cropinformationpage/crop-information.html">Crop Information</a></li>
-                <li><a href="../users/login.html">Login</a></li>
+                <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
+                <li><a href="{{url_for('Mappage.map')}}">Agriculture Map</a></li>
+                <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
+                <li><a href="{{url_for('users.login')}}">Login</a></li>
             </ul>
         </div>
     </section>
     <section class="page-title-section">
     	<div class=img-container>
-    		<img src="../../Projectimg/crop-info-page-title.png" style="width: 100%">
+    		<img src="../../static/Projectimg/crop-info-page-title.png" style="width: 100%">
     		<h1>Together we can cultivate a hunger-free world</h1>
     		<button onclick="scrollToSection()">Search for Your Crops Optimum Conditions</button>
     	</div>
@@ -37,7 +37,149 @@
 				<button onclick="displayInput()">Search</button>
 			</div>
 			<div class="search-display">
-				<h3 id="search-test">...</h3>
+				<div class="top-container">
+					<div id="crop-img-container">
+						<a href="https://ecocrop.review.fao.org/ecocrop/ec_images/289.jpg">
+  							<img src="https://ecocrop.review.fao.org/ecocrop/ec_images/289.jpg">
+						</a>
+					</div>
+					<div class="small-text-container">
+						<div class="column-container">
+							<div class="attribute-container">
+								<div class="attribute">Name:</div>
+								<div class="value">Okra</div>
+							</div>
+							<div class="attribute-container">
+								<div class="attribute">Species:</div>
+								<div class="value">Abelmoschus esculentus</div>
+							</div>
+							<div class="attribute-container">
+								<div class="attribute">Life Form:</div>
+								<div class="value">Herb</div>
+							</div>
+							<div class="attribute-container">
+								<div class="attribute">Category:</div>
+								<div class="value">Vegetables</div>
+							</div>
+						</div>
+						<div class="column-container">
+							<div class="attribute-container">
+								<div class="attribute">Life Span:</div>
+								<div class="value">Annual</div>
+							</div>
+							<div class="attribute-container">
+								<div class="attribute">Physiology:</div>
+								<div class="value">Single stem</div>
+							</div>
+							<div class="attribute-container">
+								<div class="attribute">Plant Attributes:</div>
+								<div class="value">Grown on large scale</div>
+							</div>
+							<div class="attribute-container">
+								<div class="attribute">Main Use:</div>
+								<div class="value">Food & beverage</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="big-text-container">
+					<div class="column-container">
+						<div class="attribute-container">
+							<div class="attribute">Optimum Min Temp (°C):</div>
+							<div class="value">20</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Max Temp (°C):</div>
+							<div class="value">30</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Absolute Min Temp (°C):</div>
+							<div class="value">12</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Absolute Max Temp (°C):</div>
+							<div class="value">35</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Min Rain (mm):</div>
+							<div class="value">600</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Max Rain (mm):</div>
+							<div class="value">1200</div>
+						</div>
+					</div>
+					<div class="column-container">
+						<div class="attribute-container">
+							<div class="attribute">Absolute Min Rain (mm):</div>
+							<div class="value">300</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Absolute Max Rain (mm):</div>
+							<div class="value">2500</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Min PH:</div>
+							<div class="value">5.5</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Max PH:</div>
+							<div class="value">7</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Absolute Min PH</div>
+							<div class="value">4.5</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Absolute Max PH</div>
+							<div class="value">8.7</div>
+						</div>
+					</div>
+					<div class="column-container">
+						<div class="attribute-container">
+							<div class="attribute">Absolute Min Altitude:</div>
+							<div class="value">-</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Absolute Max Altitude:</div>
+							<div class="value">1000</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Min Light:</div>
+							<div class="value">Clear skies</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Max Light:</div>
+							<div class="value">Clear skies</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Salinity:</div>
+							<div class="value">low (<4 dS/m)</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Drainage:</div>
+							<div class="value">Well (dry spells)</div>
+						</div>
+					</div>
+					<div class="column-container">
+						<div class="attribute-container">
+							<div class="attribute">Optimum Depth:</div>
+							<div class="value">Shallow (20-50 cm)</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Texture:</div>
+							<div class="value">Heavy, medium, light, organic</div>
+						</div>
+						<div class="attribute-container">
+							<div class="attribute">Optimum Fertility:</div>
+							<div class="value">High</div>
+						</div>
+						<div class="big-attribute-container">
+							<div class="attribute">Climate Zone:</div>
+							<div class="value">Tropical wet & dry (Aw), tropical wet (Ar), steppe or semiarid (Bs), subtropical humid (Cf), subtropical dry summer (Cs), subtropical dry winter (Cw)",</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -45,7 +187,7 @@
 		<div class="display-block">
 			<div class="donation-container">
 				<div id="img-container">
-					<img src="../../Projectimg/charity2.jpg" style="height: 396px">
+					<img src="../../static/Projectimg/charity2.jpg" style="height: 396px">
 				</div>
 				<div id="donate-textbox">
 					<h1>Donate to Stop Hunger</h1>
@@ -66,12 +208,16 @@
 		</div>
 	</section>
 	<section class="footer">
+		<div id="admin-account">
+			<button><a href="../users/login.html">Admin Centre</a></button>
+		</div>
 		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
 		<div id="colour-blind-toggle">
 			<button onclick="toggleColours()">Toggle Colour Blind Mode</button>
 		</div>
 	</section>
 <script>
+
 	var toggle = false;
 
 	function toggleColours() {		
@@ -98,7 +244,7 @@
 	
 	function displayInput() {
   		const input = document.getElementById("search-input").value;
-  		const output = document.getElementById("search-test");
+  		const output = document.getElementsByClassName("value")[0];
   		output.textContent = input;
 	}
 

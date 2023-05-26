@@ -1,9 +1,14 @@
 Pylint
 numpy
 pandas
+bcrypt
 gdal
 flask
+flask_wtf
 flask_sqlalchemy
+flask_login
 python-dotenv
+wtforms
+email_validator
 requests
 bs4
