@@ -15,24 +15,37 @@
                 <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
                 <li><a href="{{url_for('Mappage.map')}}">Agriculture Map</a></li>
                 <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
-                <li><a href="{{url_for('users.login')}}">Login</a></li>
+                {% if not current_user.is_authenticated %}
+                    <li><a href="{{url_for('users.login')}}">Login</a></li>
+                {% endif %}
+                {% if current_user.is_authenticated %}
+                    {% if current_user.role == 'users' %}
+                        <li><a href="{{url_for('users.profile')}}">Profile</a></li>
+                    {% endif %}
+                    {% if current_user.role == 'admin' %}
+                        <li><a href="{{url_for('users.admin')}}">Admin</a></li>
+                    {% endif %}
+                    <li><a href="{{url_for('users.logout')}}">Logout</a></li>
+                {% endif %}
             </ul>
         </div>
     </section>
-    <section class="profile-container">
-        <div class="profile-element-container">
-            <div class="profile-element-item">
-                <h1 class="profile-username">User Name</h1>
-                <img src="../../Projectimg/farmer-profile.png" alt="" class="profile-image">
-                <h1 class="profile-email">User Email address</h1>
-                <h1 class="profile-phone">User Phone Number</h1>
-                <h1>Your farms</h1>
-                <div class="user-farms">
+    {% block content %}
+        <section class="profile-container">
+            <div class="profile-element-container">
+                <div class="profile-element-item">
+                    <h1 class="profile-username">User Name</h1>
+                    <img src="../../Projectimg/farmer-profile.png" alt="" class="profile-image">
+                    <h1 class="profile-email">{{ user.email }}</h1>
+                    <h1 class="profile-phone">User Phone Number</h1>
+                    <h1>Your farms</h1>
+                    <div class="user-farms">
+                    </div>
+                    <button>Return to Map</button>
                 </div>
-                <button>Return to Map</button>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endblock %}
 	<section class="footer">
 		<div id="admin-account">
 			<button><a href="../users/login.html">Admin Centre</a></button>
