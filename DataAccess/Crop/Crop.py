@@ -37,12 +37,12 @@ def getCrops(folder):
                     "photoperiod": row["photoperiod"], "common_names":
                         common_names.loc[common_names["Ecocrop_code"] == row["crop_code"]]["Common_names"].values[0],
                     "species": row["species"], "life_form": row["Life.form"], "life_span": row["Life.span"],
-                    "physciology": row["Physiology"], "plant_attributes": row["Plant.attributes"],
+                    "physiology": row["Physiology"], "plant_attributes": row["Plant.attributes"],
                     "absolute_min_altitude": row["Alt_Abs_Min"], "absolute_max_altitude": row["Alt_Abs_Max"],
                     "optimal_min_light": row["Light_Opt_Min"], "optimal_max_light": row["Light_Opt_Max"],
                     "optimal_depth": row["Depth_Opt"], "optimal_fertility": row["Fertility_Ops"],
                     "optimal_drainage": row["drainage_opt"], "absolute_drainage": row["drainage_abs"],
-                    "climate_zone": row["Climate.Zone"], "main_use": row["use.main"]}
+                    "climate_zone": row["Climate.Zone"], "main_use": row["use.main"], "category": row["Category"]}
 
             crops[row["crop_code"]] = info
     return crops
@@ -63,6 +63,7 @@ Note: crops should be a variable containing the return value from getCrops()
 
 
 def searchCrop(crop_name, crops, scientific):
+    print(crop_name)
     if crop_name == "nan":
         return None
     if not scientific:
@@ -72,9 +73,10 @@ def searchCrop(crop_name, crops, scientific):
             if crop_name in names:
                 img = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".jpg")
                 if img.status_code == 200:
-                    crop["image"] = img
+                    crop["image"] = "https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".jpg"
+
                 else:
-                    crop["image"] = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".gif")
+                    crop["image"] = "https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".gif"
                 return crop
     else:
         for each in crops:
