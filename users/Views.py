@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, flash, url_for
 from users.Forms import signUpForm, loginForm
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 from Models import Users
 import bcrypt
 
@@ -16,7 +16,10 @@ def login():
             flash('Incorrect Email/Password')
             return render_template('users/login.html', form=form)
         login_user(user)
-        return redirect(url_for('users.profile'))
+        if user.role == 'users':
+            return redirect(url_for('users.profile'))
+        elif user.role == 'admin':
+            return redirect(url_for('users.admin'))
     return render_template('users/login.html', form=form)
 
 @users_blueprint.route('/signUp', methods=['POST', 'GET'])
@@ -44,7 +47,11 @@ def signUp():
 
 @users_blueprint.route('/profile')
 def profile():
-    return render_template('users/profile.html')
+    return render_template('users/profile.html', user=current_user)
+
+@users_blueprint.route('/admin')
+def admin():
+    return render_template('users/admin.html')
 
 @users_blueprint.route('/logout')
 def logout():

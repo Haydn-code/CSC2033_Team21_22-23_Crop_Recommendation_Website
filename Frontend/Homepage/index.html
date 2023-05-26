@@ -17,7 +17,12 @@
                 <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
                 <li><a href="{{url_for('Mappage.map')}}">Agriculture Map</a></li>
                 <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
-                <li><a href="{{url_for('users.login')}}">Login</a></li>
+                {% if not current_user.is_authenticated %}
+                    <li><a href="{{url_for('users.login')}}">Login</a></li>
+                {% endif %}
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{url_for('users.profile')}}">Profile</a></li>
+                {% endif %}
             </ul>
         </div>
     </section>
@@ -25,9 +30,9 @@
         <div class="homepage-container">
             <div class="homepage-container-text">
                 <img src="../../static/Projectimg/Home-page-title.png" class="title-image">
-                <h3>New here? sign up for timeless adivce on Agriculture. </h3>
+                <h3>New here? sign up for timeless advice on Agriculture. </h3>
                 <button class="explore-button" onclick="javascript:location.href='#donation-section'">Explore</button>
-                <button class="map-button"><a href="../Mappage/map.html">Our Map</a></button>
+                <button class="map-button"><a href="{{url_for('Mappage.map')}}">Our Map</a></button>
             </div>
             <div class="socialmedia-container">
                 <img src="../../static/Projectimg/facebook1.png" alt="" class="socialmedia-image">
