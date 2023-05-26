@@ -56,4 +56,4 @@ def admin():
 @users_blueprint.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for(''))
+    return redirect(url_for('Homepage.homepage'))
