@@ -29,55 +29,62 @@
     	</div>
     </section>
 	<section class="search">
+		{% block content %}
 		<div class="display-block">
-			<div class="search-block">
-				<div class="search-bar">
-					<input id="search-input" type="text" placeholder="Search...">
+			<form method = "POST">
+				{{ form.csrf_token() }}
+				<div class="search-block">
+					<div class="search-bar">
+						{{ form.search }}
+						{% for error in form.search.errors %}
+							{{ error }}
+						{% endfor %}
+					</div>
+					{{ form.submit(class="button") }}
 				</div>
-				<button onclick="displayInput()">Search</button>
-			</div>
+			</form>
 			<div class="search-display">
 				<div class="top-container">
 					<div id="crop-img-container">
-						<a href="https://ecocrop.review.fao.org/ecocrop/ec_images/289.jpg">
-  							<img src="https://ecocrop.review.fao.org/ecocrop/ec_images/289.jpg">
+						<a href="{{ image }}">
+  							<img src="{{ image }}">
 						</a>
 					</div>
 					<div class="small-text-container">
 						<div class="column-container">
 							<div class="attribute-container">
 								<div class="attribute">Name:</div>
-								<div class="value">Okra</div>
+								<div class="value">{{ name }}</div>
 							</div>
 							<div class="attribute-container">
 								<div class="attribute">Species:</div>
-								<div class="value">Abelmoschus esculentus</div>
+								<div class="value">{{ species }}</div>
 							</div>
 							<div class="attribute-container">
 								<div class="attribute">Life Form:</div>
-								<div class="value">Herb</div>
+								<div class="value">{{ life_form }}</div>
 							</div>
 							<div class="attribute-container">
 								<div class="attribute">Category:</div>
-								<div class="value">Vegetables</div>
+								<div class="value">{{ category }}</div>
 							</div>
 						</div>
 						<div class="column-container">
 							<div class="attribute-container">
 								<div class="attribute">Life Span:</div>
-								<div class="value">Annual</div>
+								<div class="value">{{ life_span }}</div>
 							</div>
 							<div class="attribute-container">
 								<div class="attribute">Physiology:</div>
-								<div class="value">Single stem</div>
+								<div class="value">{{ physiology }}</div>
 							</div>
 							<div class="attribute-container">
 								<div class="attribute">Plant Attributes:</div>
-								<div class="value">Grown on large scale</div>
+								<div class="value">{{ attributes }}</div>
 							</div>
 							<div class="attribute-container">
 								<div class="attribute">Main Use:</div>
-								<div class="value">Food & beverage</div>
+								<div class="value">{{ main_use }}</div>
 							</div>
 						</div>
 					</div>
@@ -86,103 +93,103 @@
 					<div class="column-container">
 						<div class="attribute-container">
 							<div class="attribute">Optimum Min Temp (°C):</div>
-							<div class="value">20</div>
+							<div class="value">{{ opt_min_temp }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Optimum Max Temp (°C):</div>
-							<div class="value">30</div>
+							<div class="value">{{ opt_max_temp }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Absolute Min Temp (°C):</div>
-							<div class="value">12</div>
+							<div class="value">{{ abs_min_temp }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Absolute Max Temp (°C):</div>
-							<div class="value">35</div>
+							<div class="value">{{ abs_max_temp }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Optimum Min Rain (mm):</div>
-							<div class="value">600</div>
+							<div class="value">{{ opt_min_rain }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Optimum Max Rain (mm):</div>
-							<div class="value">1200</div>
+							<div class="value">{{ opt_max_rain }}</div>
 						</div>
 					</div>
 					<div class="column-container">
 						<div class="attribute-container">
 							<div class="attribute">Absolute Min Rain (mm):</div>
-							<div class="value">300</div>
+							<div class="value">{{ abs_min_rain }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Absolute Max Rain (mm):</div>
-							<div class="value">2500</div>
+							<div class="value">{{ abs_max_rain }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Optimum Min PH:</div>
-							<div class="value">5.5</div>
+							<div class="value">{{ opt_min_ph }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Optimum Max PH:</div>
-							<div class="value">7</div>
+							<div class="value">{{ opt_max_ph }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Absolute Min PH</div>
-							<div class="value">4.5</div>
+							<div class="value">{{ abs_min_ph }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Absolute Max PH</div>
-							<div class="value">8.7</div>
+							<div class="value">{{ abs_max_ph }}</div>
 						</div>
 					</div>
 					<div class="column-container">
 						<div class="attribute-container">
 							<div class="attribute">Absolute Min Altitude:</div>
-							<div class="value">-</div>
+							<div class="value">{{ abs_min_alt }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Absolute Max Altitude:</div>
-							<div class="value">1000</div>
+							<div class="value">{{ abs_max_alt }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Optimum Min Light:</div>
-							<div class="value">Clear skies</div>
+							<div class="value">{{ opt_min_light }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Optimum Max Light:</div>
-							<div class="value">Clear skies</div>
+							<div class="value">{{ opt_max_light }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Optimum Salinity:</div>
-							<div class="value">low (<4 dS/m)</div>
+							<div class="value">{{ opt_sal }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Optimum Drainage:</div>
-							<div class="value">Well (dry spells)</div>
+							<div class="value">{{ opt_drain }}</div>
 						</div>
 					</div>
 					<div class="column-container">
 						<div class="attribute-container">
 							<div class="attribute">Optimum Depth:</div>
-							<div class="value">Shallow (20-50 cm)</div>
+							<div class="value">{{ opt_depth }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Optimum Texture:</div>
-							<div class="value">Heavy, medium, light, organic</div>
+							<div class="value">{{ opt_text }}</div>
 						</div>
 						<div class="attribute-container">
 							<div class="attribute">Optimum Fertility:</div>
-							<div class="value">High</div>
+							<div class="value">{{ opt_fert }}</div>
 						</div>
 						<div class="big-attribute-container">
 							<div class="attribute">Climate Zone:</div>
-							<div class="value">Tropical wet & dry (Aw), tropical wet (Ar), steppe or semiarid (Bs), subtropical humid (Cf), subtropical dry summer (Cs), subtropical dry winter (Cw)",</div>
+							<div class="value">{{ clim_zone }}</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+		{% endblock %}}
 	<section class="donation">
 		<div class="display-block">
 			<div class="donation-container">
