@@ -16,7 +16,7 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.static_folder = 'static'
 
 from users.Views import users_blueprint
-from cropinfromationpage.views import cropinformation_blueprint
+from CropInformationPage.views import cropinformation_blueprint
 from homepage.views import homepage_blueprint
 from donationpage.views import donation_blueprint
 from mappage.views import mappage_blueprint
