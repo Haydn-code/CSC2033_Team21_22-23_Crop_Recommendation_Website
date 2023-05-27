@@ -125,7 +125,7 @@ def avgAnnualWeather(weather_dict):
         if valid_values:
             avg = np.mean(valid_values)
             rounded_avg = math.ceil(avg)
-            avg_weather_dict[category] = int(rounded_avg)
+            avg_weather_dict['annual_' + category] = int(rounded_avg)
 
     if all(value == 0 for value in avg_weather_dict.values()):
         avg_weather_dict = {category: 'N/A' for category in avg_weather_dict}
@@ -133,3 +133,7 @@ def avgAnnualWeather(weather_dict):
     return avg_weather_dict
 
 
+
+weather = getWeatherData(-1.5944351697090386, 54.99100606317938, 'Climate/tif_files')
+print(weather)
+print(avgAnnualWeather(weather))
