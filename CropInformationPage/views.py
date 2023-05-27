@@ -12,9 +12,13 @@ def cropinfromationpage():
     if form.validate_on_submit():
         crops = getCrops("DataAccess/Crop")
         crop = searchCrop(form.search.data, crops, True)
+
+        scroll_pos = 820
+        loaded_by_form = True
+
         if crop != None:
-            return render_template('Cropinformationpage/crop-information.html', form=form, search="Search...",
-                                   image=crop.get("image"),
+            return render_template('Cropinformationpage/crop-information.html', scroll_position=scroll_pos,
+                                   loaded=loaded_by_form, form=form, search="Search...", image=crop.get("image"),
                                    name=form.search.data, species=crop.get("species"), life_form=crop.get("life_form"),
                                    category=crop.get("category"), life_span=crop.get("life_span"),
                                    physiology=crop.get("physiology"), attributes=crop.get("plant_attributes"),
@@ -34,8 +38,8 @@ def cropinfromationpage():
                                    clim_zone=crop.get("climate_zone"))
         crop = searchCrop(form.search.data.lower(), crops, False)
         if crop != None:
-            return render_template('Cropinformationpage/crop-information.html', form=form, search="Search...",
-                                   image=crop.get("image"),
+            return render_template('Cropinformationpage/crop-information.html', scroll_position=scroll_pos,
+                                   loaded=loaded_by_form, form=form, search="Search...", image=crop.get("image"),
                                    name=form.search.data, species=crop.get("species"), life_form=crop.get("life_form"),
                                    category=crop.get("category"), life_span=crop.get("life_span"),
                                    physiology=crop.get("physiology"), attributes=crop.get("plant_attributes"),
@@ -54,7 +58,8 @@ def cropinfromationpage():
                                    opt_text=crop.get("optimal_texture"), opt_fert=crop.get("optimal_fertility"),
                                    clim_zone=crop.get("climate_zone"))
         else:
-            return render_template('Cropinformationpage/crop-information.html', form=form, search="Search...", image="",
+            return render_template('Cropinformationpage/crop-information.html', scroll_position=scroll_pos,
+                                   loaded=loaded_by_form, form=form, search="Search...", image="",
                                    name=form.search.data, species="n/a", life_form="n/a", category="n/a",
                                    life_span="n/a", physiology="n/a", attributes="n/a", main_use="n/a",
                                    opt_min_temp="n/a", opt_max_temp="n/a", abs_min_temp="n/a", abs_max_temp="n/a",

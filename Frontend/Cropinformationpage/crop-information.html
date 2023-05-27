@@ -239,6 +239,13 @@
 <script>
 
 	var toggle = false;
+	
+	window.onload = function() {
+        {% if loaded %}
+            var scrollPosition = {{ scroll_position|default(0) }};
+            window.scroll(0, scrollPosition);
+        {% endif %}
+    };
 
 	function toggleColours() {		
 		console.log(document.getElementsByClassName("display-block"));

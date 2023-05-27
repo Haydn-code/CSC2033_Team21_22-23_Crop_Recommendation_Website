@@ -47,6 +47,8 @@
 				{{ form.csrf_token }}
       			<input type="hidden" id="longitude" name="longitude" value="">
       			<input type="hidden" id="latitude" name="latitude" value="">
+      			<input type="hidden" id="country_name" name="country_name" value="">
+      			<input type="hidden" id="continent_name" name="continent_name" value="">
       			{{ form.submit(id="coor-submit", type="submit", style="display: none;") }}
     		</form>
 			<div class="info-container">
@@ -63,7 +65,7 @@
 						<h3>Name of Country:</h3>
 					</div>
 					<div id="info-textbox">
-						<h3 id="country_name">France</h3>
+						<h3>{{ name_country }}</h3>
 					</div>
 				</div>
 				<div class="attribute-container">
@@ -71,7 +73,7 @@
 						<h3>Name of Continent:</h3>
 					</div>
 					<div id="info-textbox">
-						<h3 id="continent_name">Europe</h3>
+						<h3> {{ name_continent }}</h3>
 					</div>
 				</div>
 				<div class="attribute-container">
@@ -325,9 +327,8 @@
                     
             document.getElementById('longitude').value = longitude;
         	document.getElementById('latitude').value = latitude;
-        	
-        	document.getElementById("country_name").innerHTML = e.features[0].properties["name_en"];
-            document.getElementById("continent_name").innerHTML = e.features[0].properties["region"];
+        	document.getElementById('country_name').value = e.features[0].properties["name_en"];
+        	document.getElementById('continent_name').value = e.features[0].properties["region"];
             
             document.getElementById('coor-submit').click();
         // -------------------------------------

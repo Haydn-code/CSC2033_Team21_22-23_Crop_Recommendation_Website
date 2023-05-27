@@ -14,11 +14,15 @@ def map():
     if form.validate_on_submit():
         longitude = form.longitude.data
         latitude = form.latitude.data
+        country_name = form.country_name.data
+        continent_name = form.continent_name.data
 
         scroll_pos = 820
         loaded_by_form = True
 
-        return render_template('Mappage/map.html', scroll_position=scroll_pos, loaded=loaded_by_form, form=form, min_temp=longitude, max_temp=latitude)
+        return render_template('Mappage/map.html', scroll_position=scroll_pos, loaded=loaded_by_form, form=form,
+                               name_country=country_name, name_continent=continent_name ,min_temp=longitude,
+                               max_temp=latitude)
 
     else:
         return render_template('Mappage/map.html', scroll_position=0, loaded=False, form=form, min_temp="N/A", max_temp="N/A")
