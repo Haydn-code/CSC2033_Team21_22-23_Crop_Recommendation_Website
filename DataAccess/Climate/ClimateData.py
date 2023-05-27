@@ -28,15 +28,15 @@ def findClosestCity(long, lat):
             city_lat = float(row['lat'])
             city_long = float(row['lng'])
 
-            # Calculate the distance between the input coordinates and the city
-            earth_radius = 6371  # Earth's radius in km
+            # calculates the distance between the input coordinates and the city
+            earth_radius = 6371  # earth's radius in km
             lat_distance = math.radians(city_lat - lat)
             lng_distance = math.radians(city_long - long)
             a = math.sin(lat_distance / 2) ** 2 + math.cos(math.radians(lat)) * math.cos(math.radians(city_lat)) * math.sin(lng_distance / 2) ** 2
             c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
             distance = earth_radius * c
 
-            # Update the closest city if a closer one has been found
+            # updates the closest city if a closer one has been found
             if distance < smallest_distance:
                 smallest_distance = distance
                 closest_city = row['city']
@@ -81,16 +81,19 @@ def getWeatherData(long, lat, folder):
     # loops through the folders and files, and extracts data
     for category in weather_dict.keys():
         for month in range(1, 13):
-            # Construct the filename and open the file with GDAL
+            # constructs the filename and open the file with GDAL
             filename = f"{folder}/{category}/{category}_{month:02d}.tif"
             ds = gdal.Open(filename)
 
-            # Get the pixel value at the given coordinates
+            # gets the pixel value at the given coordinates
             band = ds.GetRasterBand(1)
             value = band.ReadAsArray(x, y, 1, 1)[0][0]
 
-            # Add the value to the data dictionary
-            weather_dict[category].append(value)
+            # checks for missing or invalid data
+            if value == -32768 or value == 65535 or value < -1e+30:
+                weather_dict[category].append(0)
+            else:
+                weather_dict[category].append(value)
 
     return weather_dict
 
@@ -117,10 +120,16 @@ def avgAnnualWeather(weather_dict):
         'annual_wind': 0
     }
 
-    for category in weather_dict.keys():
-        avg = np.mean(weather_dict[category])
-        rounded_avg = math.ceil(avg)
-        avg_weather_dict[category] = int(rounded_avg)
+    for category, values in weather_dict.items():
+        valid_values = [value for value in values if value is not None]
+        if valid_values:
+            avg = np.mean(valid_values)
+            rounded_avg = math.ceil(avg)
+            avg_weather_dict[category] = int(rounded_avg)
+
+    if all(value == 0 for value in avg_weather_dict.values()):
+        avg_weather_dict = {category: 'N/A' for category in avg_weather_dict}
 
     return avg_weather_dict
+
 
