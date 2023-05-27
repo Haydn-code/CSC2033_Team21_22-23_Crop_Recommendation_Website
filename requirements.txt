@@ -10,5 +10,5 @@ flask_login
 python-dotenv
 wtforms
 email_validator
-requests
+requests==2.31.0
 bs4

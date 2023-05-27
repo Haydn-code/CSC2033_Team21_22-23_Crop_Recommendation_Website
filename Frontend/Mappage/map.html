@@ -203,7 +203,14 @@
 </form>
 <script>
 	var toggle = false;
-
+	
+    window.onload = function() {
+        {% if loaded %}
+            var scrollPosition = {{ scroll_position|default(0) }};
+            window.scroll(0, scrollPosition);
+        {% endif %}
+    };
+    
 	function toggleColours() {		
 		console.log(document.getElementsByClassName("display-block"));
 		if (toggle == true) { //green-grey colour scheme
@@ -229,7 +236,7 @@
 	function scrollToSection(){
 		var element = document.querySelector('.map');
    		element.scrollIntoView({behavior: "smooth"});
-   		console.log("ive been scrolled")
+   		console.log(element.scrollIntoView({behavior: "smooth"}))
 	}
 
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYWxyb2JlcnRzb25leCIsImEiOiJjbGgyNjk0dWwxYW9kM2pqdXJwcDVyd25hIn0.C0kwA2ZQUzo1BJ0YzAbjIg';
@@ -318,11 +325,12 @@
                     
             document.getElementById('longitude').value = longitude;
         	document.getElementById('latitude').value = latitude;
+        	
+        	document.getElementById("country_name").innerHTML = e.features[0].properties["name_en"];
+            document.getElementById("continent_name").innerHTML = e.features[0].properties["region"];
             
             document.getElementById('coor-submit').click();
         // -------------------------------------
-        	document.getElementById("country_name").innerHTML = e.features[0].properties["name_en"];
-            document.getElementById("continent_name").innerHTML = e.features[0].properties["region"];
             
         });        
     });    

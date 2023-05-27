@@ -15,7 +15,10 @@ def map():
         longitude = form.longitude.data
         latitude = form.latitude.data
 
-        return render_template('Mappage/map.html', form=form, min_temp=longitude, max_temp=latitude)
+        scroll_pos = 820
+        loaded_by_form = True
+
+        return render_template('Mappage/map.html', scroll_position=scroll_pos, loaded=loaded_by_form, form=form, min_temp=longitude, max_temp=latitude)
 
     else:
-        return render_template('Mappage/map.html', form=form, min_temp="N/A", max_temp="N/A")
+        return render_template('Mappage/map.html', scroll_position=0, loaded=False, form=form, min_temp="N/A", max_temp="N/A")
