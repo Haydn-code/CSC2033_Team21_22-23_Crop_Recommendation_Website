@@ -16,3 +16,7 @@ class loginForm(FlaskForm):
     email = StringField(validators=[DataRequired(), Email()])
     password = PasswordField(validators=[DataRequired()])
     submit = SubmitField()
+
+class searchFarmForm(FlaskForm):
+    search = StringField(validators=[DataRequired(), Length(max=50)])
+    submit = SubmitField()

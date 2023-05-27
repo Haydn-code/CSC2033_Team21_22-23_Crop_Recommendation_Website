@@ -35,7 +35,7 @@
             <div class="profile-element-container">
                 <div class="profile-element-item">
                     <h1 class="profile-username">User Name</h1>
-                    <img src="../../Projectimg/farmer-profile.png" alt="" class="profile-image">
+                    <img src="../../static/Projectimg/farmer-profile.png" alt="" class="profile-image">
                     <h1 class="profile-email">{{ user.email }}</h1>
                     <h1 class="profile-phone">User Phone Number</h1>
                     <h1>Your farms</h1>
@@ -44,9 +44,13 @@
                     <div class="add-farm-container">
                     	<div class="search-bar">
                     		<div id="search-input">
+							{{ form.search }}
+							{% for error in form.search.errors %}
+								{{ error }}
+							{% endfor %}
 							</div>
 						</div>
-                    	<button>Add Farm</button>
+						{{ form.submit(class="button") }}
                     </div>
                 </div>
             </div>

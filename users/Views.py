@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, redirect, flash, url_for
-from users.Forms import signUpForm, loginForm
+
+from users.Forms import signUpForm, loginForm, searchFarmForm
 from flask_login import login_user, logout_user, current_user
 from Models import Users
 import bcrypt
@@ -47,7 +48,9 @@ def signUp():
 
 @users_blueprint.route('/profile')
 def profile():
-    return render_template('users/profile.html', user=current_user)
+    form = searchFarmForm()
+
+    return render_template('users/profile.html', form=form, user=current_user)
 
 @users_blueprint.route('/admin')
 def admin():

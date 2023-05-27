@@ -930,11 +930,13 @@ body {
     height: 100%;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 30px;
+    padding-top: 10px;
     border: solid 3px #689b6c;
     text-align: center;
 }
 
 .profile-element-item img {
+	margin-top: 20px;
     width: 25%;
     height: 25%;
 }
@@ -972,6 +974,10 @@ body {
 	float: left;
 }
 
+.profile-element-item .add-farm-container .search-bar #search-input{
+	width: 100%;
+}
+
 .profile-element-item .add-farm-container .search-bar #search-input input[type="text"]{
 	padding-left: 10px;
 	padding-right: 10px;
@@ -982,7 +988,7 @@ body {
     width: 100%;
 }
 
-.profile-element-item .add-farm-container button {
+.profile-element-item .add-farm-container .button {
     background-color: #8fa689;
     border: none;
     width: 20%;
@@ -993,7 +999,7 @@ body {
     float: right;
 }
 
-.profile-element-item .add-farm-container button:hover {
+.profile-element-item .add-farm-container .button:hover {
     background-color: #85c489;
     width: 20%;
     height: 40px;
