@@ -15,8 +15,8 @@
         </div>
         <div class="navbar">
             <ul>
-                <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
-                <li><a href="{{url_for('Mappage.map')}}">Agriculture Map</a></li>
+                <li><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
+                <li class="active"><a href="{{url_for('Mappage.map')}}">Agriculture Map</a></li>
                 <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
                 {% if not current_user.is_authenticated %}
                     <li><a href="{{url_for('users.login')}}">Login</a></li>
@@ -167,7 +167,7 @@
 					protection measures for vulnerable communities. By supporting these 
 					goals, we can help create a world where everyone has access to the 
 					food and resources they need to live a healthy and fulfilling life</p>
-					<button><a href="../Donationpage/donations.html">Donate and Save Lives</a></button>
+					<button><a href="{{url_for('Donationpage.donations')}}">Donate and Save Lives</a></button>
 				</div>
 			</div>
 		</div>

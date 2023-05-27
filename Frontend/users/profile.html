@@ -12,7 +12,7 @@
         </div>
         <div class="navbar">
             <ul>
-                <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
+                <li><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
                 <li><a href="{{url_for('Mappage.map')}}">Agriculture Map</a></li>
                 <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
                 {% if not current_user.is_authenticated %}
@@ -20,7 +20,7 @@
                 {% endif %}
                 {% if current_user.is_authenticated %}
                     {% if current_user.role == 'users' %}
-                        <li><a href="{{url_for('users.profile')}}">Profile</a></li>
+                        <li class="active"><a href="{{url_for('users.profile')}}">Profile</a></li>
                     {% endif %}
                     {% if current_user.role == 'admin' %}
                         <li><a href="{{url_for('users.admin')}}">Admin</a></li>
@@ -41,7 +41,13 @@
                     <h1>Your farms</h1>
                     <div class="user-farms">
                     </div>
-                    <button>Return to Map</button>
+                    <div class="add-farm-container">
+                    	<div class="search-bar">
+                    		<div id="search-input">
+							</div>
+						</div>
+                    	<button>Add Farm</button>
+                    </div>
                 </div>
             </div>
         </section>

@@ -14,7 +14,7 @@
         </div>
         <div class="navbar">
             <ul>
-                <li class="active"><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
+                <li><a href="{{url_for('Homepage.homepage')}}">Home</a></li>
                 <li><a href="{{url_for('Mappage.map')}}">Agriculture Map</a></li>
                 <li><a href="{{url_for('Cropinformationpage.cropinfromationpage')}}">Crop Information</a></li>
                 {% if not current_user.is_authenticated %}

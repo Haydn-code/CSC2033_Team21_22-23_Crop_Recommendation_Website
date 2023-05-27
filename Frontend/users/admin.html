@@ -23,7 +23,7 @@
                         <li><a href="{{url_for('users.profile')}}">Profile</a></li>
                     {% endif %}
                     {% if current_user.role == 'admin' %}
-                        <li><a href="{{url_for('users.admin')}}">Admin</a></li>
+                        <li class="active"><a href="{{url_for('users.admin')}}">Admin</a></li>
                     {% endif %}
                     <li><a href="{{url_for('users.logout')}}">Logout</a></li>
                 {% endif %}
