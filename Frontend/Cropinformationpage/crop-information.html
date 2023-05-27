@@ -46,10 +46,12 @@
 				{{ form.csrf_token() }}
 				<div class="search-block">
 					<div class="search-bar">
-						{{ form.search }}
-						{% for error in form.search.errors %}
-							{{ error }}
-						{% endfor %}
+						<div id="search-input">
+							{{ form.search }}
+							{% for error in form.search.errors %}
+								{{ error }}
+							{% endfor %}
+						</div>
 					</div>
 					{{ form.submit(class="button") }}
 				</div>
@@ -200,7 +202,7 @@
 				</div>
 			</div>
 		</div>
-		{% endblock %}}
+		{% endblock %}
 	<section class="donation">
 		<div class="display-block">
 			<div class="donation-container">
