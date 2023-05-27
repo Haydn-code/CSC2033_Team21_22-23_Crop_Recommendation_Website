@@ -24,7 +24,8 @@ def getCrops(folder):
         if type(row["Plant.attributes"]) == float:
             pass
         # checks that the Crop can be grown on large scale and that its use addresses world hunger
-        elif row["use.detailed"] in valid_uses and "grown on large scale" in row["Plant.attributes"]:
+        elif row["use.detailed"] in valid_uses and ("grown on large scale" in row["Plant.attributes"] or
+                                                    "grown on small scale" in row["Plant.attributes"]):
             # collects the relevant info for the Crop and assigns to dict
             info = {"optimal_max_temp": row["Temp_Opt_Max"], "absolute_max_temp": row["Temp_Abs_Max"],
                     "optimal_min_temp": row["temp_opt_min"], "absolute_min_temp": row["Temp_Abs_Min"],
@@ -63,7 +64,6 @@ Note: crops should be a variable containing the return value from getCrops()
 
 
 def searchCrop(crop_name, crops, scientific):
-    print(crop_name)
     if crop_name == "nan":
         return None
     if not scientific:
@@ -84,8 +84,8 @@ def searchCrop(crop_name, crops, scientific):
             if crop_name == crop.get("species"):
                 img = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".jpg")
                 if img.status_code == 200:
-                    crop["image"] = img
+                    crop["image"] = "https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".jpg"
                 else:
-                    crop["image"] = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".gif")
+                    crop["image"] = "https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".gif"
                 return crop
     return None
