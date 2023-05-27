@@ -64,7 +64,6 @@ Note: crops should be a variable containing the return value from getCrops()
 
 
 def searchCrop(crop_name, crops, scientific):
-    print(crop_name)
     if crop_name == "nan":
         return None
     if not scientific:
