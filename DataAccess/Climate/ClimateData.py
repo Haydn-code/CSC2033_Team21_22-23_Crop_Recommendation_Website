@@ -132,8 +132,3 @@ def avgAnnualWeather(weather_dict):
 
     return avg_weather_dict
 
-
-
-weather = getWeatherData(-1.5944351697090386, 54.99100606317938, 'Climate/tif_files')
-print(weather)
-print(avgAnnualWeather(weather))
