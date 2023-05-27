@@ -760,7 +760,7 @@ body {
 	align-self: center;
 }
 
-.search .display-block .search-block .search-bar #search-input {
+.search .display-block .search-block .search-bar #search-input input[type="text"]{
 	padding-left: 10px;
 	padding-right: 10px;
     border: none;
@@ -770,7 +770,7 @@ body {
     width: 100%;
 }
 
-.search .display-block .search-block button {
+.search .display-block .search-block .button {
     display: block;
     background-color: #8fa689;
 	border: 2px solid black;
@@ -781,7 +781,7 @@ body {
     transition: 0.5s;
 }
 
-.search .display-block .search-block button:hover {
+.search .display-block .search-block .button:hover {
     background-color: #85c489;
     width: 20%;
     height: 40px;
