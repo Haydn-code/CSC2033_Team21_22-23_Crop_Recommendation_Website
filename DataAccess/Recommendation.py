@@ -98,12 +98,12 @@ Recommends the most suitable crop to grow at a specific coordinate.
 Parameters:
 long (float): The longitudinal coordinate.
 lat (float): The latitudinal coordinate.
-crops (dict): The dictionary returned from getCrops(folder) in crop.py.
+crops (dict): A dictionary containing information about crops, obtained from getCrops(folder) function in crop.py.
 soilPath (str): The path to the Soil directory.
 climatePath (str): The path to the Climate/tif_files directory.
 
 Returns:
-dict: A dictionary containing information on the recommended crop.
+list: A list of dictionaries containing information on the recommended crops.
 """
 
 
@@ -112,8 +112,7 @@ def cropRecommendation(long, lat, crops, soilPath, climatePath):
     combined = summariseProfiles(profiles)
     weather = getWeatherData(long, lat, climatePath)
 
-    recommended_crop = None
-    highest_score = -1
+    crop_scores = []
 
     for crop_code in crops:
         crop = crops[crop_code]
@@ -141,9 +140,12 @@ def cropRecommendation(long, lat, crops, soilPath, climatePath):
                     score = (int(temp_max) - temp_avg) + (int(rain_max) - rain_avg) + (
                         float(ph_max) - combined['D1']['ph'])
 
-                    if score > highest_score:
-                        highest_score = score
-                        recommended_crop = crop
+                    crop_scores.append((crop, score))
 
-    return recommended_crop
+    # Sort the crop scores in descending order
+    crop_scores.sort(key=lambda x: x[1], reverse=True)
+
+    # Return the top 5 crops
+    recommended_crops = [crop_score[0] for crop_score in crop_scores[:5]]
+    return recommended_crops
 
