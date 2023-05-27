@@ -24,7 +24,9 @@ def getCrops(folder):
         if type(row["Plant.attributes"]) == float:
             pass
         # checks that the Crop can be grown on large scale and that its use addresses world hunger
-        elif row["use.detailed"] in valid_uses and "grown on large scale" in row["Plant.attributes"]:
+        elif row["use.detailed"] in valid_uses and ("grown on large scale" in row["Plant.attributes"] or
+                                                    "grown on small scale" in row["Plant.attributes"]):
+            print(row)
             # collects the relevant info for the Crop and assigns to dict
             info = {"optimal_max_temp": row["Temp_Opt_Max"], "absolute_max_temp": row["Temp_Abs_Max"],
                     "optimal_min_temp": row["temp_opt_min"], "absolute_min_temp": row["Temp_Abs_Min"],
