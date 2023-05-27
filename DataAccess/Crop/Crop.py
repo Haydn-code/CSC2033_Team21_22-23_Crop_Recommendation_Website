@@ -86,8 +86,8 @@ def searchCrop(crop_name, crops, scientific):
             if crop_name == crop.get("species"):
                 img = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".jpg")
                 if img.status_code == 200:
-                    crop["image"] = img
+                    crop["image"] = "https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".jpg"
                 else:
-                    crop["image"] = requests.get("https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".gif")
+                    crop["image"] = "https://ecocrop.review.fao.org/ecocrop/ec_images/" + each + ".gif"
                 return crop
     return None
