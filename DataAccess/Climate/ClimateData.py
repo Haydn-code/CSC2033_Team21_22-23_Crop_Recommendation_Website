@@ -93,3 +93,34 @@ def getWeatherData(long, lat, folder):
             weather_dict[category].append(value)
 
     return weather_dict
+
+
+"""
+Calculates the rounded-up averages of the values in the given weather dictionary and stores them as integers.
+
+Parameters:
+    weather_dict (dict): A dictionary containing weather data with category keys and lists of values.
+
+Returns:
+    dict: A new dictionary with the rounded-up average values stored as integers. The keys are modified to indicate
+          that the values represent annual averages.
+"""
+
+
+def avgAnnualWeather(weather_dict):
+    avg_weather_dict = {
+        'annual_prec': 0,
+        'annual_srad': 0,
+        'annual_temp_avg': 0,
+        'annual_temp_max': 0,
+        'annual_temp_min': 0,
+        'annual_wind': 0
+    }
+
+    for category in weather_dict.keys():
+        avg = np.mean(weather_dict[category])
+        rounded_avg = math.ceil(avg)
+        avg_weather_dict[category] = int(rounded_avg)
+
+    return avg_weather_dict
+
