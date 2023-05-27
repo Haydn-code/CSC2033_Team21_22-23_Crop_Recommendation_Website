@@ -759,6 +759,10 @@ body {
 	align-self: center;
 }
 
+.search .display-block .search-block .search-bar #search-input{
+	width: 100%;
+}
+
 .search .display-block .search-block .search-bar #search-input input[type="text"]{
 	padding-left: 10px;
 	padding-right: 10px;
