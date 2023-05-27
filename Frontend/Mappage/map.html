@@ -41,8 +41,23 @@
     	</div>
     </section>
 	<section class="map">
+		{% block content %}
 		<div class="display-block">
+			<form id="coor-form" method="POST" action="{{ url_for('Mappage.map') }}" onsubmit="updateFormFields()">
+				{{ form.csrf_token }}
+      			<input type="hidden" id="longitude" name="longitude" value="">
+      			<input type="hidden" id="latitude" name="latitude" value="">
+      			{{ form.submit(id="coor-submit", type="submit", style="display: none;") }}
+    		</form>
 			<div class="info-container">
+				<div class="attribute-container">
+					<div id="attribute-textbox">
+						<h3>Closest City:</h3>
+					</div>
+					<div id="info-textbox">
+						<h3>{{ close_city}}</h3>
+					</div>
+				</div>
 				<div class="attribute-container">
 					<div id="attribute-textbox">
 						<h3>Name of Country:</h3>
@@ -64,7 +79,7 @@
 						<h3>Minimum Temperature (°C):</h3>
 					</div>
 					<div id="info-textbox">
-						<h3>13</h3>
+						<h3>{{ min_temp }}</h3>
 					</div>
 				</div>
 				<div class="attribute-container">
@@ -72,7 +87,7 @@
 						<h3>Maximum Temperature (°C):</h3>
 					</div>
 					<div id="info-textbox">
-						<h3>24</h3>
+						<h3>{{ max_temp }}</h3>
 					</div>
 				</div>
 				<div class="attribute-container">
@@ -80,7 +95,7 @@
 						<h3>Average Temperature (°C):</h3>
 					</div>
 					<div id="info-textbox">
-						<h3>20</h3>
+						<h3>{{ avg_temp }}</h3>
 					</div>
 				</div>
 				<div class="attribute-container">
@@ -88,7 +103,7 @@
 						<h3>Solar Radiation (kW/m2):</h3>
 					</div>
 					<div id="info-textbox">
-						<h3 id="country_name">54</h3>
+						<h3> {{ solar_rad }}</h3>
 					</div>
 				</div>
 				<div class="attribute-container">
@@ -96,7 +111,7 @@
 						<h3>Average Windspeed (mph):</h3>
 					</div>
 					<div id="info-textbox">
-						<h3>13</h3>
+						<h3>{{ avg_wind }}</h3>
 					</div>
 				</div>
 				<div class="attribute-container">
@@ -104,7 +119,7 @@
 						<h3>Average Rainfall (mm):</h3>
 					</div>
 					<div id="info-textbox">
-						<h3>6</h3>
+						<h3>{{ avg_rain }}</h3>
 					</div>
 				</div>
 				<div class="attribute-container">
@@ -112,7 +127,7 @@
 						<h3>Salinity of Soil (dS/m):</h3>
 					</div>
 					<div id="info-textbox">
-						<h3>500</h3>
+						<h3>{{ soil_salinity }}</h3>
 					</div>
 				</div>
 				<div class="attribute-container">
@@ -120,7 +135,7 @@
 						<h3>Soil PH:</h3>
 					</div>
 					<div id="info-textbox">
-						<h3>11</h3>
+						<h3>{{ soil_ph }}</h3>
 					</div>
 				</div>
 				<div class="attribute-container">
@@ -128,7 +143,7 @@
 						<h3>Soil Texture:</h3>
 					</div>
 					<div id="info-textbox">
-						<h3>Clay</h3>
+						<h3>{{ soil_texture }}</h3>
 					</div>
 				</div>
 				<div class="recommend-container">
@@ -147,6 +162,7 @@
 					<div id="map" style="height: 100%"></div>
 				</div>
 		</div>
+		{% endblock %}
 	</section>
 	<section class="donation">
 		<div class="display-block">
@@ -181,6 +197,10 @@
 			<button onclick="toggleColours()">Toggle Colour Blind Mode</button>
 		</div>
 	</section>
+<form action="{{ url_for('Mappage.map') }}" method="post">
+    <input type="hidden" name="longitude" value="{{ longitude }}">
+	<input type="hidden" name="latitude" value="{{ latitude }}">
+</form>
 <script>
 	var toggle = false;
 
@@ -209,6 +229,7 @@
 	function scrollToSection(){
 		var element = document.querySelector('.map');
    		element.scrollIntoView({behavior: "smooth"});
+   		console.log("ive been scrolled")
 	}
 
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYWxyb2JlcnRzb25leCIsImEiOiJjbGgyNjk0dWwxYW9kM2pqdXJwcDVyd25hIn0.C0kwA2ZQUzo1BJ0YzAbjIg';
@@ -290,12 +311,21 @@
         
         map.on('click', 'country_fills', (e) => {
         // Coordinates to send back to the python functions
-            var coordinates = e.lngLat.wrap()
+            var longitude = e.lngLat.wrap()["lng"];
+            var latitude = e.lngLat.wrap()["lat"];
+            console.log(longitude);
+            console.log(latitude);
+                    
+            document.getElementById('longitude').value = longitude;
+        	document.getElementById('latitude').value = latitude;
+            
+            document.getElementById('coor-submit').click();
         // -------------------------------------
         	document.getElementById("country_name").innerHTML = e.features[0].properties["name_en"];
             document.getElementById("continent_name").innerHTML = e.features[0].properties["region"];
-        });
-    });
+            
+        });        
+    });    
 </script>
 </body>
 </html>

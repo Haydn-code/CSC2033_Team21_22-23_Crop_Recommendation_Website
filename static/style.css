@@ -542,7 +542,7 @@ body {
 }
 
 .map .display-block .info-container .attribute-container{
-	height: 50px;
+	height: 47px;
 	width: 100%;
 	display: flex;
 }
@@ -560,7 +560,7 @@ body {
 }
 
 .map .display-block .info-container .recommend-container{
-	height: 206px;
+	height: 199px;
 	width: 100%;
 }
 
