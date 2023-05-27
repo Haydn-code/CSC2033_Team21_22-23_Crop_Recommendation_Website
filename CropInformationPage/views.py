@@ -53,6 +53,16 @@ def cropinfromationpage():
                                    opt_drain=crop.get("optimal_drainage"), opt_depth=crop.get("optimal_depth"),
                                    opt_text=crop.get("optimal_texture"), opt_fert=crop.get("optimal_fertility"),
                                    clim_zone=crop.get("climate_zone"))
+        else:
+            return render_template('Cropinformationpage/crop-information.html', form=form, search="Search...", image="",
+                                   name=form.search.data, species="n/a", life_form="n/a", category="n/a",
+                                   life_span="n/a", physiology="n/a", attributes="n/a", main_use="n/a",
+                                   opt_min_temp="n/a", opt_max_temp="n/a", abs_min_temp="n/a", abs_max_temp="n/a",
+                                   opt_min_rain="n/a", opt_max_rain="n/a", abs_min_rain="n/a", abs_max_rain="n/a",
+                                   opt_min_ph="n/a", opt_max_ph="n/a", abs_min_ph="n/a", abs_max_ph="n/a",
+                                   abs_min_alt="n/a", abs_max_alt="n/a", opt_min_light="n/a", opt_max_light="n/a",
+                                   opt_sal="n/a", opt_drain="n/a", opt_depth="n/a", opt_text="n/a", opt_fert="n/a",
+                                   clim_zone="n/a")
     return render_template('Cropinformationpage/crop-information.html', form=form, search="Search...",
                            image="https://ecocrop.review.fao.org/ecocrop/ec_images/289.jpg",
                            name="Okra", species="Abelmoschus esculentus", life_form="Herb", category="Vegetables",
