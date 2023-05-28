@@ -9,8 +9,6 @@ class signUpForm(FlaskForm):
     email = StringField(validators=[DataRequired(), Email()])
     password = PasswordField(validators=[DataRequired(), EqualTo(fieldname='confirm_password',
                                                                  message='Passwords must match')])
-    longitude = FloatField()
-    latitude = FloatField()
     confirm_password = PasswordField(validators=[DataRequired()])
     submit = SubmitField()
 
