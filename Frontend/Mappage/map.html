@@ -245,12 +245,15 @@
         center: [0, 30],
         zoom: 1.75
     });
+    
     let hoveredCountryId = null;
     
-	const marker = new mapboxgl.Marker()
-    	.setLngLat([1, 52.5])
-		.setPopup(new mapboxgl.Popup().setHTML("<p>Field: Jeff's Field 15</p>"))
+    for (var i = 0; i < {{num_of_markers}}; i++) {
+    	const marker = new mapboxgl.Marker()
+    	.setLngLat([{{ marker_lng }}[i], {{ marker_lat }}[i]])
+		.setPopup(new mapboxgl.Popup().setHTML("<p> {{ marker_name }}[i] </p>"))
     	.addTo(map);
+    }
 
     map.on('load', () => {
         map.addSource('countries', {
