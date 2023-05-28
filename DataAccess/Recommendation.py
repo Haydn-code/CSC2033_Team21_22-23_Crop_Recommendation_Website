@@ -1,3 +1,7 @@
+from DataAccess.Climate.ClimateData import getWeatherData
+from DataAccess.Soil.Soil import getSoilData
+
+
 """Defined a function that takes all of the crops and provides a summary of the necessary data for crop recommendation
 for each layer, from each profile relative to the percentage of land they take up.
 
@@ -16,7 +20,7 @@ def summariseProfiles(profiles):
         soil_salinity = 0
         layer = {}
         for each in profiles:
-            percent = int(each[-3:]) / 100
+            percent = int(each[-2:]) / 100
             profile = profiles.get(each).get("D" + str(i))
             ph += float(profile.get("ph")) * percent
             soil_salinity += float(profile.get("soil_salinity")) * percent
@@ -105,6 +109,8 @@ list: A list of dictionaries containing information on the recommended crops.
 
 def cropRecommendation(long, lat, crops, soilPath, climatePath):
     profiles = getSoilData(long, lat, 1, soilPath)
+    if profiles == None:
+        return None
     combined = summariseProfiles(profiles)
     weather = getWeatherData(long, lat, climatePath)
 
