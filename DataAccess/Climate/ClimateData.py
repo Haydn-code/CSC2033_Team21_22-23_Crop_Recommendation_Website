@@ -17,8 +17,8 @@ Returns:
 """
 
 
-def findClosestCity(long, lat):
-    with open('worldcities.csv', newline='', encoding='utf-8') as cities_file:
+def findClosestCity(long, lat, folder):
+    with open(f'{folder}/worldcities.csv', newline='', encoding='utf-8') as cities_file:
         cities_reader = csv.DictReader(cities_file)
 
         closest_city = None
