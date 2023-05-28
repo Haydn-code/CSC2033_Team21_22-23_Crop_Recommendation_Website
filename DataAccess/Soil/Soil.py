@@ -78,6 +78,8 @@ def getSoilData(long, lat, detailed, folder):
     map_units = pd.read_csv(f"{folder}/WISE30sec/Interchangeable_format/HW30s_MapUnit.txt", sep=',', dtype=str)
     soil_record = map_units.loc[map_units["NEWSUID"] == map_code]
     no_profiles = int(soil_record.get("NoSoilComp").values[0])
+    if no_profiles == 0:
+        return None
 
     # accesses the data from either all of the Soil profiles or just the dominant one depending on the value of detailed
     soil_profiles = {}
