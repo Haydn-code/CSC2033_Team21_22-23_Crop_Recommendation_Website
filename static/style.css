@@ -115,6 +115,8 @@ body {
     text-align: center;
     align-items: center;
     color: white;
+    position: absolute;
+    bottom: 0;
 }
 
 .footer p {
@@ -277,10 +279,11 @@ body {
     position: relative;
     width: 33.33%;
     height: 70vh;
+    overflow: hidden;
 }
 
 .about-section .about-container .about-container-image img {
-    width: 100%;
+    width: 150%;
     height: 100%;
 
 }
@@ -402,6 +405,7 @@ body {
     display: block;
     text-align: center;
     position: relative;
+    overflow: hidden;
     z-index: 3;
 
 }
@@ -409,7 +413,7 @@ body {
 .homepage-donations-section .homepage-donations-container .homepage-donations-column1 img {
     z-index: 1;
     width: 100%;
-    height: 100%;
+    height: 200%;
 }
 
 
@@ -440,6 +444,11 @@ body {
     left: 25%;
     right: 0%;
 
+}
+
+.homepage-donations-section .homepage-donations-container .homepage-donations-column1 button a {
+    text-decoration: none;
+    color: white;
 }
 
 .homepage-donations-section .homepage-donations-container .homepage-donations-column1 button:hover {
@@ -492,6 +501,12 @@ body {
     display: block;
     margin-top: 20px;
     margin-bottom: 10px;
+}
+
+.form-container form .farm-loaction input{
+    display: inline-block;
+    width: 50%;
+    float: left;
 }
 
 .form-container form .button {

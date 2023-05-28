@@ -70,6 +70,17 @@
                         {{ error }}
                     {% endfor %}
                 </div>
+                <label class="form-labels">Longitude - Latitude</label>
+                <div class="farm-loaction">
+                    {{ form.longitude(class="input", placeholder="coordinates") }}
+                    {% for error in form.phone.errors %}
+                        {{ error }}
+                    {% endfor %}
+                    {{ form.latitude(class="input", placeholder="coordinates") }}
+                    {% for error in form.phone.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
                 <label class="form-labels">Password</label>
                 <div>
                     {{ form.password(class="password", placeholder="") }}

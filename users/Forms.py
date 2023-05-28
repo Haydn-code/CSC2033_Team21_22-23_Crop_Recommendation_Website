@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, IntegerField
+from wtforms import StringField, SubmitField, PasswordField, IntegerField, FloatField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 class signUpForm(FlaskForm):
@@ -9,6 +9,8 @@ class signUpForm(FlaskForm):
     email = StringField(validators=[DataRequired(), Email()])
     password = PasswordField(validators=[DataRequired(), EqualTo(fieldname='confirm_password',
                                                                  message='Passwords must match')])
+    longitude = FloatField(validators=[DataRequired()])
+    latitude = FloatField(validators=[DataRequired()])
     confirm_password = PasswordField(validators=[DataRequired()])
     submit = SubmitField()
 
