@@ -30,8 +30,8 @@ def map():
             soil_ph = "N/A"
             soil_texture = "N/A"
         climate = avgAnnualWeather(getWeatherData(longitude, latitude, "DataAccess/Climate/tif_files"))
-        if climate != None:
-            min_temp = climate.get("temp_min")
+        if climate is not None:
+            min_temp = climate.get("annual_temp_min")
             max_temp = climate.get("annual_temp_max")
             avg_temp = climate.get("annual_temp_avg")
             solar_rad = climate.get("annual_srad")
@@ -48,7 +48,7 @@ def map():
         test = cropRecommendation(longitude, latitude, getCrops("DataAccess/Crop"),
                                        "DataAccess/Soil",
                                        "DataAccess/Climate/tif_files")
-        if test != None:
+        if test is not None:
             for each in test:
                 recommend += each.get("species") + ", "
         country_name = form.country_name.data
@@ -58,7 +58,7 @@ def map():
         loaded_by_form = True
 
         return render_template('Mappage/map.html', scroll_position=scroll_pos, loaded=loaded_by_form, form=form,
-                               close_city=findClosestCity(longitude, latitude, "DataAccess/Climate"), min_tem=min_temp,
+                               close_city=findClosestCity(longitude, latitude, "DataAccess/Climate"), min_temp=min_temp,
                                max_temp=max_temp, avg_temp=avg_temp, solar_rad=solar_rad, avg_wind=avg_wind,
                                avg_rain=avg_rain, soil_salinity=soil_salinity, soil_ph=soil_ph,
                                soil_texture=soil_texture, recommendation=recommend, name_country=country_name,
