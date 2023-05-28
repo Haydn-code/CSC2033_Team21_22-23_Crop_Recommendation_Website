@@ -42,18 +42,18 @@
                     <div class="user-farms">
                     </div>
                     <div class="add-farm-container">
-                        <form action="" class="add-farm">
+                        <form action="" class="add-farm" method="POST">
                             {{ form.csrf_token() }}
                             <label for="">Add your farm</label>
-                            {{ form.longitude(class="input", placeholder="coordinates") }}
+                            {{ form.longitude(class="input", placeholder="Longitude") }}
                             {% for error in form.longitude.errors %}
                                 {{ error }}
                             {% endfor %}
-                            {{ form.latitude(class="input", placeholder="coordinates") }}
+                            {{ form.latitude(class="input", placeholder="Latitude") }}
                             {% for error in form.latitude.errors %}
                                 {{ error }}
                             {% endfor %}
-                            {{ form.farm_name(class="input", placeholder="coordinates") }}
+                            {{ form.farm_name(class="input", placeholder="Name") }}
                             {% for error in form.farm_name.errors %}
                                 {{ error }}
                             {% endfor %}

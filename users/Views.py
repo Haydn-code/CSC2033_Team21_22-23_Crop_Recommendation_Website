@@ -6,6 +6,15 @@ from Models import Users, Fields
 import bcrypt
 
 
+def addField(long, lat, name):
+    from database import db
+    new_field = Fields(longitude=long,
+                       latitude=lat,
+                       name=name,
+                       userID=current_user.id)
+    db.session.add(new_field)
+    db.session.commit()
+
 users_blueprint = Blueprint('users', __name__)
 @users_blueprint.route('/', methods=['POST','GET'])
 @users_blueprint.route('/login', methods=['POST','GET'])
@@ -46,21 +55,24 @@ def signUp():
         return redirect(url_for('users.login'))
     return render_template('users/signup.html', form=form)
 
-@users_blueprint.route('/profile')
+@users_blueprint.route('/profile', methods=['GET','POST'])
 def profile():
+    from main import db
+    from Models import Fields
     form = searchFarmForm()
-    user = current_user
-    name = user.firstname + " " + user.lastname
+    name = current_user.firstname + " " + current_user.lastname
     if form.validate_on_submit():
-        #addField(form.longitude.data, form.latitude.data, form.farm_name.data)
-        from database import db
         new_field = Fields(longitude=form.longitude.data,
                            latitude=form.latitude.data,
                            name=form.farm_name.data,
-                           userID=current_user.id)
+                           user=current_user)
         db.session.add(new_field)
         db.session.commit()
-    return render_template('users/profile.html', form=form, email=user.username, phone=user.phone ,name=name)
+    return render_template('users/profile.html',
+                           form=form,
+                           email=current_user.username,
+                           phone=current_user.phone ,
+                           name=name)
 
 @users_blueprint.route('/admin')
 def admin():

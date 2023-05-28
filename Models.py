@@ -29,12 +29,10 @@ class Fields(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userID = db.Column(db.Integer, db.ForeignKey("users.id"))
+    name = db.Column(db.String(100), nullable=False)
     longitude = db.Column(db.Integer, nullable=False)
     latitude = db.Column(db.Integer, nullable=False)
 
-    def __init__(self, longitude, latitude):
-        self.longitude = longitude
-        self.latitude = latitude
 
 
 def initialiseDatabase():
@@ -48,6 +46,12 @@ def initialiseDatabase():
                            password='password123',
                            phone='07444400444',
                            role='admin')
-        db.session.add(admin_User)
+        new_User = Users(firstname='Person',
+                         lastname='Guy',
+                         username='PersonGuy@email.xcom',
+                         password='Green',
+                         phone='07444477444',
+                         role='users')
+        db.session.add_all([admin_User,new_User])
         db.session.commit()
 
