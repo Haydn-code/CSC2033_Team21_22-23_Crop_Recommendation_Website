@@ -107,7 +107,18 @@ body {
     height: 20%;
 }
 
-.footer {
+.footer  {
+    background-color: #333;
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    text-align: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+}
+
+.footer-login {
     background-color: #333;
     display: flex;
     width: 100%;
@@ -172,6 +183,61 @@ body {
 .footer #admin-account button a{
 	color: white;
 }
+
+.footer-login p {
+    margin: auto;
+}
+
+.footer-login #colour-blind-toggle{
+	float: right;
+	height: 5vh;
+	width: 150px;
+	display: flex;
+	justify-content: center;
+	margin-right: 10px;
+
+}
+
+.footer-login #colour-blind-toggle button{
+	color: white;
+	background-color: #333;
+	border: none;
+	text-decoration: underline;
+	font-size: 12px;
+
+}
+
+.footer-login #colour-blind-toggle button:hover{
+	color: #AAA;
+}
+
+.footer-login #admin-account{
+	float: left;
+	height: 5vh;
+	width: 150px;
+	display: flex;
+	justify-content: center;
+	margin-right: 10px;
+
+}
+
+.footer-login #admin-account button{
+	color: white;
+	background-color: #333;
+	border: none;
+	text-decoration: underline;
+	font-size: 12px;
+
+}
+
+.footer-login #admin-account button:hover{
+	color: #AAA;
+}
+
+.footer-login #admin-account button a{
+	color: white;
+}
+
 
 /* <--- homepage.html css styling code --> */
 .homepage {
