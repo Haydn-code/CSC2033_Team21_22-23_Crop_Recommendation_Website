@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, flash, url_for
 
 from users.Forms import signUpForm, loginForm, searchFarmForm
 from flask_login import login_user, logout_user, current_user
-from Models import Users
+from Models import Users, Fields
 import bcrypt
 
 
@@ -49,12 +49,23 @@ def signUp():
 @users_blueprint.route('/profile')
 def profile():
     form = searchFarmForm()
-
-    return render_template('users/profile.html', form=form, user=current_user)
+    user = current_user
+    name = user.firstname + " " + user.lastname
+    if form.validate_on_submit():
+        #addField(form.longitude.data, form.latitude.data, form.farm_name.data)
+        from database import db
+        new_field = Fields(longitude=form.longitude.data,
+                           latitude=form.latitude.data,
+                           name=form.farm_name.data,
+                           userID=current_user.id)
+        db.session.add(new_field)
+        db.session.commit()
+    return render_template('users/profile.html', form=form, email=user.username, phone=user.phone ,name=name)
 
 @users_blueprint.route('/admin')
 def admin():
-    return render_template('users/admin.html')
+    id = current_user.id
+    return render_template('users/admin.html', id=id)
 
 @users_blueprint.route('/logout')
 def logout():
