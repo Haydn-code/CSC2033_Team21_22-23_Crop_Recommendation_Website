@@ -31,41 +31,95 @@
         </div>
     </section>
     {% block content %}
-        <section class="profile-container">
-            <div class="profile-element-container">
-                <div class="profile-element-item">
-                    <h1 class="profile-username">{{ name }}</h1>
-                    <img src="../../static/Projectimg/farmer-profile.png" alt="" class="profile-image">
-                    <h1 class="profile-email">Email: {{ email }}</h1>
-                    <h1 class="profile-phone">Phone No: {{ phone }}</h1>
-                    <h1>Your farms</h1>
-                    <div class="user-farms">
-                    </div>
-                    <div class="add-farm-container">
-                        <form action="" class="add-farm" method="POST">
-                            {{ form.csrf_token() }}
-                            <label for="">Add your farm</label>
-                            {{ form.longitude(class="input", placeholder="Longitude") }}
-                            {% for error in form.longitude.errors %}
-                                {{ error }}
-                            {% endfor %}
-                            {{ form.latitude(class="input", placeholder="Latitude") }}
-                            {% for error in form.latitude.errors %}
-                                {{ error }}
-                            {% endfor %}
-                            {{ form.farm_name(class="input", placeholder="Name") }}
-                            {% for error in form.farm_name.errors %}
-                                {{ error }}
-                            {% endfor %}
-                            {{ form.submit(class="button") }}
-                        </form>
-                    </div>
-                    </div>
-                </div>
+    <section class="profile-container">
+        <div class="profile-element-container">
+            <div class="profile-element-item">
+                <h1 class="profile-username">{{ name }}</h1>
+                <img src="../../static/Projectimg/farmer-profile.png" alt="" class="profile-image">
+                <h1 class="profile-email">Email: {{ email }}</h1>
+                <h1 class="profile-phone">Phone No: {{ phone }}</h1>
+                <h1>Your farms</h1>
+                <div class="user-farms"></div>
+                <form action="" class="add-farm" method="POST">
+                	<div class="add-farm-container">
+                	{{ form.csrf_token() }}
+                		<div class="search-bar">
+                			<div id="search-input">
+                			{{ form.farm_name(id="search-input", placeholder="Name:") }}
+                        	{% for error in form.farm_name.errors %}
+                            	{{ error }}
+                        	{% endfor %}
+                			</div>
+                		</div>
+                		<div class="search-bar">
+                			<div id="search-input">
+                			{{ form.longitude(id="search-input", placeholder="Longitude:") }}
+                        	{% for error in form.longitude.errors %}
+                            	{{ error }}
+                        	{% endfor %}
+                			</div>
+                		</div>
+                		<div class="search-bar">
+                			<div id="search-input">
+                			{{ form.latitude(id="search-input", placeholder="Latitude:") }}
+                        	{% for error in form.latitude.errors %}
+                            	{{ error }}
+                        	{% endfor %}
+                			</div>
+                		</div>
+                    	{{ form.submit(class="button") }}
+                	</div>
+                </form>
             </div>
-        </section>
-    {% endblock %}
+        </div>
+        {% endblock %}
+    </section>
+    <section class="footer">
+		<div id="admin-account">
+			<button><a href="../users/login.html">Admin Centre</a></button>
+		</div>
+		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
+		<div id="colour-blind-toggle">
+			<button onclick="toggleColours()">Toggle Colour Blind Mode</button>
+		</div>
+	</section>
 <script>
+
+	var userFarmsContainer = document.querySelector('.user-farms');
+
+	var data = [
+  	{ name: 'Farm 1', lng: '123.456', lat: '78.901' },
+  	{ name: 'Farm 2', lng: '456.789', lat: '12.345' },
+  	{ name: 'Farm 3', lng: '789.012', lat: '56.789' },
+  	{ name: 'Farm 4', lng: '789.012', lat: '56.789' },
+  	{ name: 'Farm 5', lng: '789.012', lat: '56.789' },
+  	{ name: 'Farm 6', lng: '789.012', lat: '56.789' }
+	];
+
+	for (var i = 0; i < data.length; i++) {
+  		var row = document.createElement('div');
+  		row.classList.add('field-row');
+
+  		var nameField = document.createElement('div');
+  		nameField.id = 'name';
+  		nameField.textContent = data[i].name;
+
+  		var lngField = document.createElement('div');
+		lngField.id = 'lng';
+  		lngField.textContent = data[i].lng;
+
+  		var latField = document.createElement('div');
+  		latField.id = 'lat';
+  		latField.textContent = data[i].lat;
+
+  		row.appendChild(nameField);
+  		row.appendChild(lngField);
+  		row.appendChild(latField);
+
+  		userFarmsContainer.appendChild(row);
+	}
+
+	
 	var toggle = false;
 
 	function toggleColours() {		
