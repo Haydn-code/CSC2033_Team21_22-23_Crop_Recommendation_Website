@@ -1,8 +1,4 @@
-from Soil.Soil import getSoilData
-from Climate.ClimateData import getWeatherData
-from Crop.Crop import getCrops
-
-"""Defined a function that takes all of the crops and provides a summary of the necessary data for crop recommendation 
+"""Defined a function that takes all of the crops and provides a summary of the necessary data for crop recommendation
 for each layer, from each profile relative to the percentage of land they take up.
 
 Parameters 
