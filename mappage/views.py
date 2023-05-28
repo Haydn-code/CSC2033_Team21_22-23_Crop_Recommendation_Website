@@ -1,13 +1,13 @@
 from flask import Blueprint, render_template, request, jsonify
 from DataAccess.Climate.ClimateData import getWeatherData, avgAnnualWeather, findClosestCity
 import os
-
-print(os.getcwd())
 from DataAccess.Soil.Soil import getSoilData
 from DataAccess.Crop.Crop import getCrops
 from DataAccess.Recommendation import cropRecommendation,summariseProfiles
 from mappage.Forms import mapForm
 import numpy as np
+from Models import Fields
+from flask_login import current_user
 
 mappage_blueprint = Blueprint('Mappage', __name__, template_folder='Frontend')
 
@@ -15,8 +15,22 @@ mappage_blueprint = Blueprint('Mappage', __name__, template_folder='Frontend')
 @mappage_blueprint.route('/mappage', methods=["GET", "POST"])
 def map():
     form = mapForm()
+    num_of_fields = 0
+    name_list = []
+    longitude_list = []
+    latitude_list = []
 
     if form.validate_on_submit():
+
+        if Fields.userID == current_user.id:
+            num_of_fields = Fields.query.filter_by(userID=current_user.id).count()
+
+            farm = Fields.query.filter_by(userID=current_user.id).all()
+            name_list = [fields.name for fields in farm]
+            longitude_list = [fields.longitude for fields in farm]
+            latitude_list = [fields.latitude for fields in farm]
+
+
         longitude = float(form.longitude.data)
         latitude = float(form.latitude.data)
         soil = getSoilData(longitude, latitude, 0, "DataAccess/Soil")
@@ -62,10 +76,15 @@ def map():
                                max_temp=max_temp, avg_temp=avg_temp, solar_rad=solar_rad, avg_wind=avg_wind,
                                avg_rain=avg_rain, soil_salinity=soil_salinity, soil_ph=soil_ph,
                                soil_texture=soil_texture, recommendation=recommend, name_country=country_name,
-                               name_continent=continent_name)
+                               name_continent=continent_name,
+                               num_of_markers=num_of_fields, marker_lng=longitude_list, marker_lat=latitude_list,
+                               marker_name=name_list)
 
     else:
         return render_template('Mappage/map.html', scroll_position=0, loaded=False, form=form, close_city="N/A",
                                min_temp="N/A", max_temp="N/A", avg_temp="N/A", solar_rad="N/A", avg_wind="N/A",
                                avg_rain="N/A", soil_salinity="N/A", soil_ph="N/A", soil_texture="N/A",
-                               recommendation="N/A", name_country="N/A", name_continent="N/A")
+                               recommendation="N/A", name_country="N/A", name_continent="N/A",
+                               num_of_markers=num_of_fields, marker_lng=longitude_list, marker_lat=latitude_list,
+                               marker_name=name_list
+                               )
