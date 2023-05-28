@@ -65,5 +65,7 @@ def map():
                                name_continent=continent_name)
 
     else:
-        return render_template('Mappage/map.html', scroll_position=0, loaded=False, form=form, min_temp="N/A",
-                               max_temp="N/A")
+        return render_template('Mappage/map.html', scroll_position=0, loaded=False, form=form, close_city="N/A",
+                               min_temp="N/A", max_temp="N/A", avg_temp="N/A", solar_rad="N/A", avg_wind="N/A",
+                               avg_rain="N/A", soil_salinity="N/A", soil_ph="N/A", soil_texture="N/A",
+                               recommendation="N/A", name_country="N/A", name_continent="N/A")
