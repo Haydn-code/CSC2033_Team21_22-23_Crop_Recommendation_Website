@@ -9,8 +9,8 @@ class signUpForm(FlaskForm):
     email = StringField(validators=[DataRequired(), Email()])
     password = PasswordField(validators=[DataRequired(), EqualTo(fieldname='confirm_password',
                                                                  message='Passwords must match')])
-    longitude = FloatField(validators=[DataRequired()])
-    latitude = FloatField(validators=[DataRequired()])
+    longitude = FloatField()
+    latitude = FloatField()
     confirm_password = PasswordField(validators=[DataRequired()])
     submit = SubmitField()
 
@@ -20,5 +20,7 @@ class loginForm(FlaskForm):
     submit = SubmitField()
 
 class searchFarmForm(FlaskForm):
-    search = StringField(validators=[DataRequired(), Length(max=50)])
+    longitude = FloatField(validators=[DataRequired()])
+    latitude = FloatField(validators=[DataRequired()])
+    farm_name = StringField(validators=[DataRequired()])
     submit = SubmitField()

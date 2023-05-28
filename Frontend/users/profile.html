@@ -42,29 +42,29 @@
                     <div class="user-farms">
                     </div>
                     <div class="add-farm-container">
-                    	<div class="search-bar">
-                    		<div id="search-input">
-							{{ form.search }}
-							{% for error in form.search.errors %}
-								{{ error }}
-							{% endfor %}
-							</div>
-						</div>
-						{{ form.submit(class="button") }}
+                        <form action="" class="add-farm">
+                            {{ form.csrf_token() }}
+                            <label for="">Add your farm</label>
+                            {{ form.longitude(class="input", placeholder="coordinates") }}
+                            {% for error in form.longitude.errors %}
+                                {{ error }}
+                            {% endfor %}
+                            {{ form.latitude(class="input", placeholder="coordinates") }}
+                            {% for error in form.latitude.errors %}
+                                {{ error }}
+                            {% endfor %}
+                            {{ form.farm_name(class="input", placeholder="coordinates") }}
+                            {% for error in form.farm_name.errors %}
+                                {{ error }}
+                            {% endfor %}
+                            {{ form.submit(class="button") }}
+                        </form>
+                    </div>
                     </div>
                 </div>
             </div>
         </section>
     {% endblock %}
-	<section class="footer">
-		<div id="admin-account">
-			<button><a href="../users/login.html">Admin Centre</a></button>
-		</div>
-		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
-		<div id="colour-blind-toggle">
-			<button onclick="toggleColours()">Toggle Colour Blind Mode</button>
-		</div>
-	</section>
 <script>
 	var toggle = false;
 
