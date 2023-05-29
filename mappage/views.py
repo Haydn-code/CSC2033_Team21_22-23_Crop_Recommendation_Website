@@ -20,16 +20,15 @@ def map():
     longitude_list = []
     latitude_list = []
 
+    if not current_user.is_anonymous:
+        num_of_fields = Fields.query.filter_by(userID=current_user.id).count()
+
+        farm = Fields.query.filter_by(userID=current_user.id).all()
+        name_list = [fields.name for fields in farm]
+        longitude_list = [fields.longitude for fields in farm]
+        latitude_list = [fields.latitude for fields in farm]
+
     if form.validate_on_submit():
-
-        if Fields.userID == current_user.id:
-            num_of_fields = Fields.query.filter_by(userID=current_user.id).count()
-
-            farm = Fields.query.filter_by(userID=current_user.id).all()
-            name_list = [fields.name for fields in farm]
-            longitude_list = [fields.longitude for fields in farm]
-            latitude_list = [fields.latitude for fields in farm]
-
 
         longitude = float(form.longitude.data)
         latitude = float(form.latitude.data)
