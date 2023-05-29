@@ -61,6 +61,11 @@ def profile():
     from Models import Fields
     form = searchFarmForm()
     name = current_user.firstname + " " + current_user.lastname
+    fields = Fields.query.filter_by(userID=current_user.id)
+    display_fields = []
+    for field in fields:
+        field_dict = {'name':field.name,'lng':field.longitude,'lat':field.latitude}
+        display_fields.append(field_dict)
     if form.validate_on_submit():
         new_field = Fields(longitude=form.longitude.data,
                            latitude=form.latitude.data,
@@ -72,7 +77,8 @@ def profile():
                            form=form,
                            email=current_user.username,
                            phone=current_user.phone ,
-                           name=name)
+                           name=name,
+                           fields=display_fields)
 
 @users_blueprint.route('/admin')
 def admin():
