@@ -4,11 +4,11 @@ pandas
 bcrypt
 gdal
 flask
-flask_wtf
-flask_sqlalchemy
-flask_login
+flask-wtf
+flask-sqlalchemy
+flask-login
 python-dotenv
 wtforms
 email_validator
-requests==2.31.0
+requests
 bs4
