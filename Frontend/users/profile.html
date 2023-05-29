@@ -39,7 +39,13 @@
                 <h1 class="profile-email">Email: {{ email }}</h1>
                 <h1 class="profile-phone">Phone No: {{ phone }}</h1>
                 <h1>Your farms</h1>
-                <div class="user-farms"></div>
+                <div class="user-farms">
+                	<div class="field-row">
+                		<div id="name">Field Name:</div>
+                		<div id="lng">Longitude:</div>
+                		<div id="lat">Latitude:</div>
+                	</div>
+                </div>
                 <form action="" class="add-farm" method="POST">
                 	<div class="add-farm-container">
                 	{{ form.csrf_token() }}
