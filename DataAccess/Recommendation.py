@@ -1,5 +1,6 @@
 from DataAccess.Climate.ClimateData import getWeatherData
 from DataAccess.Soil.Soil import getSoilData
+from DataAccess.Crop.Crop import getCrops
 
 
 """Defined a function that takes all of the crops and provides a summary of the necessary data for crop recommendation
@@ -93,6 +94,34 @@ def checkPrec(crop, weather):
 
 
 """
+Checks if the ph conditions are suitable for a given crop based on the optimal ph value.
+
+Parameters:
+crop (dict): A dictionary containing crop information.
+weather (dict): A dictionary containing soil data.
+
+Returns:
+bool: True if the ph conditions are suitable, False otherwise.
+"""
+
+
+def checkPh(crop, soil):
+    ph_min = crop['optimal_min_ph']
+    ph_max = crop['optimal_max_ph']
+
+    if '-' in ph_min or '-' in ph_max or ph_min == '' or ph_max == '' or '---' in ph_min or '---' in ph_max:
+        return False
+
+    ph_min = float(ph_min)
+    ph_max = float(ph_max)
+
+    if not (ph_min <= soil['ph'] <= ph_max):
+        return False
+
+    return True
+
+
+"""
 Recommends the most suitable crop to grow at a specific coordinate.
 
 Parameters:
@@ -130,7 +159,7 @@ def cropRecommendation(long, lat, crops, soilPath, climatePath):
                 # Check soil suitability
                 ph_min = crop['optimal_min_ph']
                 ph_max = crop['optimal_max_ph']
-                if float(ph_min) <= combined['D1']['ph'] <= float(ph_max):
+                if checkPh(crop, combined['D1']):
 
                     # Calculate the crop score
                     temp_total = sum(int(temp) for temp in weather['temp_avg'])
