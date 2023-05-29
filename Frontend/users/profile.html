@@ -93,14 +93,7 @@
 
 	var userFarmsContainer = document.querySelector('.user-farms');
 
-	var data = [
-  	{ name: 'Farm 1', lng: '123.456', lat: '78.901' },
-  	{ name: 'Farm 2', lng: '456.789', lat: '12.345' },
-  	{ name: 'Farm 3', lng: '789.012', lat: '56.789' },
-  	{ name: 'Farm 4', lng: '789.012', lat: '56.789' },
-  	{ name: 'Farm 5', lng: '789.012', lat: '56.789' },
-  	{ name: 'Farm 6', lng: '789.012', lat: '56.789' }
-	];
+    var data = {{ fields|tojson }};
 
 	for (var i = 0; i < data.length; i++) {
   		var row = document.createElement('div');
