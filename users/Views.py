@@ -71,6 +71,10 @@ def profile():
                     flash('Field at that location already stored')
                     bounds_chk = True
                     break
+                if field.name == form.farm_name.data:
+                    flash('Field with that name already stored')
+                    bounds_chk = True
+                    break
         if not bounds_chk:
             new_field = Fields(longitude=form.longitude.data,
                                latitude=form.latitude.data,
@@ -85,6 +89,10 @@ def profile():
                                    phone=current_user.phone,
                                    name=name,
                                    fields=display_fields)
+    display_fields = []
+    for field in fields:
+        field_dict = {'name': field.name, 'lng': field.longitude, 'lat': field.latitude}
+        display_fields.append(field_dict)
     return render_template('users/profile.html',
                            form=form,
                            email=current_user.username,

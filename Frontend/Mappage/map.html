@@ -189,7 +189,7 @@
 	</section>
 	<section class="footer">
 		<div id="admin-account">
-			<button><a href="{{url_for('users.login')}}">Admin Centre</a></button>
+			<button><a href="../users/login.html">Admin Centre</a></button>
 		</div>
 		<p>&copy; 2023 Precision Agriculture. All Rights Reserved.</p>
 		<div id="colour-blind-toggle">
@@ -265,7 +265,7 @@
     for (var i = 0; i < {{ num_of_markers }}; i++) {
     	const marker = new mapboxgl.Marker()
     	.setLngLat([{{ marker_lng }}[i], {{ marker_lat }}[i]])
-		.setPopup(new mapboxgl.Popup().setHTML({{ marker_name }}[i]))
+		.setPopup(new mapboxgl.Popup().setHTML({{marker_name|tojson}}[i]))
     	.addTo(map);
     }
     // -------------------------------------
