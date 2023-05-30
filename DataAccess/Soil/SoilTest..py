@@ -1,5 +1,5 @@
 import unittest
-from Crop import getCrops, searchCrop
+from Soil import getSoilData, readProfile, coordsToPixels
 
 
 class MyTestCase(unittest.TestCase):

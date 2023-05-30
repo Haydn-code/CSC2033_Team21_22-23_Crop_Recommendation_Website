@@ -1,5 +1,5 @@
 import unittest
-from Crop import getCrops, searchCrop
+from ClimateData import getWeatherData, avgAnnualWeather, findClosestCity
 
 
 class MyTestCase(unittest.TestCase):

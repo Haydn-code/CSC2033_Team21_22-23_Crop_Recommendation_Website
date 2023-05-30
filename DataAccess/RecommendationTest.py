@@ -1,5 +1,5 @@
 import unittest
-from Crop import getCrops, searchCrop
+from Recommendation import cropRecommendation, checkPh, checkPrec, checkTemp, summariseProfiles
 
 
 class MyTestCase(unittest.TestCase):
