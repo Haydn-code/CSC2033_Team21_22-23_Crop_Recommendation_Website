@@ -40,7 +40,12 @@ class MyTestCase(unittest.TestCase):
                                                                           'soil_salinity': 0.5}})
 
     def test_coords_to_pixels(self):
-        self.assertEqual()
+        self.assertEqual(coordsToPixels(0, 0, 100, 100), (50, 49))
+        self.assertEqual(coordsToPixels(-180, -90, 100, 100), (0, 99))
+        self.assertEqual(coordsToPixels(179.9, 89.9, 100, 100), (99, 0))
+
+    def read_soil_data(self):
+        self.assertEqual(getSoilData(0, 0))
 
 if __name__ == '__main__':
     unittest.main()
