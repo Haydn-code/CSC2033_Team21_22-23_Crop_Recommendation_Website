@@ -9,14 +9,21 @@ cropinformation_blueprint = Blueprint('Cropinformationpage', __name__, template_
 @cropinformation_blueprint.route('/cropinformationpage', methods=["POST", "GET"])
 def cropinfromationpage():
     form = searchCropForm()
+
+    # checks to see if the user has searched for a crop
     if form.validate_on_submit():
+
+        # gets a dictionary of all food crops we would potentially recommend
         crops = getCrops("DataAccess/Crop")
+
+        # searches for crop by scientific name
         crop = searchCrop(form.search.data, crops, True)
 
         scroll_pos = 820
         loaded_by_form = True
 
-        if crop != None:
+        # if found renders the webpage with information about the crop
+        if crop is not None:
             return render_template('Cropinformationpage/crop-information.html', scroll_position=scroll_pos,
                                    loaded=loaded_by_form, form=form, search="Search...", image=crop.get("image"),
                                    name=form.search.data, species=crop.get("species"), life_form=crop.get("life_form"),
@@ -36,8 +43,12 @@ def cropinfromationpage():
                                    opt_drain=crop.get("optimal_drainage"), opt_depth=crop.get("optimal_depth"),
                                    opt_text=crop.get("optimal_texture"), opt_fert=crop.get("optimal_fertility"),
                                    clim_zone=crop.get("climate_zone"))
+
+        # searches for crop by common name
         crop = searchCrop(form.search.data.lower(), crops, False)
-        if crop != None:
+
+        # if found renders the webpage with information about the crop
+        if crop is not None:
             return render_template('Cropinformationpage/crop-information.html', scroll_position=scroll_pos,
                                    loaded=loaded_by_form, form=form, search="Search...", image=crop.get("image"),
                                    name=form.search.data, species=crop.get("species"), life_form=crop.get("life_form"),
@@ -57,6 +68,8 @@ def cropinfromationpage():
                                    opt_drain=crop.get("optimal_drainage"), opt_depth=crop.get("optimal_depth"),
                                    opt_text=crop.get("optimal_texture"), opt_fert=crop.get("optimal_fertility"),
                                    clim_zone=crop.get("climate_zone"))
+
+        # if there is no such crop renders the webpage N/A to clearly display no such crop was found
         else:
             return render_template('Cropinformationpage/crop-information.html', scroll_position=scroll_pos,
                                    loaded=loaded_by_form, form=form, search="Search...", image="",
@@ -68,6 +81,8 @@ def cropinfromationpage():
                                    abs_min_alt="n/a", abs_max_alt="n/a", opt_min_light="n/a", opt_max_light="n/a",
                                    opt_sal="n/a", opt_drain="n/a", opt_depth="n/a", opt_text="n/a", opt_fert="n/a",
                                    clim_zone="n/a")
+
+    # loads initial information to be displayed to the user on initial load of the webpage
     return render_template('Cropinformationpage/crop-information.html', form=form, search="Search...",
                            image="https://ecocrop.review.fao.org/ecocrop/ec_images/289.jpg",
                            name="Okra", species="Abelmoschus esculentus", life_form="Herb", category="Vegetables",
