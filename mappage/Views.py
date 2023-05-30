@@ -76,7 +76,7 @@ def map():
                                   "DataAccess/Climate/tif_files")
 
         # displays the recommended crops in a list to be displayed to user
-        if test != []:
+        if test != [] and test is not None:
             recommend = ""
             for each in test:
                 recommend += each.get("species") + ", "
