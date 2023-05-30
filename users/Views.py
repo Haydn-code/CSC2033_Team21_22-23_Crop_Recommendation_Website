@@ -57,9 +57,6 @@ def profile():
     name = current_user.firstname + " " + current_user.lastname
     fields = Fields.query.filter_by(userID=current_user.id)
     display_fields = []
-    for field in fields:
-        field_dict = {'name':field.name,'lng':field.longitude,'lat':field.latitude}
-        display_fields.append(field_dict)
     if form.validate_on_submit():
         new_field = Fields(longitude=form.longitude.data,
                            latitude=form.latitude.data,
@@ -67,6 +64,9 @@ def profile():
                            user=current_user)
         db.session.add(new_field)
         db.session.commit()
+    for field in fields:
+        field_dict = {'name': field.name, 'lng': field.longitude, 'lat': field.latitude}
+        display_fields.append(field_dict)
     return render_template('users/profile.html',
                            form=form,
                            email=current_user.username,
