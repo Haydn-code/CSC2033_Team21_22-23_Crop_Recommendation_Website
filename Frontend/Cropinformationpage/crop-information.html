@@ -240,13 +240,18 @@
 
 	var toggle = false;
 	
+	// When the information is loaded from the back-end and the page is re-rendered
+	// it will automatically scroll to the crop explorer to show the new information.
 	window.onload = function() {
         {% if loaded %}
             var scrollPosition = {{ scroll_position|default(0) }};
             window.scroll(0, scrollPosition);
         {% endif %}
     };
+    // -------------------------------------
 
+	// When the colour blind mode button is pressed on the footer all the sections 
+    //background-colour on the page are changed to an appropriate colour.
 	function toggleColours() {		
 		console.log(document.getElementsByClassName("display-block"));
 		if (toggle == true) { //green-grey colour scheme
@@ -268,17 +273,24 @@
 			toggle = true;
 		}
 	}
+	// -------------------------------------
 	
+	// Displays the input the the user has entered under the name attribute on the crop
+	// information display
 	function displayInput() {
   		const input = document.getElementById("search-input").value;
   		const output = document.getElementsByClassName("value")[0];
   		output.textContent = input;
 	}
+	// -------------------------------------
 
+	// When the button on the title display section is pressed it will smoothly scroll, to
+	// the crop information section
 	function scrollToSection(){
 		var element = document.querySelector('.search');
    		element.scrollIntoView({behavior: "smooth"});
 	}
+	// -------------------------------------
 </script>
 </body>
 </html>

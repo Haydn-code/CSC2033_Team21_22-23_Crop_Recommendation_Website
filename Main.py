@@ -2,7 +2,7 @@ import os
 from flask import Flask
 from dotenv import load_dotenv
 from flask_login import LoginManager
-from database import db
+from Database import db
 
 load_dotenv()
 
@@ -16,10 +16,10 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.static_folder = 'static'
 
 from users.Views import users_blueprint
-from CropInformationPage.views import cropinformation_blueprint
-from homepage.views import homepage_blueprint
-from donationpage.views import donation_blueprint
-from mappage.views import mappage_blueprint
+from CropInformationPage.Views import cropinformation_blueprint
+from homepage.Views import homepage_blueprint
+from donationpage.Views import donation_blueprint
+from mappage.Views import mappage_blueprint
 
 app.register_blueprint(cropinformation_blueprint)
 app.register_blueprint(homepage_blueprint)

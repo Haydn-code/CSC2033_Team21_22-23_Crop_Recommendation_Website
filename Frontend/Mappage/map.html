@@ -203,13 +203,18 @@
 <script>
 	var toggle = false;
 	
+	// When the information is loaded from the back-end and the page is re-rendered
+	// it will automatically scroll to the interactive map to show the new information.
     window.onload = function() {
         {% if loaded %}
             var scrollPosition = {{ scroll_position|default(0) }};
             window.scroll(0, scrollPosition);
         {% endif %}
     };
+    // -------------------------------------
     
+    // When the colour blind mode button is pressed on the footer all the sections 
+    //background-colour on the page are changed to an appropriate colour.
 	function toggleColours() {		
 		console.log(document.getElementsByClassName("display-block"));
 		if (toggle == true) { //green-grey colour scheme
@@ -230,14 +235,20 @@
 			
 			toggle = true;
 		}
-	}
+	};
+	// -------------------------------------
 	
+	// When the button on the title display section is pressed it will smoothly scroll, to
+	// interactive map section
 	function scrollToSection(){
 		var element = document.querySelector('.map');
    		element.scrollIntoView({behavior: "smooth"});
    		console.log(element.scrollIntoView({behavior: "smooth"}))
 	}
+	// -------------------------------------
 
+	// The Map-box map template is imported using the correct access token and custom
+	// style that was created for the project
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYWxyb2JlcnRzb25leCIsImEiOiJjbGgyNjk0dWwxYW9kM2pqdXJwcDVyd25hIn0.C0kwA2ZQUzo1BJ0YzAbjIg';
     const map = new mapboxgl.Map({
         container: 'map',
@@ -245,22 +256,29 @@
         center: [0, 30],
         zoom: 1.75
     });
+    // -------------------------------------
     
     let hoveredCountryId = null;
     
+    // Creates a number of markers on the interactive map to representing the users fields
+    // , based on what is stored under the user's id in the fields database.
     for (var i = 0; i < {{ num_of_markers }}; i++) {
     	const marker = new mapboxgl.Marker()
     	.setLngLat([{{ marker_lng }}[i], {{ marker_lat }}[i]])
 		.setPopup(new mapboxgl.Popup().setHTML("<p> {{ marker_name }}[i] </p>"))
     	.addTo(map);
     }
-
+    // -------------------------------------
+    
+    // Upon loading the globe, load the individual country vector layer.
     map.on('load', () => {
         map.addSource('countries', {
             'type': 'vector',
             'url': 'mapbox://mapbox.country-boundaries-v1'
         });
+        // -------------------------------------
 
+		// Overlay the loaded vector layer on the map.
         map.addLayer(
         	{
             'id': 'country_fills',
@@ -278,7 +296,9 @@
                 ]
             }
         });
+        // -------------------------------------
 
+		// Add a layer of lines which display the borders of each country.
         map.addLayer(
         	{
             'id': 'country_borders',
@@ -291,9 +311,14 @@
                 'line-width': 0.25
             }
         });
+        // -------------------------------------
 
+		// Only if the mouse is over land, then it gets the ID whatever country is
+		// associated with that specific ID gets painted in a slightly transparent
+		// blue colour.
         map.on('mousemove', 'country_fills', (e) => {
             if (e.features.length > 0) {
+            	console.log(hoveredCountryId);
                 if (hoveredCountryId !== null) {
                     map.setFeatureState(
                         { source: 'countries',sourceLayer: 'country_boundaries', id: hoveredCountryId },
@@ -307,7 +332,10 @@
                 );
             }
         });
+        // -------------------------------------
 
+		// When the mouse moves off a country, it gets painted with the default colour 
+		// and transparency
         map.on('mouseleave', 'country_fills', () => {
             if (hoveredCountryId !== null) {
                 map.setFeatureState(
@@ -317,9 +345,11 @@
             }
             hoveredCountryId = null;
         });
+        // -------------------------------------
         
+        // When a country is clicked, the longitude and latitude from the click is sent
+        // to the back-end functions via Jinja.
         map.on('click', 'country_fills', (e) => {
-        // Coordinates to send back to the python functions
             var longitude = e.lngLat.wrap()["lng"];
             var latitude = e.lngLat.wrap()["lat"];
             console.log(longitude);
@@ -329,11 +359,10 @@
         	document.getElementById('latitude').value = latitude;
         	document.getElementById('country_name').value = e.features[0].properties["name_en"];
         	document.getElementById('continent_name').value = e.features[0].properties["region"];
-            
-            document.getElementById('coor-submit').click();
+        
+            document.getElementById('coor-submit').click();    
+        });
         // -------------------------------------
-            
-        });        
     });    
 </script>
 </body>
