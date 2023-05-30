@@ -47,8 +47,15 @@
                 	</div>
                 </div>
                 <form action="" class="add-farm" method="POST">
+                    {{ form.csrf_token() }}
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                <div class="notification is-danger">
+                                    {{ messages[0] }}.
+                                </div>
+                            {% endif %}
+                        {% endwith %}
                 	<div class="add-farm-container">
-                	{{ form.csrf_token() }}
                 		<div class="search-bar">
                 			<div id="search-input">
                 			{{ form.farm_name(id="search-input", placeholder="Name:") }}
