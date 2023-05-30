@@ -47,6 +47,7 @@ def checkTemp(crop, weather):
     temp_min = crop['absolute_min_temp']
     temp_max = crop['optimal_max_temp']
 
+    # check if the temp range is valid number
     if '-' in temp_min or '-' in temp_max or temp_min == '' or temp_max == '' or '---' in temp_min or '---' in temp_max:
         return False
 
@@ -76,6 +77,7 @@ def checkPrec(crop, weather):
     rain_min = crop['optimal_min_rain']
     rain_max = crop['optimal_max_rain']
 
+    # check if the rain range is valid number
     if '-' in rain_min or '-' in rain_max or rain_min == '' or rain_max == '' or '---' in rain_min or '---' in rain_max:
         return False
 
@@ -109,6 +111,7 @@ def checkPh(crop, soil):
     ph_min = crop['optimal_min_ph']
     ph_max = crop['optimal_max_ph']
 
+    # check if the ph range is valid number
     if '-' in ph_min or '-' in ph_max or ph_min == '' or ph_max == '' or '---' in ph_min or '---' in ph_max:
         return False
 
@@ -148,20 +151,20 @@ def cropRecommendation(long, lat, crops, soilPath, climatePath):
     for crop_code in crops:
         crop = crops[crop_code]
 
-        # Check temperature suitability
+        # checks temperature suitability
         temp_max = crop['optimal_max_temp']
         if checkTemp(crop, weather):
 
-            # Check rainfall suitability
+            # checks rainfall suitability
             rain_max = crop['optimal_max_rain']
             if checkPrec(crop, weather):
 
-                # Check soil suitability
+                # checks soil suitability
                 ph_min = crop['optimal_min_ph']
                 ph_max = crop['optimal_max_ph']
                 if checkPh(crop, combined['D1']):
 
-                    # Calculate the crop score
+                    # calculates the crop score
                     temp_total = sum(int(temp) for temp in weather['temp_avg'])
                     temp_avg = temp_total / len(weather['temp_avg'])
 
@@ -173,10 +176,10 @@ def cropRecommendation(long, lat, crops, soilPath, climatePath):
 
                     crop_scores.append((crop, score))
 
-    # Sort the crop scores in descending order
+    # sorts the crop scores in descending order
     crop_scores.sort(key=lambda x: x[1], reverse=True)
 
-    # Return the top 5 crops
+    # returns the top 5 crops
     recommended_crops = [crop_score[0] for crop_score in crop_scores[:5]]
     return recommended_crops
 

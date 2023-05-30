@@ -3,10 +3,6 @@ from Recommendation import cropRecommendation, checkPh, checkPrec, checkTemp, su
 
 
 class MyTestCase(unittest.TestCase):
-
-    # def test_summariseProfiles(self):
-
-
     def test_checkTemp(self):
         crop = {
             "absolute_min_temp": "20",
@@ -69,16 +65,10 @@ class MyTestCase(unittest.TestCase):
 
             result = cropRecommendation(long, lat, crops, soilPath, climatePath)
 
-            # Assert that the result is not None
             self.assertIsNotNone(result)
-
-            # Assert that the result is a list
             self.assertIsInstance(result, list)
-
-            # Assert that the result contains at most 5 crops
             self.assertLessEqual(len(result), 5)
 
-            # Assert that each crop in the result is a key in the 'crops' dictionary
             for crop in result:
                 self.assertIn(crop, crops)
 

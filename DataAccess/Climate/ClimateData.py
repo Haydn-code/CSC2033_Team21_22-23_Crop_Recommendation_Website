@@ -124,7 +124,7 @@ def avgAnnualWeather(weather_dict):
         valid_values = [value for value in values if value is not None]
         if valid_values:
             avg = np.mean(valid_values)
-            rounded_avg = math.ceil(avg)
+            rounded_avg = math.ceil(avg)    # rounds up to the nearest integer
             avg_weather_dict['annual_' + category] = int(rounded_avg)
 
     if all(value == 0 for value in avg_weather_dict.values()):

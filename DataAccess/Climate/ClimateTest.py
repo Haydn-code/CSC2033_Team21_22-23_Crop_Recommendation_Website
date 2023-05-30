@@ -28,7 +28,6 @@ class MyTestCase(unittest.TestCase):
         }
 
         result = getWeatherData(longitude, latitude, folder)
-        self.maxDiff = None
         self.assertEqual(result, expected_weather)
 
     def test_avgAnnualWeather(self):
