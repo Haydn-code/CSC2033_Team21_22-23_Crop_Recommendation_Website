@@ -49,7 +49,7 @@ def signUp():
     return render_template('users/signup.html', form=form)
 
 
-@users_blueprint.route('/profile', methods=['GET','POST'])
+@users_blueprint.route('/profile', methods=['GET', 'POST'])
 def profile():
     from Main import db
     from Models import Fields
@@ -57,13 +57,39 @@ def profile():
     name = current_user.firstname + " " + current_user.lastname
     fields = Fields.query.filter_by(userID=current_user.id)
     display_fields = []
+    for field in fields:
+        field_dict = {'name': field.name, 'lng': field.longitude, 'lat': field.latitude}
+        display_fields.append(field_dict)
     if form.validate_on_submit():
-        new_field = Fields(longitude=form.longitude.data,
-                           latitude=form.latitude.data,
-                           name=form.farm_name.data,
-                           user=current_user)
-        db.session.add(new_field)
-        db.session.commit()
+        bounds_chk = False
+        if not -180 <= form.longitude.data <= 180 or not -90 <= form.latitude.data <= 90:
+            flash("Co-ordinates impossible, ensure it is in the format Longitude Latitude")
+            bounds_chk = True
+        if Fields and not bounds_chk:
+            for field in fields:
+                if (field.longitude, field.latitude) == (form.longitude.data, form.latitude.data):
+                    flash('Field at that location already stored')
+                    bounds_chk = True
+                    break
+                if field.name == form.farm_name.data:
+                    flash('Field with that name already stored')
+                    bounds_chk = True
+                    break
+        if not bounds_chk:
+            new_field = Fields(longitude=form.longitude.data,
+                               latitude=form.latitude.data,
+                               name=form.farm_name.data,
+                               user=current_user)
+            db.session.add(new_field)
+            db.session.commit()
+        else:
+            return render_template('users/profile.html',
+                                   form=form,
+                                   email=current_user.username,
+                                   phone=current_user.phone,
+                                   name=name,
+                                   fields=display_fields)
+    display_fields = []
     for field in fields:
         field_dict = {'name': field.name, 'lng': field.longitude, 'lat': field.latitude}
         display_fields.append(field_dict)
