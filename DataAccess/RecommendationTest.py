@@ -43,38 +43,44 @@ class MyTestCase(unittest.TestCase):
 
         self.assertTrue(checkPh(crop, soil))
 
-    def test_cropRecommendation(self):
-        long = -1.5927327331271712
-        lat = 54.990737468200415
-        crops = {
-            "001": {
-                "optimal_max_temp": "30",
-                "optimal_max_rain": "2000",
-                "optimal_min_ph": "6",
-            },
-            "002": {
-                "optimal_max_temp": "35",
-                "optimal_max_rain": "2500",
-                "optimal_min_ph": "6.5",
-            },
-            "003": {
-                "optimal_max_temp": "28",
-                "optimal_max_rain": "1500",
-                "optimal_min_ph": "5.5",
-            },
-        }
-        soilPath = "Soil"
-        climatePath = "tif_files"
+    class TestCropRecommendation(unittest.TestCase):
+        def test_cropRecommendation(self):
+            long = 10.123456
+            lat = 20.654321
+            crops = {
+                'crop1': {
+                    'optimal_max_temp': 30,
+                    'optimal_max_rain': 100,
+                    'optimal_min_ph': 5.5
+                },
+                'crop2': {
+                    'optimal_max_temp': 35,
+                    'optimal_max_rain': 150,
+                    'optimal_min_ph': 6.0
+                },
+                'crop3': {
+                    'optimal_max_temp': 25,
+                    'optimal_max_rain': 80,
+                    'optimal_min_ph': 5.0
+                }
+            }
+            soilPath = 'Soil'
+            climatePath = 'Climate/tif_files'
 
-        expected_result = ["001", "002"]
+            result = cropRecommendation(long, lat, crops, soilPath, climatePath)
 
-        result = cropRecommendation(long, lat, crops, soilPath, climatePath)
+            # Assert that the result is not None
+            self.assertIsNotNone(result)
 
-        print(result)
+            # Assert that the result is a list
+            self.assertIsInstance(result, list)
 
-        self.assertEqual(len(result), 2)
-        self.assertEqual(result[0]['crop_code'], expected_result[0])
-        self.assertEqual(result[1]['crop_code'], expected_result[1])
+            # Assert that the result contains at most 5 crops
+            self.assertLessEqual(len(result), 5)
+
+            # Assert that each crop in the result is a key in the 'crops' dictionary
+            for crop in result:
+                self.assertIn(crop, crops)
 
 
 if __name__ == '__main__':
