@@ -91,6 +91,8 @@
 	</section>
 <script>
 
+	// Creates the amount of field rows that the user has and appends it to the user-farms
+	// display
 	var userFarmsContainer = document.querySelector('.user-farms');
 
     var data = {{ fields|tojson }};
@@ -117,10 +119,13 @@
 
   		userFarmsContainer.appendChild(row);
 	}
+	// -------------------------------------
 
 	
 	var toggle = false;
 
+	// When the colour blind mode button is pressed on the footer all the sections 
+    //background-colour on the page are changed to an appropriate colour.
 	function toggleColours() {		
 		console.log(document.getElementsByClassName("display-block"));
 		if (toggle == true) { //green-grey colour scheme
@@ -138,6 +143,8 @@
 			toggle = true;
 		}
 	}
+	// -------------------------------------
+	
 </script>
 </body>
 </html>
