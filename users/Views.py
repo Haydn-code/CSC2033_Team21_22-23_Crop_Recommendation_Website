@@ -96,7 +96,12 @@ def profile():
 @users_blueprint.route('/admin')
 def admin():
     id = current_user.id
-    return render_template('users/admin.html', id=id)
+    users = Users.query.filter_by(role='users')
+    user_list = []
+    for user in users:
+        user_dict = {'userID': user.id, 'email': user.username, 'phone': user.phone}
+        user_list.append(user_dict)
+    return render_template('users/admin.html', id=id, users=user_list)
 
 
 @users_blueprint.route('/logout')

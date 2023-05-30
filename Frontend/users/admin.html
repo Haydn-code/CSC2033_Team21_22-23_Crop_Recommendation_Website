@@ -72,6 +72,33 @@
 <script>
 	var toggle = false;
 
+    var searchDisplayContainer = document.querySelector('.search-output');
+
+    var data = {{ users|tojson }};
+
+	for (var i = 0; i < data.length; i++) {
+  		var row = document.createElement('div');
+  		row.classList.add('user-row');
+
+  		var idField = document.createElement('div');
+  		idField.id = 'userID';
+  		idField.textContent = data[i].userID;
+
+  		var emailField = document.createElement('div');
+		emailField.id = 'email';
+  		emailField.textContent = data[i].email;
+
+  		var phoneField = document.createElement('div');
+  		phoneField.id = 'phone';
+  		phoneField.textContent = data[i].phone;
+
+  		row.appendChild(idField);
+  		row.appendChild(emailField);
+  		row.appendChild(phoneField);
+
+  		searchDisplayContainer.appendChild(row);
+	}
+
 	// When the colour blind mode button is pressed on the footer all the sections 
     //background-colour on the page are changed to an appropriate colour.
 	function toggleColours() {		
