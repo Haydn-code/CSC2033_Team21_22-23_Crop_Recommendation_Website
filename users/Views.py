@@ -28,7 +28,7 @@ def login():
 @users_blueprint.route('/signUp', methods=['POST', 'GET'])
 def signUp():
     from Models import Users
-    from main import db
+    from Main import db
     form = signUpForm()
     if form.validate_on_submit():
         users = Users.query.filter_by(username=form.email.data).first()
@@ -51,7 +51,7 @@ def signUp():
 
 @users_blueprint.route('/profile', methods=['GET','POST'])
 def profile():
-    from main import db
+    from Main import db
     from Models import Fields
     form = searchFarmForm()
     name = current_user.firstname + " " + current_user.lastname

@@ -1,4 +1,4 @@
-from database import db
+from Database import db
 from flask_login import UserMixin
 import bcrypt
 
@@ -40,7 +40,7 @@ class Fields(db.Model):
 
 # A Function to initialise the database
 def initialiseDatabase():
-    from main import app
+    from Main import app
     with app.app_context():
         # Deletes all data fron the database
         db.drop_all()
