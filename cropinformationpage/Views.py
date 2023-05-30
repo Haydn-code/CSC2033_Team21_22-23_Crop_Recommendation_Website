@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 
 from DataAccess.Crop.Crop import getCrops, searchCrop
-from CropInformationPage.Forms import searchCropForm
+from cropinformationpage.Forms import searchCropForm
 
 cropinformation_blueprint = Blueprint('Cropinformationpage', __name__, template_folder='Frontend')
 
