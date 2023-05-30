@@ -265,7 +265,7 @@
     for (var i = 0; i < {{ num_of_markers }}; i++) {
     	const marker = new mapboxgl.Marker()
     	.setLngLat([{{ marker_lng }}[i], {{ marker_lat }}[i]])
-		.setPopup(new mapboxgl.Popup().setHTML("<p> {{ marker_name }}[i] </p>"))
+		.setPopup(new mapboxgl.Popup().setHTML({{ marker_name }}[i]))
     	.addTo(map);
     }
     // -------------------------------------

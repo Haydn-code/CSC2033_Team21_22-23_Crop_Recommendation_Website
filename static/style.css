@@ -493,9 +493,7 @@ body {
     bottom: 20%;
     left: 10%;
     right: 10%;
-
-
-
+    border: none;
 }
 
 .homepage-donations-section .homepage-donations-container .homepage-donations-column1 button {
@@ -509,13 +507,18 @@ body {
     bottom: 0%;
     left: 25%;
     right: 0%;
-
+    border: none;
 }
 
 .homepage-donations-section .homepage-donations-container .homepage-donations-column1 button:hover {
     background-color: #85c489;
     color: #333333;
     transition: 0.5s;
+}
+
+.homepage-donations-section .homepage-donations-container .homepage-donations-column1 a {
+    color: white;
+    text-decoration: none;
 }
 
 /* <--- Users CSS Styling Code --> */
