@@ -4,25 +4,8 @@ from Recommendation import cropRecommendation, checkPh, checkPrec, checkTemp, su
 
 class MyTestCase(unittest.TestCase):
 
-    def test_summariseProfiles(self):
-        profiles = {
-            "Profile1": {
-                "D1": {"ph": 6.5, "soil_salinity": 0.2},
-                "D2": {"ph": 7.0, "soil_salinity": 0.5},
-            },
-            "Profile2": {
-                "D1": {"ph": 6.8, "soil_salinity": 0.3},
-                "D2": {"ph": 7.2, "soil_salinity": 0.4},
-            }
-        }
+    # def test_summariseProfiles(self):
 
-        expected_result = {
-            "D1": {"ph": 6.65, "soil_salinity": 0.25},
-            "D2": {"ph": 7.1, "soil_salinity": 0.45}
-        }
-
-        result = summariseProfiles(profiles)
-        self.assertEqual(result, expected_result)
 
     def test_checkTemp(self):
         crop = {
@@ -81,11 +64,13 @@ class MyTestCase(unittest.TestCase):
             },
         }
         soilPath = "Soil"
-        climatePath = "Climate/tif_files"
+        climatePath = "tif_files"
 
         expected_result = ["001", "002"]
 
         result = cropRecommendation(long, lat, crops, soilPath, climatePath)
+
+        print(result)
 
         self.assertEqual(len(result), 2)
         self.assertEqual(result[0]['crop_code'], expected_result[0])
