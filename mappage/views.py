@@ -3,7 +3,7 @@ from DataAccess.Climate.ClimateData import getWeatherData, avgAnnualWeather, fin
 import os
 from DataAccess.Soil.Soil import getSoilData
 from DataAccess.Crop.Crop import getCrops
-from DataAccess.Recommendation import cropRecommendation,summariseProfiles
+from DataAccess.Recommendation import cropRecommendation, summariseProfiles
 from mappage.Forms import mapForm
 import numpy as np
 from Models import Fields
@@ -20,7 +20,10 @@ def map():
     longitude_list = []
     latitude_list = []
 
+    # checks current user is logged in
     if not current_user.is_anonymous:
+
+        # finds the farm information associated with the logged in user to pass to through the form to generate pointers
         num_of_fields = Fields.query.filter_by(userID=current_user.id).count()
 
         farm = Fields.query.filter_by(userID=current_user.id).all()
@@ -28,11 +31,15 @@ def map():
         longitude_list = [fields.longitude for fields in farm]
         latitude_list = [fields.latitude for fields in farm]
 
+    # checks if the user has has clicked on map
     if form.validate_on_submit():
 
+        # accesses soil data depending on where the user clicked
         longitude = float(form.longitude.data)
         latitude = float(form.latitude.data)
         soil = getSoilData(longitude, latitude, 0, "DataAccess/Soil")
+
+        # if there is soil data associated with that location accesses it to pass through the form to be displayed
         if soil != None:
             combined = summariseProfiles(soil)
             soil_salinity = combined.get("D1").get("soil_salinity")
@@ -42,7 +49,11 @@ def map():
             soil_salinity = "N/A"
             soil_ph = "N/A"
             soil_texture = "N/A"
+
+        # accesses climate data depending on where the user clicked
         climate = avgAnnualWeather(getWeatherData(longitude, latitude, "DataAccess/Climate/tif_files"))
+
+        # if there is climate data associated with that location accesses it to pass through the form to be displayed
         if climate is not None:
             min_temp = climate.get("annual_temp_min")
             max_temp = climate.get("annual_temp_max")
@@ -57,11 +68,16 @@ def map():
             solar_rad = "N/A"
             avg_wind = "N/A"
             avg_rain = "N/A"
-        recommend = ""
+
+        # finds the crops to recommend to the user based of soil and climate data
+        recommend = "N/A"
         test = cropRecommendation(longitude, latitude, getCrops("DataAccess/Crop"),
-                                       "DataAccess/Soil",
-                                       "DataAccess/Climate/tif_files")
-        if test is not None:
+                                  "DataAccess/Soil",
+                                  "DataAccess/Climate/tif_files")
+
+        # displays the recommended crops in a list to be displayed to user
+        if test != []:
+            recommend = ""
             for each in test:
                 recommend += each.get("species") + ", "
         country_name = form.country_name.data
@@ -70,6 +86,7 @@ def map():
         scroll_pos = 820
         loaded_by_form = True
 
+        # passes data to form after map click
         return render_template('Mappage/map.html', scroll_position=scroll_pos, loaded=loaded_by_form, form=form,
                                close_city=findClosestCity(longitude, latitude, "DataAccess/Climate"), min_temp=min_temp,
                                max_temp=max_temp, avg_temp=avg_temp, solar_rad=solar_rad, avg_wind=avg_wind,
@@ -80,6 +97,8 @@ def map():
                                marker_name=name_list)
 
     else:
+
+        # passes data to form on initial load of webpage
         return render_template('Mappage/map.html', scroll_position=0, loaded=False, form=form, close_city="N/A",
                                min_temp="N/A", max_temp="N/A", avg_temp="N/A", solar_rad="N/A", avg_wind="N/A",
                                avg_rain="N/A", soil_salinity="N/A", soil_ph="N/A", soil_texture="N/A",
