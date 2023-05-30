@@ -13,3 +13,23 @@ pycharm for the to pip install the wheel instead of creating a conda environment
 sure GDAL is installed in your venv folder. <br/>
 Wheel download: https://github.com/cgohlke/geospatial-wheels/releases <br/>
 Video instructions: https://www.youtube.com/watch?v=8iCWUp7WaTk&embeds_euri=https%3A%2F%2Fopensourceoptions.com%2F&source_ve_path=MjM4NTE&feature=emb_title
+
+###How to run
+####Main
+
+To run the whole program simply type `python main.py` in the terminal.
+
+####Tests
+
+To run the unittests for Recommendation.py in pycharm simply navigate to DataAccess/RecommendationTest.py in the 
+repository. You can then click the green run buttons on the side next to the line numbers to run the tests. <br/>
+To run the unittests for Soil.py in pycharm simply navigate to DataAccess/Soil/SoilTest.py in the 
+repository. You can then click the green run buttons on the side next to the line numbers to run the tests. <br/>
+To run the unittests for Crop.py in pycharm simply navigate to DataAccess/Crop/CropTest.py in the 
+repository. You can then click the green run buttons on the side next to the line numbers to run the tests. <br/>
+To run the unittests for ClimateData.py in pycharm simply navigate to DataAccess/Climate/ClimateTest.py in the 
+repository. You can then click the green run buttons on the side next to the line numbers to run the tests. <br/>
+
+###Link to repository
+
+https://github.com/newcastleuniversity-computing/CSC2033_Team21_22-23
