@@ -14,7 +14,7 @@ def login():
     form = loginForm()
     if form.validate_on_submit():
         user = Users.query.filter_by(username=form.email.data).first()
-        if not bcrypt.checkpw(form.password.data.encode('utf-8'), user.password):
+        if not bcrypt.checkpw(form.password.data.encode('utf-8'), user.password) or not user:
             flash('Incorrect Email/Password')
             return render_template('users/login.html', form=form)
         login_user(user)
