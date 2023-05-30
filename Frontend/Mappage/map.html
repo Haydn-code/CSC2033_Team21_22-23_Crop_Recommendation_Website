@@ -262,10 +262,10 @@
     
     // Creates a number of markers on the interactive map to representing the users fields
     // , based on what is stored under the user's id in the fields database.
-    for (var i = 0; i < {{ num_of_markers }}; i++) {
+    for (var i = 0; i < {{ num_of_markers }}; i++){
     	const marker = new mapboxgl.Marker()
     	.setLngLat([{{ marker_lng }}[i], {{ marker_lat }}[i]])
-		.setPopup(new mapboxgl.Popup().setHTML("<p> {{ marker_name }}[i] </p>"))
+		.setPopup(new mapboxgl.Popup().setHTML({{marker_name|tojson}}[i]))
     	.addTo(map);
     }
     // -------------------------------------
