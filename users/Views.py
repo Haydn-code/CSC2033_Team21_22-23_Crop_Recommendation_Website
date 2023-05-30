@@ -5,19 +5,11 @@ from flask_login import login_user, logout_user, current_user
 from Models import Users, Fields
 import bcrypt
 
-
-def addField(long, lat, name):
-    from database import db
-    new_field = Fields(longitude=long,
-                       latitude=lat,
-                       name=name,
-                       userID=current_user.id)
-    db.session.add(new_field)
-    db.session.commit()
-
 users_blueprint = Blueprint('users', __name__)
-@users_blueprint.route('/', methods=['POST','GET'])
-@users_blueprint.route('/login', methods=['POST','GET'])
+
+
+@users_blueprint.route('/', methods=['POST', 'GET'])
+@users_blueprint.route('/login', methods=['POST', 'GET'])
 def login():
     form = loginForm()
     if form.validate_on_submit():
@@ -31,6 +23,7 @@ def login():
         elif user.role == 'admin':
             return redirect(url_for('users.admin'))
     return render_template('users/login.html', form=form)
+
 
 @users_blueprint.route('/signUp', methods=['POST', 'GET'])
 def signUp():
@@ -55,6 +48,7 @@ def signUp():
         return redirect(url_for('users.login'))
     return render_template('users/signup.html', form=form)
 
+
 @users_blueprint.route('/profile', methods=['GET','POST'])
 def profile():
     from main import db
@@ -76,14 +70,16 @@ def profile():
     return render_template('users/profile.html',
                            form=form,
                            email=current_user.username,
-                           phone=current_user.phone ,
+                           phone=current_user.phone,
                            name=name,
                            fields=display_fields)
+
 
 @users_blueprint.route('/admin')
 def admin():
     id = current_user.id
     return render_template('users/admin.html', id=id)
+
 
 @users_blueprint.route('/logout')
 def logout():
