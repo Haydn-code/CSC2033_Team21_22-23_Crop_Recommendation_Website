@@ -14,6 +14,10 @@ sure GDAL is installed in your venv folder. <br/>
 Wheel download: https://github.com/cgohlke/geospatial-wheels/releases <br/>
 Video instructions: https://www.youtube.com/watch?v=8iCWUp7WaTk&embeds_euri=https%3A%2F%2Fopensourceoptions.com%2F&source_ve_path=MjM4NTE&feature=emb_title
 
+###All the other dependencies
+The other dependencies can all just be installed by going to requirements.tx and pressing install requirements at the 
+top
+
 ###How to run
 ####Main
 
