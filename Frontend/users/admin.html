@@ -39,7 +39,7 @@
                 <div class="user-control">
                 	<div class="search-display">
                 		<div class="search-bar">
-							<input id="search-input" type="text" placeholder="Enter User ID...">
+							<input id="search-input" type="text" placeholder="Enter...">
 						</div>
 						<div class="search-output">
 							<div class="user-row">
@@ -50,11 +50,11 @@
 						</div>
                 	</div>
                 	<div class="action-display">
-                	<button>Find User</button>
-                	<button>Edit User</button>
-                	<button>Delete User</button>
-                	<button>Edit Field</button>
-                	<button>Delete Field</button>
+                	<button id="find_user">Find User</button>
+                	<button id="delete_user">Delete User</button>
+                	<button id="edit_field">Edit Field</button>
+                	<button id="delete_field">Delete Field</button>
+                	<button id="display_back">Back</button>
                 	</div>
                 </div>
             </div>
@@ -98,6 +98,151 @@
 
   		searchDisplayContainer.appendChild(row);
 	}
+	
+	var find_user_but = document.getElementById('find_user');	
+	var delete_user_but = document.getElementById('delete_user');	
+	var edit_field_but = document.getElementById('edit_field');	
+	var delete_field_but = document.getElementById('delete_field');	
+	var back_but = document.getElementById('display_back');	
+	
+	// visible buttons
+    // find user
+    find_user_but.style.display = 'block';
+    // delete user
+    delete_user_but.style.display = 'block';
+    // edit field
+    edit_field_but.style.display = 'block';
+    // delete field
+    delete_field_but.style.display = 'block';
+      			
+    // non-visible buttons
+    // back
+    back_but.style.display = 'none';
+	
+	var previousUserRow = null;
+	var field_display = false;
+
+	var userRows = document.querySelectorAll('.user-row');
+
+	for (var i = 0; i < userRows.length; i++) {
+  		var userRow = userRows[i];
+
+  		userRow.addEventListener('click', function() {
+    		this.style.backgroundColor = 'lightblue';
+    		
+    		var current_row = this;
+
+    		var parentDiv = this.parentElement;
+    		
+    		// when find user button is pressed:
+    		find_user_but.addEventListener('click', function() {
+    			field_display = false;
+    			current_row.click();
+    		});
+
+			// when delete user button is pressed:
+    		delete_user_but.addEventListener('click', function() {
+    			field_display = false;
+    			current_row.click();
+    		});
+
+			// when edit field button is pressed:
+    		edit_field_but.addEventListener('click', function() {
+    			field_display = true;
+    			current_row.click();
+    			// current_row is the row that was highlighted before 
+    			// button press
+    		});
+
+			// when delete field button is pressed:
+    		delete_field_but.addEventListener('click', function() {
+    			field_display = true;
+    			current_row.click();
+    		});
+    		
+    		// when the back button is pressed:
+    		back_but.addEventListener('click', function() {
+    			field_display = false;
+    			current_row.click();
+    		});
+      			
+      		// to make the display, suitable to the field operations
+			if (field_display == true) {
+			    var userIdDiv = parentDiv.querySelector('#user_id');
+      			if (userIdDiv) {
+       				userIdDiv.innerHTML = 'Field ID:';
+      			}
+
+      			var emailDiv = parentDiv.querySelector('#email');
+      			if (emailDiv) {
+        			emailDiv.innerHTML = 'Longitude:';
+      			}
+      		
+      			var phoneDiv = parentDiv.querySelector('#phone_num');
+      			if (phoneDiv) {
+        			phoneDiv.innerHTML = 'Latitude:';
+      			}
+      			
+      			// visible buttons
+      			// edit field
+      			edit_field_but.style.display = 'block';
+      			// delete field
+      			delete_field_but.style.display = 'block';
+      			// back button
+      			back_but.style.display = 'block';
+      			
+      			// non-visible buttons
+      			// find user
+      			find_user_but.style.display = 'none';
+      			// delete user
+      			delete_user_but.style.display = 'none';
+      			
+			}
+			// to make the display, suitable to the user operations
+			else{
+				var userIdDiv = parentDiv.querySelector('#user_id');
+      			if (userIdDiv) {
+       				userIdDiv.innerHTML = 'User ID:';
+      			}
+
+      			var emailDiv = parentDiv.querySelector('#email');
+      			if (emailDiv) {
+        			emailDiv.innerHTML = 'Email:';
+      			}
+      		
+      			var phoneDiv = parentDiv.querySelector('#phone_num');
+      			if (phoneDiv) {
+        			phoneDiv.innerHTML = 'Phone Number:';
+      			}
+      			
+      			// visible buttons
+      			// find user
+      			find_user_but.style.display = 'block';
+      			// delete user
+      			delete_user_but.style.display = 'block';
+      			// edit field
+      			edit_field_but.style.display = 'block';
+      			// delete field
+      			delete_field_but.style.display = 'block';
+
+      			
+      			// non-visible buttons
+      			// back
+      			back_but.style.display = 'none';
+
+			}
+
+
+
+    		if (previousUserRow) {
+      			previousUserRow.style.backgroundColor = 'white';
+    		}
+
+    		previousUserRow = this;
+  		});
+	}
+	
+	
 
 	// When the colour blind mode button is pressed on the footer all the sections 
     //background-colour on the page are changed to an appropriate colour.
